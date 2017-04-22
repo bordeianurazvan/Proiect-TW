@@ -1,0 +1,89 @@
+body{
+    background-color: tan;
+    background-repeat: no-repeat;
+    height:100%;
+    width:100%;
+    overflow: hidden;
+    background-size: cover;
+
+}
+
+.formular{
+    background-color: burlywood;
+    width: 90%;
+    height: 70%;
+    background-image:url("../images/textura.png");
+    background-repeat:no-repeat;
+    background-size: 100% 100%;
+}
+
+.Logo2{
+    margin: auto;
+    display: block;
+    padding-left: 5%;
+
+}
+
+form{
+
+    height: 80%;
+    width: 100%;
+    display: block;
+    padding-bottom: 10%;
+    padding-top: 1%;
+
+}
+
+.btn-primary,
+.btn-primary:active,
+.btn-primary:visited,
+.btn-primary:focus {
+    background-color: burlywood;
+    border-color: #000000 ;
+    color: #000000;
+    font-size: small;
+    margin: auto;
+    padding: 5px;
+}
+
+.btn-primary:hover{
+    background-color: burlywood;
+}
+
+@media  only screen and (min-device-width : 300px) and (max-device-width : 1000px) {
+
+    .formular {
+        width: 100%;
+        padding: 1px;
+    }
+
+    .center {
+        width: 100%;
+    }
+}
+
+
+    @media  only screen and (min-device-width : 100px) and (max-device-width : 1500px) {
+
+        .LeftTable{
+            background-size: 100% 100%;
+        }
+    }
+
+
+.table.no-border tr td, .table.no-border tr th {
+    border-width: 0;
+
+}
+
+.LeftTable{
+    background-image: url("../images/fontButon30%25.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    margin-left:5%;
+    text-align: center;
+
+}
+
+
+
