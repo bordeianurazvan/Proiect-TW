@@ -12,7 +12,7 @@ body{
     background-color: burlywood;
     width: 90%;
     height: 70%;
-    background-image:url("textura.png");
+    background-image:url("../images/textura.png");
     background-repeat:no-repeat;
     background-size: 100% 100%;
 }
