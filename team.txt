@@ -1,0 +1,5 @@
+Echipa:
+	Bordeianu-Cocea Andrei-Razvan,A2
+	Vrabie Tudor-Octavian,A2
+	Tifrea George-Marian,A2
+	Damoc Valentin,A2
