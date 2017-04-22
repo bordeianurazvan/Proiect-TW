@@ -32,6 +32,13 @@ form{
     display: block;
     padding-bottom: 10%;
     padding-top: 1%;
+}
 
+@media  only screen and (min-device-width : 300px) and (max-device-width : 1000px) {
+
+    .formular{
+        width: 100%;
+        padding: 1px;
+    }
 
 }
