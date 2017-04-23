@@ -49,9 +49,24 @@
         </div>
         </div>
 
-<div class="divi">
-    <?php include 'php/map.php';
-    ?>
+<div class="divi" >
+    <script>
+     var myTable="";
+
+
+        myTable+='<table class="tabel-map">';
+    for(var i=1; i<=100; i++){
+        myTable+='<tr data-toggle=\"modal\" data-id=\"1\" data-target=\"#mini-menu\">';
+    for(var j=1;j<=100;j++) {
+        var x=Math.floor(Math.random() * 11) + 1;
+        myTable+='<td><img alt="Resources" src="images/'+ x +'.png" title="'+x +'|'+j +'"> </td>';
+    }
+        myTable+='</tr>';
+    }
+        myTable+='</table>';
+     document.write( myTable);
+
+    </script>
         
     </div>
     <div class="modal fade" id="mini-menu" role="dialog">
