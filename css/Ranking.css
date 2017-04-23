@@ -1,0 +1,179 @@
+html{
+    height:100%;
+}
+
+body{
+    background-color: tan;
+    background-repeat: no-repeat;
+    height:100%;
+    width:100%;
+    overflow-x: hidden;
+    background-size: cover;
+    overflow-y:auto;
+
+}
+
+.center{
+    background-repeat: no-repeat;
+    height: auto;
+    width: 73%;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin: auto;
+    background-image: url("../images/textura.png");
+    background-size: 100% 100%;
+}
+
+
+.row{
+    margin: auto;
+}
+
+
+
+.RankingTitle{
+    margin-top: 1%;
+    font-size-adjust: 1;
+    font-size: 30px;
+}
+
+.Search{
+    padding-top: 12px;
+}
+
+.pagination li:first-child a,
+.pagination li:last-child a{
+    background-color: burlywood;
+    border-color: #000000 ;
+    color: #000000;
+    font-size: small;
+    margin: auto;
+    padding: 5px;
+}
+.pagination li a:hover {
+    background-color: burlywood;
+    border-color: #000000 ;
+    color: white;
+    font-size: small;
+    margin: auto;
+    padding: 5px;
+}
+.pagination li a:active{
+    background-color: blanchedalmond;
+    border-color: #01549b ;
+    color: black;
+    font-size: small;
+    margin: auto;
+    padding: 5px;
+}
+
+.SearchButton{
+    background-color: burlywood;
+    border-color: #000000 ;
+    color: #000000;
+    font-size: small;
+    margin: auto;
+    padding: 5px;
+}
+
+.SearchButton:active,.SearchButton:visited,.SearchButton:focus{
+    background-color: blanchedalmond;
+    border-color: #01549b ;
+    color: black;
+    font-size: small;
+    margin: auto;
+    padding: 5px;
+}
+
+
+.btn-primary,
+.btn-primary:active,
+.btn-primary:visited,
+.btn-primary:focus {
+    background-color: burlywood;
+    border-color: #000000 ;
+    color: #000000;
+    font-size: small;
+    margin: auto;
+    padding: 5px;
+}
+
+.btn-primary:hover{
+    background-color: burlywood;
+}
+
+
+.Table{
+    background-image: url("../images/fontButon30%25.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    margin-top: 5px;
+    text-align: center;
+    padding-top: 5px;
+}
+
+.table.no-border tr td, .table.no-border tr th {
+    border-width: 0;
+
+}
+
+.Buttons{
+    padding-top: 1px;
+    margin-right: 1%;
+
+}
+
+
+@media  only screen and (min-device-width : 300px) and (max-device-width : 1000px) {
+
+    .center{
+        width: 100%;
+        padding: 1px;
+        height: auto;
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 855px) {
+    .navbar-collapse.collapse {
+        display: none !important;
+    }
+    .navbar-collapse.collapse.in {
+        display: block !important;
+    }
+    .navbar-header .collapse, .navbar-toggle {
+        display:block !important;
+    }
+    .navbar-header {
+        float:none;
+    }
+}
+
+@media  only screen and (min-device-width : 100px) and (max-device-width : 355px) {
+
+    body{
+        font-size: small;
+    }
+
+}
+
+@media  only screen and (min-device-width : 250px) and (max-device-width : 500px) {
+
+    .Buttons{
+        margin-right: 1%;
+        padding-top: 1px;
+    }
+}
+
+@media  only screen and (min-device-width : 760px) and (max-device-width : 1200px) {
+
+    .Buttons{
+        margin-right: 10%;
+        padding-top: 1px;
+    }
+}
+
+
+
