@@ -1,0 +1,126 @@
+html{
+    height:100%;
+}
+body{
+    background-color: tan;
+    background-repeat: no-repeat;
+    height:100%;
+    width:100%;
+    overflow: hidden;
+    background-size: cover;
+    overflow-x:hidden;
+    overflow-y:scroll;
+}
+
+.center{
+    background-repeat: no-repeat;
+    height: auto;
+    width: auto;
+    padding: 15px;
+    margin: auto;
+    background-image: url("../images/textura.png");
+    background-size: 100% 100%;
+}
+.row{
+    margin: auto;
+}
+
+
+
+.btn-primary,
+.btn-primary:active,
+.btn-primary:visited,
+.btn-primary:focus {
+    background-color: burlywood;
+    border-color: #000000 ;
+    color: #000000;
+    font-size: small;
+    margin: auto;
+    padding: 5px;
+}
+
+.btn-primary:hover{
+    background-color: burlywood;
+}
+
+.Imagine{
+    border-radius: 5px;
+    border: 1px solid #000;
+    padding: 5px;
+    margin-top : 1%;
+}
+
+.coloana{
+    border-radius: 5px;
+    border: 1px solid #000;
+    margin-top : 1%;
+    alignment: right;
+    width: auto;
+    background-color: tan;
+}
+
+.trupe{
+    padding: 2%;
+}
+
+@media (min-width: 768px) and (max-width: 855px) {
+    .navbar-collapse.collapse {
+        display: none !important;
+    }
+    .navbar-collapse.collapse.in {
+        display: block !important;
+    }
+    .navbar-header .collapse, .navbar-toggle {
+        display:block !important;
+    }
+    .navbar-header {
+        float:none;
+    }
+}
+
+@media  only screen and (min-width : 100px) and (max-width : 400px) {
+
+    body {
+        font-size: 50%;
+    }
+    .Table{
+        width : 100%;
+    }
+}
+@media  only screen and (min-width : 400px) and (max-width : 530px) {
+
+    body {
+        font-size: smaller;
+    }
+    .Table{
+        width : 100%;
+    }
+}
+
+@media  only screen and (min-width : 530px) and (max-width : 625px) {
+
+    body {
+        font-size: small;
+    }
+    .Table{
+        width : 100%;
+    }
+}
+@media  only screen and (min-width : 625px) and (max-width : 715px) {
+
+    body {
+        font-size: small;
+    }
+
+}
+
+@media  only screen and (min-width : 300px) and (max-width : 1000px) {
+
+    .center{
+        width: 100%;
+        padding: 1px;
+        /* height: 85%;*/
+        height: auto;
+    }
+
+}
