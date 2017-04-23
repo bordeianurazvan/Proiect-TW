@@ -1,0 +1,98 @@
+html{
+    height:100%;
+}
+body{
+    background-color: tan;
+    background-repeat: no-repeat;
+    height:100%;
+    width:100%;
+    overflow-y:auto;
+    background-size: cover;
+}
+
+.center{
+    background-repeat: no-repeat;
+    height: auto;
+    width: 73%;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin: auto;
+    background-image: url("../images/textura.png");
+    background-size: 100% 100%;
+}
+
+.Village{
+    margin-left: 1px;
+}
+@media  only screen and (min-device-width : 300px) and (max-device-width : 800px) {
+
+    .center{
+        font-size:smaller;
+    }
+
+
+}
+
+@media (min-width: 768px) and (max-width: 855px) {
+    .navbar-collapse.collapse {
+        display: none !important;
+    }
+    .navbar-collapse.collapse.in {
+        display: block !important;
+    }
+    .navbar-header .collapse, .navbar-toggle {
+        display:block !important;
+    }
+    .navbar-header {
+        float:none;
+    }
+}
+.legend{
+    margin-left:1%;
+    margin-top:1%;
+    border-width: 0;
+}
+
+
+.coordonate{
+    margin-left:0.8%;
+    margin-top:1%;
+   width: 54%;
+
+}
+.sword_form{
+
+    float:left;
+}
+
+.trupe{
+    margin-top:3%;
+    margin-left:2%;
+}
+
+.allign{
+    width:50px;
+}
+.btn-primary,
+.btn-primary:active,
+.btn-primary:visited,
+.btn-primary:focus {
+    background-color: burlywood;
+    border-color: #000000 ;
+    color: #000000;
+    font-size: small;
+    margin: auto;
+    padding: 5px;
+}
+
+.btn-primary:hover{
+    background-color: burlywood;
+}
+.buton{
+    margin-left:2%;
+    margin-top:1%;
+}
+
+
