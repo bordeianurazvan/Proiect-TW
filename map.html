@@ -18,18 +18,18 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-logo" href="#">
+            <a class="navbar-logo" href="info.html">
                 <img alt="Logo" src="images/logocrop60%25.png">
             </a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-home"></span> Home </a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile </a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-globe"></span> Map </a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-comment"></span> Reports <span class="badge">17</span> </a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-stats"></span> Ranking </a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-off"></span> LogOut </a></li>
+                <li><a href="PrivireAsupraSatului.html"><span class="glyphicon glyphicon-home"></span> Home </a></li>
+                <li><a href="profile.html"><span class="glyphicon glyphicon-user"></span> Profile </a></li>
+                <li><a href="map.html"><span class="glyphicon glyphicon-globe"></span> Map </a></li>
+                <li><a href="reports.html"><span class="glyphicon glyphicon-comment"></span> Reports <span class="badge">17</span> </a></li>
+                <li><a href="Ranking.html"><span class="glyphicon glyphicon-stats"></span> Ranking </a></li>
+                <li><a href="login.html"><span class="glyphicon glyphicon-off"></span> LogOut </a></li>
             </ul>
         </div>
     </div>
@@ -50,22 +50,8 @@
         </div>
 
 <div class="divi">
-        <?php
-
-
-	 $conn = oci_connect("admintw", "ADMINTW", "//localhost/xe");
-    echo '<table class="tabel-map">';
-        for($i=1;$i<=100;$i++){
-        echo "<tr data-toggle=\"modal\" data-id=\"1\" data-target=\"#mini-menu\">";
-        for($j=1;$j<=100;$j++){
-            $x=rand(1,11);
-        echo "<td>  <img alt=\"Resources\" src=images\"$x.png\" title=\"$i|$j\"> </td>";
-        }
-        echo "</tr>";
-        }
-        echo "</table>";
-        oci_close($conn);
-        ?>
+    <?php include 'php/map.php';
+    ?>
         
     </div>
     <div class="modal fade" id="mini-menu" role="dialog">
@@ -92,11 +78,11 @@
          
             <div class="form-group">
             <label for="x">X:</label>
-            <input type="number" pattern="\d*" class="allign"  value="" maxlength="3" id="x">
+            <input type="number" class="allign"  value=""  id="x">
         </div>
             <div class="form-group">
                 <label for="y">Y:</label>
-                <input type="number" pattern="\d*" class="allign"  value="" maxlength="3" id="y">
+                <input type="number"  class="allign"  value=""  id="y">
             </div>
             <div class="form-group">
                   <button type="submit" class="btn btn-primary search">Search</button>
@@ -104,7 +90,7 @@
         </form>
     </div>
     </div>
-</div>
+
 
    
 
@@ -114,5 +100,3 @@
 </body>
 </html>
 
-</body>
-</html>

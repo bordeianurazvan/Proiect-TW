@@ -69,6 +69,10 @@ body{
 table.no-border tr td, .table.no-border tr th {
     border-width: 0;
 }
+
+.vis{
+    margin-left: 2px;
+}
 @media  only screen and (min-device-width : 300px) and (max-device-width : 1000px) {
 
     .center{
