@@ -15,16 +15,22 @@ body{
 .center{
     background-repeat: no-repeat;
     height: auto;
-    width: auto;
     padding: 15px;
-    margin: auto;
     background-image: url("../images/textura.png");
     background-size: 100% 100%;
+
+}
+
+.imaginea{
+    margin:auto;
 }
 .row{
     margin: auto;
 }
 
+.butoane{
+    padding: 10px;
+}
 
 
 .btn-primary,
@@ -53,14 +59,13 @@ body{
 .coloana{
     border-radius: 5px;
     border: 1px solid #000;
-    margin-top : 1%;
-    alignment: right;
+    text-align: center;
     width: auto;
     background-color: tan;
 }
 
 .trupe{
-    padding: 2%;
+    padding: 10px;
 }
 
 @media (min-width: 768px) and (max-width: 855px) {
@@ -79,10 +84,10 @@ body{
 }
 
 @media  only screen and (min-width : 100px) and (max-width : 400px) {
-
-    body {
-        font-size: 50%;
+    .center{
+        font-size: smaller;
     }
+
     .Table{
         width : 100%;
     }
@@ -90,7 +95,7 @@ body{
 @media  only screen and (min-width : 400px) and (max-width : 530px) {
 
     body {
-        font-size: smaller;
+        font-size: small;
     }
     .Table{
         width : 100%;
@@ -119,8 +124,11 @@ body{
     .center{
         width: 100%;
         padding: 1px;
-        /* height: 85%;*/
         height: auto;
     }
 
+}
+.butoane{
+    align-content: center;
+    text-align: center;
 }
