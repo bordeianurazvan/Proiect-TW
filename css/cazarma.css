@@ -1,0 +1,183 @@
+html{
+    height:100%;
+}
+body{
+    background-color: tan;
+    background-repeat: no-repeat;
+    height:100%;
+    width:100%;
+    overflow-y:auto;
+    background-size: cover;
+}
+
+.center{
+    background-repeat: no-repeat;
+    height: auto;
+    width: 73%;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin: auto;
+    background-image: url("../images/textura.png");
+    background-size: 100% 100%;
+}
+
+.Village{
+    margin-left: 1px;
+}
+@media  only screen and (min-device-width : 300px) and (max-device-width : 800px) {
+
+    .center{
+        width: 100%;
+        padding: 1px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 855px) {
+    .navbar-collapse.collapse {
+        display: none !important;
+    }
+    .navbar-collapse.collapse.in {
+        display: block !important;
+    }
+    .navbar-header .collapse, .navbar-toggle {
+        display:block !important;
+    }
+    .navbar-header {
+        float:none;
+    }
+}
+Table{
+    background-image: url("../images/fontButon30%25.png");
+    background-repeat: no-repeat;
+    background-size: 80% 100%;
+    width:100%;
+    margin:auto;
+
+
+}
+.tabel{
+    margin-left:15%;
+    margin-top:1%;
+}
+.tabel-modal{
+    background-size: 100% 100%;
+
+}
+
+.table.no-border tr td, .table.no-border tr th {
+    border-width: 0;
+}
+
+
+.troops{
+    margin-left:15%;
+}
+.trupe{
+   margin-top:2%;
+
+}
+.nume{
+    margin-top:2%;
+}
+.cost{
+    margin-top:2%;
+}
+
+.poza_sword{
+    margin-top:3%;
+
+}
+.poza_axe{
+    margin-top:5%;
+
+}
+.sword_form,.axe_form,.archer_form,.spear_form{
+    width:35%;
+}
+.active_commands{
+    margin-left:10%;
+}
+
+.btn-primary,
+.btn-primary:active,
+.btn-primary:visited,
+.btn-primary:focus {
+    background-color: burlywood;
+    border-color: #000000 ;
+    color: #000000;
+    font-size: small;
+
+    margin-top:2%;
+    margin-left:1.8%;
+}
+.modal-header{
+    border-width:0;
+}
+
+.btn-primary:hover{
+    background-color: burlywood;
+}
+.modal-content{
+    background-image: url("../images/textura.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+
+}
+
+
+@media only screen  and (min-width : 1224px) {
+    /* Styles */
+
+.poza_spear{
+    width: 25%;
+    height:auto;
+}
+.poza_sword{
+    margin-top:3%;
+    width:25%;
+}
+.poza_axe{
+    margin-top:5%;
+    width:32%;
+    height:auto;
+}
+.poza_archer{
+    width:32%;
+    height:auto;
+}
+}
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+   body{
+       font-size: xx-small;
+
+   }
+
+}
+@media only screen and (min-device-width : 800px) and (max-device-width : 1300px) {
+    table{
+        background-size: 83% 100%;
+    }
+
+}
+@media only screen and (min-device-width : 300px) and (max-device-width : 1100px) {
+    table{
+        background-size: 100% 100%;
+
+    }
+    .tabel{
+        margin-left:0;
+    }
+
+
+}
+@media only screen and (min-device-width : 300px) and (max-device-width : 800px) {
+
+     .modal-div{
+        margin-right: 7%;
+     }
+
+}
+
+
