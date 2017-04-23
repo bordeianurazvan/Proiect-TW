@@ -1,0 +1,88 @@
+html{
+    height:100%;
+}
+body{
+    background-color: tan;
+    background-repeat: no-repeat;
+    height:100%;
+    width:100%;
+    overflow-y:auto;
+    background-size: cover;
+}
+
+.center{
+    background-repeat: no-repeat;
+    height: auto;
+    width: 73%;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+   background-image: url("../images/textura.png");
+    background-size: 90% 100%;
+}
+.btn-primary,
+.btn-primary:active,
+.btn-primary:visited,
+.btn-primary:focus {
+    background-color: burlywood;
+    border-color: #000000 ;
+    color: #000000;
+    font-size: small;
+
+}
+
+.btn-primary:hover{
+    background-color: burlywood;
+
+}
+
+
+
+.legend{
+    margin-left:2%;
+    margin-top:1%;
+    border-width: 0;
+}
+Table{
+    background-image: url("../images/fontButon30%25.png");
+    background-repeat: no-repeat;
+    background-size: 90% 100%;
+
+    margin: auto;
+
+
+}
+.table.no-border tr td, .table.no-border tr th {
+    border-width: 0;
+}
+.buton{
+    margin-left:2%;
+}
+@media  only screen and (min-device-width : 200px) and (max-device-width : 387px) {
+
+    body{
+        font-size:x-small;
+    }
+
+}
+
+@media  only screen and (min-device-width : 700px) and (max-device-width : 1000px) {
+
+    body{
+        font-size:large;
+    }
+}
+@media  only screen and (min-device-width : 100px) and (max-device-width : 1000px) {
+
+   .center{
+       width:100%;
+       background-size: 100% 100%;
+
+   }
+    table{
+        background-size: 100% 100%;
+    }
+}
+
+
