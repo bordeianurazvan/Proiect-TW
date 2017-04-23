@@ -1,0 +1,45 @@
+html{
+    height:100%;
+}
+body{
+    background-color: tan;
+    height:100%;
+    width:100%;
+    overflow-x:hidden;
+    overflow-y:auto;
+    background-size: cover;
+}
+
+.center{
+    background-repeat: no-repeat;
+    height:auto;
+    width: 73%;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin: auto;
+    background-image: url("../images/textura.png");
+    background-size: 100% 100%;
+}
+
+
+@media  only screen and (min-device-width : 300px) and (max-device-width : 1000px) {
+
+    .center{
+        width: 100%;
+    }
+
+}
+
+
+@media  only screen and (min-device-width : 100px) and (max-device-width : 355px) {
+
+    .center{
+        width: 100%;
+    }
+    .body{
+        font-size: small;
+    }
+
+}
