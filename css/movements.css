@@ -30,10 +30,18 @@ body{
 
 }
 
-.Reports{
+.movements{
     margin-top: 1%;
     font-size-adjust: 1;
-    font-size: 30px;
+    font-size: 20px;
+}
+
+.Table{
+    margin: auto;
+}
+.free-space{
+    margin-top:20px;
+    margin-top:20px;
 }
 
 .Table{
@@ -42,6 +50,7 @@ body{
     background-size: 100% 100%;
     margin: auto;
 }
+
 .pagination li:first-child a,
 .pagination li:last-child a{
     background-color: burlywood;
@@ -67,7 +76,6 @@ body{
     margin: auto;
     padding: 5px;
 }
-
 @media  only screen and (min-device-width : 300px) and (max-device-width : 1000px) {
 
     .center{
@@ -109,23 +117,4 @@ body{
 
     }
 
-}
-.c-link:link {
-    text-decoration: none;
-    color: black;
-}
-
-.c-link:visited {
-    text-decoration: none;
-    color: black;
-}
-
-.c-link:hover {
-    text-decoration: none;
-    color: darkred;
-}
-
-.c-link:active {
-    text-decoration: none;
-    color: black;
 }
