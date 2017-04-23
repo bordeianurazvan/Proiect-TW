@@ -23,6 +23,9 @@ body{
     background-size: 100% 100%;
 
 }
+.tabel{
+    border-width:0;
+}
 
 
 .btn-primary,
