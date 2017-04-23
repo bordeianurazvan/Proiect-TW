@@ -1,0 +1,120 @@
+html{
+    height:100%;
+}
+body{
+    background-color: tan;
+    background-repeat: no-repeat;
+    height:100%;
+    width:100%;
+    overflow-x:hidden;
+    overflow-y:auto;
+    background-size: cover;
+}
+
+.center{
+    background-repeat: no-repeat;
+    height:auto;
+    width: 73%;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin: auto;
+    background-image: url("../images/textura.png");
+    background-size: 100% 100%;
+}
+
+
+.row{
+    margin: auto;
+
+}
+
+.movements{
+    margin-top: 1%;
+    font-size-adjust: 1;
+    font-size: 20px;
+}
+
+.Table{
+    margin: auto;
+}
+.free-space{
+    margin-top:20px;
+    margin-top:20px;
+}
+
+.Table{
+    background-image: url("../images/fontButon30%25.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+.pagination li:first-child a,
+.pagination li:last-child a{
+    background-color: burlywood;
+    border-color: #000000 ;
+    color: #000000;
+    font-size: small;
+    margin: auto;
+    padding: 5px;
+}
+.pagination li a:hover {
+    background-color: burlywood;
+    border-color: #000000 ;
+    color: white;
+    font-size: small;
+    margin: auto;
+    padding: 5px;
+}
+.pagination li a:active{
+    background-color: blanchedalmond;
+    border-color: #01549b ;
+    color: black;
+    font-size: small;
+    margin: auto;
+    padding: 5px;
+}
+@media  only screen and (min-device-width : 300px) and (max-device-width : 1000px) {
+
+    .center{
+        width: 100%;
+        padding: 1px;
+    }
+    .table{
+        font-size:12px;
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 855px) {
+    .navbar-collapse.collapse {
+        display: none !important;
+    }
+    .navbar-collapse.collapse.in {
+        display: block !important;
+    }
+    .navbar-header .collapse, .navbar-toggle {
+        display:block !important;
+    }
+    .navbar-header {
+        float:none;
+    }
+}
+
+@media  only screen and (min-device-width : 100px) and (max-device-width : 355px) {
+
+    .center{
+        width: 100%;
+        padding: 1px;
+    }
+    .body{
+        font-size: small;
+    }
+    .Table{
+        font-size:9px;
+
+    }
+
+}
