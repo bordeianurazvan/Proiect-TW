@@ -1,0 +1,44 @@
+body{
+    background-color: tan;
+    background-repeat: no-repeat;
+    height:100%;
+    width:100%;
+    overflow-x:hidden;
+    overflow-y:auto;
+    background-size: cover;
+
+}
+
+.formular{
+    background-color: burlywood;
+    width: 90%;
+    height: 70%;
+    background-image:url("../images/textura.png");
+    background-repeat:no-repeat;
+    background-size: 100% 100%;
+}
+
+.Logo2{
+  margin: auto;
+    display: block;
+    padding-left: 5%;
+
+}
+
+form{
+
+    height: 80%;
+    width: 60%;
+    margin: auto;
+    display: block;
+    padding-bottom: 10%;
+    padding-top: 1%;
+}
+@media  only screen and (min-device-width : 300px) and (max-device-width : 1000px) {
+
+    .formular{
+        width: 100%;
+        padding: 1px;
+    }
+
+}
