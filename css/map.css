@@ -93,11 +93,12 @@ body{
 }
 
 @media (max-width: 768px) {
-  .form-inline .form-group {
-    display: inline-block;
-    margin-bottom: 0;
-    vertical-align: middle;
-  }
+    .form-inline .form-group {
+        display: inline-block;
+        margin-bottom: 0;
+        vertical-align: middle;
+    }
+ }
   @media (max-width: 350px) {
       .divi{
       height:78%;
