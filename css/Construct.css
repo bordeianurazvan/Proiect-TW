@@ -35,6 +35,14 @@ body{
     font-size: 30px;
 }
 
+.BuildingsTH{
+    width:24%;
+}
+
+.ConstructTH{
+    width: 25%;
+}
+
 .btn-primary,
 .btn-primary:hover,
 .btn-primary:active,
