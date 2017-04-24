@@ -52,7 +52,7 @@
         <div class="col-md-2 col-xs-0 col-sm-1 col-lg-1"></div>
         <div class="col-md-8 col-xs-12 col-sm-10 col-lg-10">
             <div id="image_map">
-                <map name="map_example">
+                <map id="map_id" name="map_example">
                     <area href="Construct.html" alt="Main-Building" target="_blank" shape=poly coords="420,100,540,100,540,210,420,210">
                     <area href="Storage.html" alt="Storage" target="_blank" shape=poly coords="160,170,270,170,270,280,160,280">
                     <area href="cazarma.html" alt="Barracks" target="_blank" shape=poly coords="540,290,660,290,660,410,540,410">
@@ -61,8 +61,38 @@
                     <area href="Iron.html" alt="Iron" target="_blank" shape=poly coords="1,1,120,1,120,100,1,100">
                 </map>
 
-                <img src="images/map.png" alt="image map example" usemap="#map_example" class="align-none full-size img-responsive imaginea">
-
+                <img id="my_image" src="images/map.png" alt="image map example" usemap="#map_example" class="align-none full-size img-responsive imaginea">
+                <script>
+                    window.onload = function () {
+                        var ImageMap = function (map, img) {
+                                    var n,
+                                            areas = map.getElementsByTagName('area'),
+                                            len = areas.length,
+                                            coords = [],
+                                            previousWidth = 800;
+                                    for (n = 0; n < len; n++) {
+                                        coords[n] = areas[n].coords.split(',');
+                                    }
+                                    this.resize = function () {
+                                        var n, m, clen,
+                                                x = img.offsetWidth / previousWidth;
+                                        for (n = 0; n < len; n++) {
+                                            clen = coords[n].length;
+                                            for (m = 0; m < clen; m++) {
+                                                coords[n][m] *= x;
+                                            }
+                                            areas[n].coords = coords[n].join(',');
+                                        }
+                                        previousWidth = img.offsetWidth;
+                                        return true;
+                                    };
+                                    window.onresize = this.resize;
+                                },
+                                imageMap = new ImageMap(document.getElementById('map_id'), document.getElementById('my_image'));
+                        imageMap.resize();
+                        return;
+                    }
+                </script>
                 <br>
 
             </div>

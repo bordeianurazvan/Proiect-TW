@@ -15,7 +15,7 @@ body{
 .center{
     background-repeat: no-repeat;
     height: auto;
-    width: auto;
+    width: 73%;
     padding: 15px;
     margin: auto;
     background-image: url("../images/textura.png");
