@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Divide&Conquer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/compass.css">
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-logo" href="login.html">
+                <img alt="Logo" src="images/logocrop60%25.png" class="img-responsive">
+            </a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <li><a href="register.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="col-md-2 col-xs-0 col-sm-0 col-lg-2"></div>
+<div class="col-md-8 col-xs-12 col-sm-12  col-lg-8">
+
+
+    <div class="formular">
+        <div class="text">Choose Your Zone!</div>
+        <form name="myform" action="cazarma.html">
+        <img id="compas" src="images/compass.png" class="img-responsive imagine-compas" alt="Compass" usemap="#compasmap">
+        <map id="map_compas" name="compasmap">
+            <area alt="NW" title="" href="#" shape="poly" coords="98,280,266,251,302,76,158,135" onClick="myform.submit();" />
+            <area alt="NE" title="" href="#" shape="poly" coords="461,136,513,284,357,251,318,78" onClick="myform.submit();"/>
+            <area alt="SE" title="" href="#" shape="poly" coords="349,310,322,496,456,440,520,296" onClick="myform.submit();"/>
+            <area alt="SW" title="" href="#" shape="poly" coords="100,294,263,333,303,493,160,436" onClick="myform.submit();"/>
+        </map>
+        <script>
+            window.onload = function () {
+                var ImageMap = function (map, img) {
+                        var n,
+                            areas = map.getElementsByTagName('area'),
+                            len = areas.length,
+                            coords = [],
+                            previousWidth = 600;
+                        for (n = 0; n < len; n++) {
+                            coords[n] = areas[n].coords.split(',');
+                        }
+                        this.resize = function () {
+                            var n, m, clen,
+                                x = img.offsetWidth / previousWidth;
+                            for (n = 0; n < len; n++) {
+                                clen = coords[n].length;
+                                for (m = 0; m < clen; m++) {
+                                    coords[n][m] *= x;
+                                }
+                                areas[n].coords = coords[n].join(',');
+                            }
+                            previousWidth = img.offsetWidth;
+                            return true;
+                        };
+                        window.onresize = this.resize;
+                    },
+                    imageMap = new ImageMap(document.getElementById('map_compas'), document.getElementById('compas'));
+                imageMap.resize();
+                return;
+            }
+        </script>
+
+        </form>
+    </div>
+</div>
+<div class="col-md-2 col-xs-0 col-sm-0 col-lg-2"></div>
+
+</body>
+</html>
