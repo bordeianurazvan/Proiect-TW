@@ -1,0 +1,82 @@
+html{
+    height:100%;
+}
+body{
+    background-color: tan;
+    background-repeat: no-repeat;
+    height:100%;
+    width:100%;
+    overflow: hidden;
+    background-size: cover;
+    overflow-x:hidden;
+    overflow-y:scroll;
+}
+
+.center{
+    background-repeat: no-repeat;
+    height: auto;
+    width: 73%;
+    padding: 15px;
+    margin: auto;
+    background-image: url("../images/textura.png");
+    background-size: 100% 100%;
+}
+
+
+.row{
+    margin: auto;
+
+}
+
+.name{
+    margin-top: 1%;
+    font-size-adjust: 1;
+    font-size: 25px;
+}
+
+.Table1{
+    background-image: url("../images/fontButon30%25.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    margin: auto;
+    width : 50%;
+}
+.table.no-border tr td, .table.no-border tr th {
+    border-width: 0;
+}
+.paginare{
+    margin:auto ;
+}
+
+.description{
+    margin-bottom: 15px;
+}
+@media  only screen and (min-device-width : 300px) and (max-device-width : 1000px) {
+
+    .center{
+        width: 100%;
+        padding: 1px;
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 855px) {
+    .navbar-collapse.collapse {
+        display: none !important;
+    }
+    .navbar-collapse.collapse.in {
+        display: block !important;
+    }
+    .navbar-header .collapse, .navbar-toggle {
+        display:block !important;
+    }
+    .navbar-header {
+        float:none;
+    }
+}
+
+@media (max-width: 450px) {
+    .Table1,.Table2{
+        width: 100%;
+    }
+}

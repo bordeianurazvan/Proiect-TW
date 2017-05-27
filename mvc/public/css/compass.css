@@ -1,0 +1,47 @@
+body{
+    background-color: tan;
+    background-repeat: no-repeat;
+    height:100%;
+    width:100%;
+    overflow: hidden;
+    background-size: cover;
+
+}
+
+.formular{
+    background-color: burlywood;
+    width: 90%;
+    height: auto;
+    background-image:url("../images/textura.png");
+    background-repeat:no-repeat;
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+.Logo2{
+    margin: auto;
+    display: block;
+    padding-left: 5%;
+
+}
+
+.imagine-compas{
+    margin:auto;
+    padding:1%;
+}
+.text
+{
+   margin-top: 4%;
+    margin-left: 2%;
+    font-size: large;
+    padding-top: 1%;
+}
+
+@media  only screen and (min-device-width : 300px) and (max-device-width : 1000px) {
+
+    .formular{
+        width: 100%;
+        padding: 1px;
+    }
+
+}

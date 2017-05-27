@@ -1,0 +1,125 @@
+html{
+    height:100%;
+}
+body{
+    background-color: tan;
+    background-repeat: no-repeat;
+    height:100%;
+    width:100%;
+    overflow: hidden;
+    background-size: cover;
+}
+
+.center{
+    background-repeat: no-repeat;
+    height: 80%;
+    width: 73%;
+    margin-left:12.5%;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-image: url("../images/textura.png");
+    background-size: 100% 100%;
+    display:inline-block;
+
+}
+.target{
+    margin-left:3.4%;
+}
+.coordonate{
+    margin-left:0.8%;
+    margin-top:1%;
+    width: 54%;
+
+}
+.sword_form{
+
+    float:left;
+}
+
+.trupe{
+    margin-top:2%;
+    margin-left:2%;
+}
+
+.allign{
+    width:50px;
+}
+.buton{
+    margin-left:2%;
+    color:white;
+    background-color: darkred;
+}
+.divi{
+    margin-left:2%;
+ 
+    margin-top:1%;
+     width:97%;
+     height:80%;
+    position:relative;
+   overflow-y: scroll;    /* Trigger vertical scroll    */
+    overflow-x: scroll;  /* Hide the horizontal scroll */
+}
+.modal-content{
+    background-image: url("../images/textura.png");
+    background-size: 100% 100%;
+}
+.modal-header{
+    border-width:0;
+}
+.btn-primary,
+.btn-primary:active,
+.btn-primary:visited,
+.btn-primary:focus {
+    background-color: burlywood;
+    border-color: #000000 ;
+    color: #000000;
+    font-size: small;
+    margin: auto;
+    padding: 5px;
+}
+
+.btn-primary:hover{
+    background-color: burlywood;
+}
+.table.no-border tr td, .table.no-border tr th {
+    border-width: 0;
+
+}
+.tabel-map{
+    margin-left:0%;
+
+}
+
+@media (max-width: 768px) {
+    .form-inline .form-group {
+        display: inline-block;
+        margin-bottom: 0;
+        vertical-align: middle;
+    }
+ }
+  @media (max-width: 350px) {
+      .divi{
+      height:78%;
+      }
+
+
+  }
+@media  only screen and (min-device-width : 300px) and (max-device-width : 1000px) {
+
+
+
+    .center {
+        width: 100%;
+        font-size:small;
+           margin:0;
+    }
+
+}
+
+
+
+
+
+
