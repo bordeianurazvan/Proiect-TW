@@ -8,12 +8,7 @@
  */
 class Home extends Controller
 {
-   public function  index($name=' ',$otherName = '')
-   {
-          $user = $this->model('User');
-          $user->name = $name;
-          $this->view('home/index',['name'=>$user->name,'pute'=>$otherName]);
-   }
+
    public function login()
    {
        if (!isset($_POST['username']) || !isset($_POST['password']))
@@ -55,29 +50,5 @@ class Home extends Controller
        }
    }
 
-   public function privireAsupraSatului()
-   {
-       $this->view('home/privireAsupraSatului',[]);
-   }
 
-   public function wood()
-   {
-       $this->view('home/wood',[]);
-   }
-   public function stone()
-    {
-        $this->view('home/stone',[]);
-    }
-    public function iron()
-    {
-        $this->view('home/iron',[]);
-    }
-    public function storage()
-    {
-        $this->view('home/storage',[]);
-    }
-    public function privireDeAnsamblu()
-    {
-        $this->view('home/privireDeAnsamblu',[]);
-    }
 }
