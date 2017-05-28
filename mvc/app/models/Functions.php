@@ -45,4 +45,5 @@ class Functions
         $row = oci_fetch_row($statement);
         echo $row[0];
     }
+
 }

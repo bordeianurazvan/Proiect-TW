@@ -49,12 +49,16 @@ Table{
     background-repeat: no-repeat;
     background-size: 90% 100%;
 
+
     margin: auto;
 
 
 }
 .table.no-border tr td, .table.no-border tr th {
     border-width: 0;
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 .buton{
     margin-left:2%;

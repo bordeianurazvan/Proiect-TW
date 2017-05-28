@@ -3,6 +3,7 @@ CREATE OR REPLACE PACKAGE functii AS
    TYPE lista_sate IS TABLE OF int INDEX BY PLS_INTEGER;
   PROCEDURE validareLogin (p_username users.username%type , p_parola users.user_password%type,ok out int);
   PROCEDURE inregistrare(p_username users.username%type ,p_password users.user_password%type, p_bday users.birthday%type,ok out int);
+  PROCEDURE varsta(p_user_id users.user_id%type,p_varsta out int);
  /*
   PROCEDURE stergere (p_username users.username%type , p_parola users.u_password%type,p_parola1 users.u_password%type,ok out int);
   PROCEDURE schimbare_parola (p_username users.username%type , p_parola users.u_password%type,p_parola1 users.u_password%type,ok out int);
@@ -40,6 +41,15 @@ else
  select user_id into ok from users where username=p_username;
  end if;
  end;
+ 
+  PROCEDURE varsta(p_user_id users.user_id%type,p_varsta out int) AS
+  data_nastere users.birthday%type;
+  begin
+    select birthday into data_nastere from users where user_id = p_user_id;
+    p_varsta := TRUNC(MONTHS_BETWEEN(SYSDATE, data_nastere))/12;
+    if(p_varsta <0) then p_varsta := -1;
+    end if;
+  end;
  /*
  PROCEDURE stergere (p_username users.username%type , p_parola users.u_password%type,p_parola1 users.u_password%type,ok out int) AS
  stare int;
