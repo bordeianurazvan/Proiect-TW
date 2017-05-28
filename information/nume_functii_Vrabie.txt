@@ -1,0 +1,3 @@
+Map:  map/getMap
+attack: atac/getAttack
+movements: atac/movements
