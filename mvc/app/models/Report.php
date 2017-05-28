@@ -267,4 +267,13 @@ class Report
         $row=oci_fetch_row($stmt);
         return $row[0];
     }
+    public static function getReportsCount($user_id){
+        $id=$user_id;
+        $query1="SELECT count(*) FROM reports WHERE user_id=:id";
+        $stmt=oci_parse(Db::getDbInstance(),$query1);
+        oci_bind_by_name($stmt,":id",$id);
+        oci_execute($stmt);
+        $row=oci_fetch_row($stmt);
+        return $row[0];
+    }
 }

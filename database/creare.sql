@@ -187,6 +187,7 @@ CREATE TABLE Reports
   from_village INT NOT NULL,
   to_village INT NOT NULL,
   user_id INT NOT NULL,
+  generation_time TIMESTAMP(6),
   PRIMARY KEY (id),
   FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE
 );

@@ -10,12 +10,13 @@ class Reports extends Controller
 {
     public function reportslist($page=' ')
     {
-        $this->view('reports/reports',[]);
+        $reportsCount=Report::getReportsCount($_SESSION['user_id']);
+        $this->view('reports/reports',['reportsCount'=>$reportsCount]);
         return;
     }
     public function report($report_id=' '){
         if(Report::checkReport($report_id)) {
-
+            $reportsCount=Report::getReportsCount($_SESSION['user_id']);
             $title=Report::getTitle($report_id);
             $attSearC=Report::getsAttSpearCount($report_id);
             $attAxeC=Report::getsAttAxeCount($report_id);
@@ -44,7 +45,7 @@ class Reports extends Controller
                     'attSpearD'=>$attSpearD,'attAxeD'=>$attAxeD,'attSwordD'=>$attSwordD,'attArcherD'=>$attArcherD,
                     'defSpearD'=>$defSpearD,'defAxeD'=>$defAxeD,'defSwordD'=>$defSwordD,'defArcherD'=>$defArcherD,
                     'attName'=>$attName,'defName'=>$defName,'attVillageName'=>$attVillageName,'defVillageName'=>$defVillageName,
-                    'msg'=>$msg
+                    'msg'=>$msg,'reportsCount'=>$reportsCount
                     ]);
         }
         else{

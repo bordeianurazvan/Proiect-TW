@@ -134,17 +134,17 @@ CREATE OR REPLACE procedure commands_update as
           insert into commands(from_village,to_village,units,command_type,start_time,arrive_time) 
           values (i.to_village,i.from_village,spear_al||' '||axe_al||' '||sword_al||' '||archer_al,'defense',current_timestamp,timpp);
           update villages set user_id =user1 where village_id=i.to_village;
-          insert into reports(title,sent_units,village_units,message,from_user,to_user,from_village,to_village,user_id) 
-          values(nume1||' attacks '||nume2,i.units||'#'||spear_al||' '||axe_al||' '||sword_al||' '||archer_al,spear_def||' '||axe_def||' '||sword_def||' '||archer_def||'#'||'0 0 0 0',nume1||' conquered '||nume2,user1,user2,i.from_village,i.to_village,user1);
-          insert into reports(title,sent_units,village_units,message,from_user,to_user,from_village,to_village,user_id) 
-          values(nume1||' attacks '||nume2,i.units||'#'||spear_al||' '||axe_al||' '||sword_al||' '||archer_al,spear_def||' '||axe_def||' '||sword_def||' '||archer_def||'#'||'0 0 0 0',nume1||' conquered '||nume2,user1,user2,i.from_village,i.to_village,user2);
+          insert into reports(title,sent_units,village_units,message,from_user,to_user,from_village,to_village,user_id,generation_time) 
+          values(nume1||' attacks '||nume2,i.units||'#'||spear_al||' '||axe_al||' '||sword_al||' '||archer_al,spear_def||' '||axe_def||' '||sword_def||' '||archer_def||'#'||'0 0 0 0',nume1||' conquered '||nume2,user1,user2,i.from_village,i.to_village,user1,current_timestamp);
+          insert into reports(title,sent_units,village_units,message,from_user,to_user,from_village,to_village,user_id,generation_time) 
+          values(nume1||' attacks '||nume2,i.units||'#'||spear_al||' '||axe_al||' '||sword_al||' '||archer_al,spear_def||' '||axe_def||' '||sword_def||' '||archer_def||'#'||'0 0 0 0',nume1||' conquered '||nume2,user1,user2,i.from_village,i.to_village,user2,current_timestamp);
         elsif suma_atacator=suma_aparator
           then
             update villagetroops set troop_number=0 where village_id = i.to_village;   
-            insert into reports(title,sent_units,village_units,message,from_user,to_user,from_village,to_village,user_id) 
-            values(nume1||' attacks '||nume2,i.units||'#'||'0 0 0 0',spear_def||' '||axe_def||' '||sword_def||' '||archer_def||'#'||'0 0 0 0',nume1||' failed to conquer '||nume2,user1,user2,i.from_village,i.to_village,user1);
-            insert into reports(title,sent_units,village_units,message,from_user,to_user,from_village,to_village,user_id) 
-            values(nume1||' attacks '||nume2,i.units||'#'||'0 0 0 0',spear_def||' '||axe_def||' '||sword_def||' '||archer_def||'#'||'0 0 0 0',nume1||' failed to conquer '||nume2,user1,user2,i.from_village,i.to_village,user2);
+            insert into reports(title,sent_units,village_units,message,from_user,to_user,from_village,to_village,user_id,generation_time) 
+            values(nume1||' attacks '||nume2,i.units||'#'||'0 0 0 0',spear_def||' '||axe_def||' '||sword_def||' '||archer_def||'#'||'0 0 0 0',nume1||' failed to conquer '||nume2,user1,user2,i.from_village,i.to_village,user1,current_timestamp);
+            insert into reports(title,sent_units,village_units,message,from_user,to_user,from_village,to_village,user_id,generation_time) 
+            values(nume1||' attacks '||nume2,i.units||'#'||'0 0 0 0',spear_def||' '||axe_def||' '||sword_def||' '||archer_def||'#'||'0 0 0 0',nume1||' failed to conquer '||nume2,user1,user2,i.from_village,i.to_village,user2,current_timestamp);
           elsif suma_atacator <suma_aparator
             then
               ratie := suma_atacator/suma_aparator;
@@ -152,10 +152,10 @@ CREATE OR REPLACE procedure commands_update as
               update villagetroops set troop_number = round((1-ratie)*axe_def) where village_id=i.to_village and troop_id =2;  
               update villagetroops set troop_number = round((1-ratie)*sword_def) where village_id=i.to_village and troop_id =3;
               update villagetroops set troop_number = round((1-ratie)*archer_def) where village_id=i.to_village and troop_id =4;  
-              insert into reports(title,sent_units,village_units,message,from_user,to_user,from_village,to_village,user_id) 
-              values(nume1||' attacks '||nume2,i.units||'#'||'0 0 0 0',spear_def||' '||axe_def||' '||sword_def||' '||archer_def||'#'||round((1-ratie)*spear_def)||' '||round((1-ratie)*axe_def)||' '||round((1-ratie)*sword_def)||' '||round((1-ratie)*archer_def),nume1||' failed to conquer '||nume2,user1,user2,i.from_village,i.to_village,user1);
-              insert into reports(title,sent_units,village_units,message,from_user,to_user,from_village,to_village,user_id) 
-              values(nume1||' attacks '||nume2,i.units||'#'||'0 0 0 0',spear_def||' '||axe_def||' '||sword_def||' '||archer_def||'#'||round((1-ratie)*spear_def)||' '||round((1-ratie)*axe_def)||' '||round((1-ratie)*sword_def)||' '||round((1-ratie)*archer_def),nume1||' failed to conquer '||nume2,user1,user2,i.from_village,i.to_village,user2);
+              insert into reports(title,sent_units,village_units,message,from_user,to_user,from_village,to_village,user_id,generation_time) 
+              values(nume1||' attacks '||nume2,i.units||'#'||'0 0 0 0',spear_def||' '||axe_def||' '||sword_def||' '||archer_def||'#'||round((1-ratie)*spear_def)||' '||round((1-ratie)*axe_def)||' '||round((1-ratie)*sword_def)||' '||round((1-ratie)*archer_def),nume1||' failed to conquer '||nume2,user1,user2,i.from_village,i.to_village,user1,current_timestamp);
+              insert into reports(title,sent_units,village_units,message,from_user,to_user,from_village,to_village,user_id,generation_time) 
+              values(nume1||' attacks '||nume2,i.units||'#'||'0 0 0 0',spear_def||' '||axe_def||' '||sword_def||' '||archer_def||'#'||round((1-ratie)*spear_def)||' '||round((1-ratie)*axe_def)||' '||round((1-ratie)*sword_def)||' '||round((1-ratie)*archer_def),nume1||' failed to conquer '||nume2,user1,user2,i.from_village,i.to_village,user2,current_timestamp);
        end if;
     end if;
    delete from commands where id = i.id;
@@ -187,9 +187,8 @@ delete from commands;
 insert into commands(from_village,to_village,units,command_type,start_time,arrive_time) values (1,2,'0 0 50 0','attack',current_timestamp,current_timestamp);
 select * from commands;
 select * from reports;
-select * from village;
+select * from villages;
 select * from users;
-
             
 
 
