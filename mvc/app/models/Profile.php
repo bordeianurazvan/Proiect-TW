@@ -48,4 +48,29 @@ class Profile
         return $varsta;
     }
 
+    public static function changeUserPassword($username,$oldPassword,$newPassword)
+    {
+        $oldPassword = md5($oldPassword);
+        $newPassword = md5($newPassword);
+
+        $query = "begin functii.changePassword(:username,:oldPassword,:newPassword,:ok); end;";
+        $statement = oci_parse(Db::getDbInstance(), $query);
+        oci_bind_by_name($statement, ":ok", $ok);
+        oci_bind_by_name($statement, ":username", $username);
+        oci_bind_by_name($statement, ":oldPassword", $oldPassword);
+        oci_bind_by_name($statement,":newPassword",$newPassword);
+        $r = oci_execute($statement);
+        if($ok==-1)
+        {
+            return null;
+        }
+        else
+        {
+
+            return $ok;
+
+        }
+
+    }
+
 }

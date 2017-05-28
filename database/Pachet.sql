@@ -4,6 +4,7 @@ CREATE OR REPLACE PACKAGE functii AS
   PROCEDURE validareLogin (p_username users.username%type , p_parola users.user_password%type,ok out int);
   PROCEDURE inregistrare(p_username users.username%type ,p_password users.user_password%type, p_bday users.birthday%type,ok out int);
   PROCEDURE varsta(p_user_id users.user_id%type,p_varsta out int);
+  PROCEDURE changePassword(p_username users.username%type , p_parolaVeche users.user_password%type,p_parolaNoua users.user_password%type,ok out int);
  /*
   PROCEDURE stergere (p_username users.username%type , p_parola users.u_password%type,p_parola1 users.u_password%type,ok out int);
   PROCEDURE schimbare_parola (p_username users.username%type , p_parola users.u_password%type,p_parola1 users.u_password%type,ok out int);
@@ -48,6 +49,19 @@ else
     select birthday into data_nastere from users where user_id = p_user_id;
     p_varsta := TRUNC(MONTHS_BETWEEN(SYSDATE, data_nastere))/12;
     if(p_varsta <0) then p_varsta := -1;
+    end if;
+  end;
+  
+  PROCEDURE changePassword(p_username users.username%type , p_parolaVeche users.user_password%type,p_parolaNoua users.user_password%type,ok out int) AS
+  stare int := 0;
+  begin
+     select count(u.username) into stare from users u where u.username=p_username and u.user_password=p_parolaVeche;
+    if stare<>0
+      then
+       select user_id into ok from users where username=p_username;
+        update users set user_password = p_parolaNoua where user_id = ok; 
+      else
+        ok:=-1;
     end if;
   end;
  /*
