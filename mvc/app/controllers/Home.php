@@ -66,5 +66,12 @@ class Home extends Controller
        }
    }
 
+    public function terms()
+    {
+
+            $this->view('home/terms',[]);
+
+    }
+
 
 }
