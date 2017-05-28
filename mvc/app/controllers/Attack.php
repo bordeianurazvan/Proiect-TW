@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 /**
  * Created by PhpStorm.
  * User: Razvan Bordeianu
@@ -8,5 +8,14 @@
  */
 class Attack extends Controller
 {
+    public function getAttack()
+    {
+        $this->view('attack/atac', []);
+    }
+    public function movements()
+    {
+        $this->view('attack/movements', []);
+    }
+
 
 }

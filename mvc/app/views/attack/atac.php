@@ -1,3 +1,7 @@
+<?php
+echo $_SESSION['x'].' '.$_SESSION['y'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +11,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" href="css/atac.css">
+        <link rel="stylesheet" href="/Proiect-Tw/mvc/public/css/atac.css">
 </head>
 <body>
 <nav class="navbar navbar-default">
@@ -18,18 +22,18 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-logo" href="info.html">
-                <img alt="Logo" src="images/logocrop60%25.png">
+            <a class="navbar-logo" href="/Proiect-Tw/mvc/public/user/info">
+                <img alt="Logo" src="/Proiect-Tw/mvc/public/images/logocrop60%25.png">
             </a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="PrivireAsupraSatului.html"><span class="glyphicon glyphicon-home"></span> Home </a></li>
-                <li><a href="profile.html"><span class="glyphicon glyphicon-user"></span> Profile </a></li>
-                <li><a href="map.html"><span class="glyphicon glyphicon-globe"></span> Map </a></li>
-                <li><a href="reports.html"><span class="glyphicon glyphicon-comment"></span> Reports <span class="badge">17</span> </a></li>
-                <li><a href="Ranking.html"><span class="glyphicon glyphicon-stats"></span> Ranking </a></li>
-                <li><a href="login.html"><span class="glyphicon glyphicon-off"></span> LogOut </a></li>
+                <li><a href="/Proiect-Tw/mvc/public/village/PrivireAsupraSatului"><span class="glyphicon glyphicon-home"></span> Home </a></li>
+                <li><a href="/Proiect-Tw/mvc/public/user/profile"><span class="glyphicon glyphicon-user"></span> Profile </a></li>
+                <li><a href="/Proiect-Tw/mvc/public/map/map"><span class="glyphicon glyphicon-globe"></span> Map </a></li>
+                <li><a href="/Proiect-Tw/mvc/public/reports/reports"><span class="glyphicon glyphicon-comment"></span> Reports <span class="badge">17</span> </a></li>
+                <li><a href="/Proiect-Tw/mvc/public/ranking/Ranking"><span class="glyphicon glyphicon-stats"></span> Ranking </a></li>
+                <li><a href="/Proiect-Tw/mvc/public/home/login"><span class="glyphicon glyphicon-off"></span> LogOut </a></li>
             </ul>
         </div>
     </div>
@@ -42,10 +46,10 @@
         <div class="col-md-4 col-xs-2 col-sm-6 col-lg-6 Village">Village (23|99) </div>
         <div class="col md-2 col-xs-1 col-sm-2 col-lb-2"></div>
         <div class="col-md-6 col-xs-9 col-sm-4 col-lg-4 Iron"  >
-            234 <img alt="Iron" src="images/iron.png">
-            543 <img alt="Wood" src="images/wood.png">
-            532 <img alt="Stone" src="images/stone.png">
-            1000<img alt="Resources" src="images/resources.png">
+            234 <img alt="Iron" src="/Proiect-Tw/mvc/public/images/iron.png">
+            543 <img alt="Wood" src="/Proiect-Tw/mvc/public/images/wood.png">
+            532 <img alt="Stone" src="/Proiect-Tw/mvc/public/images/stone.png">
+            1000<img alt="Resources" src="/Proiect-Tw/mvc/public/images/resources.png">
         </div>
         </div>
  <div class="legend">Target's coordinates:</div>
@@ -53,11 +57,11 @@
         <form class="form-inline">
             <div class="form-group">
             <label for="x">X:</label>
-            <input type="number"  class="allign"  value=""  id="x">
+            <input type="number"  class="allign"  value="<?php echo $_SESSION['x'];?>"  name="x" id="x">
         </div>
             <div class="form-group">
                 <label for="y">Y:</label>
-                <input type="number" class="allign"  value=""  id="y">
+                <input type="number" class="allign"  value="<?php echo $_SESSION['y'];?>" name="y" id="y">
             </div>
         </form>
     </div>
@@ -67,37 +71,29 @@
     <form class="form-inline trupe">
 
            <div class="form-group">
-               <label for="archer"> <img alt="Archer" src="images/unit_archer.png" class="img-responsive"></label>
-                <input type="number" class="allign" name="t1" value=""  id="archer">
+               <label for="archer"> <img alt="Archer" src="/Proiect-Tw/mvc/public/images/unit_archer.png" class="img-responsive"></label>
+                <input type="number" class="allign" name="archer" value=""  id="archer">
           </div>
         <div class="form-group">
-            <label for="sword"> <img alt="Sword" src="images/unit_sword.png" class="img-responsive"></label>
-            <input type="number"  class="allign" name="t1" value=""  id="sword">
+            <label for="sword"> <img alt="Sword" src="/Proiect-Tw/mvc/public/images/unit_sword.png" class="img-responsive"></label>
+            <input type="number"  class="allign" name="sword" value=""  id="sword">
         </div>
         <br>
         <div class="form-group">
-            <label for="axe"> <img alt="Axe" src="images/unit_axe.png" class="img-responsive"></label>
-            <input type="number"  class="allign" name="t1" value=""  id="axe">
+            <label for="axe"> <img alt="Axe" src="/Proiect-Tw/mvc/public/images/unit_axe.png" class="img-responsive"></label>
+            <input type="number"  class="allign" name="axe" value=""  id="axe">
         </div>
         <div class="form-group">
-            <label for="spear"> <img alt="spear" src="images/unit_spear.png" class="img-responsive"></label>
-            <input type="number"  class="allign" name="t1" value=""  id="spear">
+            <label for="spear"> <img alt="spear" src="/Proiect-Tw/mvc/public/images/unit_spear.png" class="img-responsive"></label>
+            <input type="number"  class="allign" name="spear" value=""  id="spear">
         </div>
     </form>
             </div>
         <div class="col-xs-1 col-md-1 col-lg-1 col-sm-1">
-        <form>
-            <div class="radio">
-                <label><input type="radio" name="optradio">Atac</label>
-            </div>
-            <div class="radio">
-                <label><input type="radio" name="optradio">Intariri</label>
-            </div>
-        </form>
             </div>
         </div>
     <div class="row buton">
-        <a type="submit" class="btn btn-primary" href="movements.html">Send</a>
+        <a type="submit" class="btn btn-primary" href="/Proiect-Tw/mvc/public/atac/movements">Send</a>
 
     </div>
 

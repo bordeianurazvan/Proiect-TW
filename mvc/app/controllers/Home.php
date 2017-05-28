@@ -11,6 +11,8 @@ class Home extends Controller
 
    public function login($status=' ',$retry=' ')
    {
+       if(session_status() === PHP_SESSION_ACTIVE)
+       session_destroy();
        if($status=='failed' && $retry ='yes' )
        {
            header('Location: /Proiect-TW/mvc/public/home/login/failedlogin');
