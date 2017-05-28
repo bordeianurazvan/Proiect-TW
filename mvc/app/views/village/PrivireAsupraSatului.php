@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,12 +42,13 @@ session_start();
 </div>
 <div class="col-md-8 col-xs-10 col-lg-8 col-sm-10 center">
     <div class="row">
-        <div class="col-md-4 col-xs-2 col-sm-6 col-lg-6 Village">Village (23|99)</div>
+        <div class="col-md-4 col-xs-2 col-sm-6 col-lg-6 Village"><?php Functions::getVillageName($_SESSION['user_id']); ?>
+        </div>
         <div class="col md-2 col-xs-1 col-sm-2 col-lb-2"></div>
         <div class="col-md-6 col-xs-9 col-sm-4 col-lg-4 Iron">
-            234 <img  alt="Iron" src="/Proiect-TW/mvc/public/images/iron.png">
-            543 <img alt="Wood" src="/Proiect-TW/mvc/public/images/wood.png">
-            532 <img alt="Stone" src="/Proiect-TW/mvc/public/images/stone.png">
+            <?php Functions::getIronResources($_SESSION['village_name']);  ?> <img  alt="Iron" src="/Proiect-TW/mvc/public/images/iron.png">
+            <?php Functions::getWoodResources($_SESSION['village_name']);  ?><img alt="Wood" src="/Proiect-TW/mvc/public/images/wood.png">
+            <?php Functions::getStoneResources($_SESSION['village_name']);  ?> <img alt="Stone" src="/Proiect-TW/mvc/public/images/stone.png">
             1000<img alt="Resources" src="/Proiect-TW/mvc/public/images/resources.png">
         </div>
     </div>
