@@ -24,7 +24,7 @@ session_start();
     <script>
         if (datefield.type!="date"){
             jQuery(function($){
-                $('#bday').datepicker({changeYear: true,changeMonth: true,yearRange: '1950:2004',defaultDate: '01/01/2004'});
+                $('#bday').datepicker({changeYear: true,changeMonth: true,yearRange: '1950:2003',defaultDate: '01/01/2003'});
             })
         }
     </script>
@@ -63,7 +63,7 @@ session_start();
             </div>
             <div class="form-group">
                 <label for="bday">Birthdate</label>
-                <input type="date" class="form-control" id="bday" name="bday" min="1950-01-01" max="2004-12-31" required>
+                <input type="date" class="form-control" id="bday" name="bday" min="1950-01-01" max="2003-12-31" required>
             </div>
             <div class="form-group">
                 You must be at least 13 years old.
