@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="css/actual-report.css">
+    <link rel="stylesheet" href="/Proiect-TW/mvc/public/css/actual-report.css">
 </head>
 <body>
 <nav class="navbar navbar-default">
@@ -18,18 +21,18 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-logo" href="info.html">
-                <img alt="Logo" src="images/logocrop60%25.png" class="img-responsive">
+            <a class="navbar-logo" href="/Proiect-TW/mvc/public/user/info">
+                <img alt="Logo" src="/Proiect-TW/mvc/public/images/logocrop60%25.png" class="img-responsive">
             </a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="PrivireAsupraSatului.html"><span class="glyphicon glyphicon-home"></span> Home </a></li>
-                <li><a href="profile.html"><span class="glyphicon glyphicon-user"></span> Profile </a></li>
-                <li><a href="map.html"><span class="glyphicon glyphicon-globe"></span> Map </a></li>
-                <li><a href="reports.html"><span class="glyphicon glyphicon-comment"></span> Reports <span class="badge">17</span> </a></li>
-                <li><a href="Ranking.html"><span class="glyphicon glyphicon-stats"></span> Ranking </a></li>
-                <li><a href="login.html"><span class="glyphicon glyphicon-off"></span> LogOut </a></li>
+                <li><a href="/Proiect-TW/mvc/public/village/PrivireAsupraSatului"><span class="glyphicon glyphicon-home"></span> Home </a></li>
+                <li><a href="/Proiect-TW/mvc/public/UserProfile/getProfile"><span class="glyphicon glyphicon-user"></span> Profile </a></li>
+                <li><a href="/Proiect-TW/mvc/public/map/getMap"><span class="glyphicon glyphicon-globe"></span> Map </a></li>
+                <li><a href="/Proiect-TW/mvc/public/reports/reportslist"><span class="glyphicon glyphicon-comment"></span> Reports <span class="badge">17</span> </a></li>
+                <li><a href="/Proiect-TW/mvc/public/ranking/Ranking"><span class="glyphicon glyphicon-stats"></span> Ranking </a></li>
+                <li><a href="/Proiect-TW/mvc/public"><span class="glyphicon glyphicon-off"></span> LogOut </a></li>
             </ul>
         </div>
     </div>
@@ -37,21 +40,21 @@
 
 <div class="center">
     <div class="row">
-        <div class="col-md-4 col-xs-2 col-sm-6 col-lg-6 Village">Village (23|99) </div>
+        <div class="col-md-4 col-xs-2 col-sm-6 col-lg-6 Village"><?php Functions::getVillageName($_SESSION['user_id']); ?></div>
         <div class="col md-2 col-xs-1 col-sm-2 col-lb-2"></div>
         <div class="col-md-6 col-xs-9 col-sm-4 col-lg-4" >
-            234 <img alt="Iron" src="images/iron.png">
-            543 <img alt="Wood" src="images/wood.png">
-            532 <img alt="Stone" src="images/stone.png">
-            1000<img alt="Resources" src="images/resources.png">
+            <?php Functions::getIronResources($_SESSION['village_name']); ?> <img alt="Iron" src="/Proiect-TW/mvc/public/images/iron.png">
+            <?php Functions::getWoodResources($_SESSION['village_name']);  ?> <img alt="Wood" src="/Proiect-TW/mvc/public/images/wood.png">
+            <?php Functions::getStoneResources($_SESSION['village_name']);  ?> <img alt="Stone" src="/Proiect-TW/mvc/public/images/stone.png">
+            1000<img alt="Resources" src="/Proiect-TW/mvc/public/images/resources.png">
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12 col-xs-12 Reports ">swarm attacked **vodo**</div>
+        <div class="col-md-12 col-xs-12 Reports "><?php echo $data['title']; ?></div>
     </div>
     <div class="row">
         <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1"></div>
-        <div class="col-md-10 col-xs-10 col-sm-10 col-lg-10">swarm from village: Village (23|99)</div>
+        <div class="col-md-10 col-xs-10 col-sm-10 col-lg-10"><?php echo $data['attName'].' from village '.$data['attVillageName']; ?></div>
         <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1"></div>
     </div>
         <div class="row">
@@ -61,27 +64,28 @@
                 <thead>
                 <tr>
                     <th class="col-md-4 col-xs-4 col-sm-4 col-lg-4">Attacker</th>
-                    <th class="col-md-2 col-xs-2 col-sm-2 col-lg-2"><img alt="Sword" src="images/unit_sword.png" class="img-responsive"></th>
-                    <th class="col-md-2 col-xs-2 col-sm-2 col-lg-2"><img alt="Sword" src="images/unit_axe.png" class="img-responsive"></th>
-                    <th class="col-md-2 col-xs-2 col-sm-2 col-lg-2"><img alt="Sword" src="images/unit_archer.png" class="img-responsive"></th>
-                    <th class="col-md-2 col-xs-2 col-sm-2 col-lg-2"><img alt="Sword" src="images/unit_spear.png" class="img-responsive"></th>
+
+                    <th class="col-md-2 col-xs-2 col-sm-2 col-lg-2"><img alt="Sword" src="/Proiect-TW/mvc/public/images/unit_sword.png" class="img-responsive"></th>
+                    <th class="col-md-2 col-xs-2 col-sm-2 col-lg-2"><img alt="Sword" src="/Proiect-TW/mvc/public/images/unit_axe.png" class="img-responsive"></th>
+                    <th class="col-md-2 col-xs-2 col-sm-2 col-lg-2"><img alt="Sword" src="/Proiect-TW/mvc/public/images/unit_archer.png" class="img-responsive"></th>
+                    <th class="col-md-2 col-xs-2 col-sm-2 col-lg-2"><img alt="Sword" src="/Proiect-TW/mvc/public/images/unit_spear.png" class="img-responsive"></th>
 
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
                     <td>Troops</td>
-                    <td>20000</td>
-                    <td>17000</td>
-                    <td>17000</td>
-                    <td>15000</td>
+                    <td><?php echo $data['attSpearC']; ?></td>
+                    <td><?php echo $data['attAxeC']; ?></td>
+                    <td><?php echo $data['attSwordC']; ?></td>
+                    <td><?php echo $data['attArcherC']; ?></td>
                 </tr>
                 <tr>
                     <td>Victims</td>
-                    <td>5210</td>
-                    <td>3723</td>
-                    <td>3722</td>
-                    <td>3317</td>
+                    <td><?php echo $data['attSpearD']; ?></td>
+                    <td><?php echo $data['attAxeD']; ?></td>
+                    <td><?php echo $data['attSwordD']; ?></td>
+                    <td><?php echo $data['attArcherD']; ?></td>
                 </tr>
                 </tbody>
             </table>
@@ -91,7 +95,7 @@
 
     <div class="row free-space">
         <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1"></div>
-        <div class="col-md-10 col-xs-10 col-sm-10 col-lg-10">**vodo** from village: Village (22|95)</div>
+        <div class="col-md-10 col-xs-10 col-sm-10 col-lg-10"><?php echo $data['defName'].' from village '.$data['defVillageName']; ?></div>
         <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1"></div>
     </div>
     <div class="row">
@@ -101,27 +105,27 @@
                 <thead>
                 <tr>
                     <th class="col-md-4 col-xs-4 col-sm-4 col-lg-4">Defender</th>
-                    <th class="col-md-2 col-xs-2 col-sm-2 col-lg-2"><img alt="Sword" src="images/unit_sword.png" class="img-responsive"></th>
-                    <th class="col-md-2 col-xs-2 col-sm-2 col-lg-2"><img alt="Sword" src="images/unit_axe.png" class="img-responsive"></th>
-                    <th class="col-md-2 col-xs-2 col-sm-2 col-lg-2"><img alt="Sword" src="images/unit_archer.png" class="img-responsive"></th>
-                    <th class="col-md-2 col-xs-2 col-sm-2 col-lg-2"><img alt="Sword" src="images/unit_spear.png" class="img-responsive"></th>
+                    <th class="col-md-2 col-xs-2 col-sm-2 col-lg-2"><img alt="Sword" src="/Proiect-TW/mvc/public/images/unit_sword.png" class="img-responsive"></th>
+                    <th class="col-md-2 col-xs-2 col-sm-2 col-lg-2"><img alt="Sword" src="/Proiect-TW/mvc/public/images/unit_axe.png" class="img-responsive"></th>
+                    <th class="col-md-2 col-xs-2 col-sm-2 col-lg-2"><img alt="Sword" src="/Proiect-TW/mvc/public/images/unit_archer.png" class="img-responsive"></th>
+                    <th class="col-md-2 col-xs-2 col-sm-2 col-lg-2"><img alt="Sword" src="/Proiect-TW/mvc/public/images/unit_spear.png" class="img-responsive"></th>
 
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
                     <td>Troops</td>
-                    <td>7000</td>
-                    <td>11200</td>
-                    <td>3011</td>
-                    <td>7221</td>
+                    <td><?php echo $data['defSpearC']; ?></td>
+                    <td><?php echo $data['defAxeC']; ?></td>
+                    <td><?php echo $data['defSwordC']; ?></td>
+                    <td><?php echo $data['defArcherC']; ?></td>
                 </tr>
                 <tr>
                     <td>Victims</td>
-                    <td>7000</td>
-                    <td>11200</td>
-                    <td>3011</td>
-                    <td>7221</td>
+                    <td><?php echo $data['defSpearD']; ?></td>
+                    <td><?php echo $data['defAxeD']; ?></td>
+                    <td><?php echo $data['defSwordD'];?></td>
+                    <td><?php echo $data['defArcherD']; ?></td>
                 </tr>
                 </tbody>
             </table>
@@ -130,7 +134,7 @@
     </div>
     <div class="row event-msg text-center free-space">
         <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2"></div>
-        <div class="col-md-8 col-xs-8 col-sm-8 col-lg-8">The village was conquered</div>
+        <div class="col-md-8 col-xs-8 col-sm-8 col-lg-8"><?php echo $data['msg'];  ?></div>
         <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2"></div>
     </div>
 </div>
