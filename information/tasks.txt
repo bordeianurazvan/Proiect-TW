@@ -1,0 +1,13 @@
+ - Tutorial MVC : https://www.youtube.com/watch?v=OsCTzGASImQ - Bordeianu,Tifrea,Damoc,Vrabie
+ - Sablon MVC : Vrabie,Bordeianu,Tifrea,Damoc
+ - Organizare baza de date : Vrabie, Bordeianu, Damoc,Tifrea
+ - Restructurare proiect pentru integrare MVC : Bordeianu,Damoc,Tifrea,Vrabie
+ - Attak Controller : Vrabie
+ - Commands Controller : Bordeianu,Tifrea
+ - Home : Vrabie, Bordeianu,Tifrea,Damoc
+ - Map : Vrabie
+ - Ranking : Damoc
+ - Reports : Tifrea
+ - User : Bordeianu
+ - Village : Damoc
+ 
