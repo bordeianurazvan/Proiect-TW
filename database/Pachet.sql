@@ -5,6 +5,8 @@ CREATE OR REPLACE PACKAGE functii AS
   PROCEDURE inregistrare(p_username users.username%type ,p_password users.user_password%type, p_bday users.birthday%type,ok out int);
   PROCEDURE varsta(p_user_id users.user_id%type,p_varsta out int);
   PROCEDURE changePassword(p_username users.username%type , p_parolaVeche users.user_password%type,p_parolaNoua users.user_password%type,ok out int);
+  PROCEDURE changeUsername(p_username users.username%type ,p_password users.user_password%type,p_newUsername users.username%type,ok out int);
+  PROCEDURE deleteUser(p_username users.username%type ,p_password users.user_password%type,ok out int);
  /*
   PROCEDURE stergere (p_username users.username%type , p_parola users.u_password%type,p_parola1 users.u_password%type,ok out int);
   PROCEDURE schimbare_parola (p_username users.username%type , p_parola users.u_password%type,p_parola1 users.u_password%type,ok out int);
@@ -60,6 +62,32 @@ else
       then
        select user_id into ok from users where username=p_username;
         update users set user_password = p_parolaNoua where user_id = ok; 
+      else
+        ok:=-1;
+    end if;
+  end;
+  
+  PROCEDURE changeUsername(p_username users.username%type ,p_password users.user_password%type,p_newUsername users.username%type,ok out int) AS
+  stare int := 0;
+  begin
+     select count(u.username) into stare from users u where u.username=p_username and u.user_password=p_password;
+    if stare<>0
+      then
+       select user_id into ok from users where username=p_username;
+        update users set username = p_newUsername where user_id = ok; 
+      else
+        ok:=-1;
+    end if;
+  end;
+  
+  PROCEDURE deleteUser(p_username users.username%type ,p_password users.user_password%type,ok out int) AS
+  stare int := 0;
+  begin
+     select count(u.username) into stare from users u where u.username=p_username and u.user_password=p_password;
+    if stare<>0
+      then
+       ok := 1;
+        delete from users where username = p_username;
       else
         ok:=-1;
     end if;

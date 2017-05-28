@@ -50,14 +50,66 @@ class UserProfile extends Controller
         }
     }
 
-    public function changeUsername()
+    public function changeUsername($status=' ',$retry=' ')
     {
-        $this->view('user/ChangeUsername',[]);
+        $username = Profile::getUsername($_SESSION['user_id']);
+
+
+        if($status=='failed' && $retry ='yes' )
+        {
+
+            header('Location: /Proiect-TW/mvc/public/UserProfile/changeUsername/failedUsername');
+
+        }
+        if (!isset($_POST['password']) || !isset($_POST['newUsername']))
+        {
+            if($status=='failedUsername')
+                $this->view('user/changeUsername', ['retry'=>'yes']);
+            else
+                $this->view('user/changeUsername', ['retry' => 'no']);
+
+            return;
+        }
+
+        $user = Profile::changeUsername($username,$_POST['password'], $_POST['newUsername']);
+        if ($user != null) {
+            header('Location: /Proiect-TW/mvc/public/UserProfile/getProfile');
+        } else {
+
+
+            header('Location: /Proiect-TW/mvc/public/UserProfile/changeUsername/failed/yes');
+        }
     }
 
-    public function delete()
+    public function delete($status=' ',$retry=' ')
     {
-        $this->view('user/deleteAccount',[]);
+        $username = Profile::getUsername($_SESSION['user_id']);
+
+
+        if($status=='failed' && $retry ='yes' )
+        {
+
+            header('Location: /Proiect-TW/mvc/public/UserProfile/delete/failedDelete');
+
+        }
+        if (!isset($_POST['password']))
+        {
+            if($status=='failedDelete')
+                $this->view('user/deleteAccount', ['retry'=>'yes']);
+            else
+                $this->view('user/deleteAccount', ['retry' => 'no']);
+
+            return;
+        }
+
+        $user = Profile::deleteUserAccount($username,$_POST['password']);
+        if ($user != null) {
+            header('Location: /Proiect-TW/mvc/public');
+        } else {
+
+
+            header('Location: /Proiect-TW/mvc/public/UserProfile/delete/failed/yes');
+        }
     }
 
     public function info()

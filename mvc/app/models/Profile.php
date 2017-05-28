@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Created by PhpStorm.
  * User: Razvan Bordeianu
@@ -68,7 +67,51 @@ class Profile
         {
 
             return $ok;
+        }
 
+    }
+
+    public static function changeUsername($username,$password,$newUsername)
+    {
+        $password = md5($password);
+
+        $query = "begin functii.changeUsername(:username,:password,:newUsername,:ok); end;";
+        $statement = oci_parse(Db::getDbInstance(), $query);
+        oci_bind_by_name($statement, ":ok", $ok);
+        oci_bind_by_name($statement, ":username", $username);
+        oci_bind_by_name($statement, ":password", $password);
+        oci_bind_by_name($statement,":newUsername",$newUsername);
+        $r = oci_execute($statement);
+        if($ok==-1)
+        {
+            return null;
+        }
+        else
+        {
+
+            return $ok;
+        }
+
+    }
+
+    public static function deleteUserAccount($username,$password)
+    {
+        $password = md5($password);
+
+        $query = "begin functii.deleteUser(:username,:password,:ok); end;";
+        $statement = oci_parse(Db::getDbInstance(), $query);
+        oci_bind_by_name($statement, ":ok", $ok);
+        oci_bind_by_name($statement, ":username", $username);
+        oci_bind_by_name($statement, ":password", $password);
+        $r = oci_execute($statement);
+        if($ok==-1)
+        {
+            return null;
+        }
+        else
+        {
+
+            return $ok;
         }
 
     }
