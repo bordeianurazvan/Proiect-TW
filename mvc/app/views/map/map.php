@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="css/map.css">
+    <link rel="stylesheet" href="/Proiect-TW/mvc/public/css/map.css">
 </head>
 <body>
 <nav class="navbar navbar-default">
@@ -19,7 +19,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-logo" href="info.html">
-                <img alt="Logo" src="images/logocrop60%25.png">
+                <img alt="Logo" src="/Proiect-TW/mvc/public/images/logocrop60%25.png">
             </a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">

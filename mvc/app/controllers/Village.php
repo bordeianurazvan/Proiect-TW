@@ -8,9 +8,9 @@
  */
 class Village extends Controller
 {
-    public function privireAsupraSatului()
+    public function privireAsupraSatului($user_id=' ',$village_id=' ')
     {
-        $this->view('village/privireAsupraSatului',[]);
+        $this->view('village/privireAsupraSatului',['user_id'=>$user_id,'village_id'=>$village_id]);
     }
 
     public function wood()

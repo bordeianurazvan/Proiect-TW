@@ -10,7 +10,7 @@ session_start();
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="../css/register.css">
+    <link rel="stylesheet" href="/Proiect-TW/mvc/public/css/register.css">
     <script type="text/javascript">
         var datefield=document.createElement("input");
         datefield.setAttribute("type", "date");
@@ -33,13 +33,13 @@ session_start();
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-logo" href="../login">
-                <img alt="Logo" src="../images/logocrop60%25.png" class="img-responsive">
+            <a class="navbar-logo" href="/Proiect-TW/mvc/public/home/login">
+                <img alt="Logo" src="/Proiect-TW/mvc/public/images/logocrop60%25.png" class="img-responsive">
             </a>
         </div>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="../login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-            <li><a href="register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a href="/Proiect-TW/mvc/public/home/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <li><a href="/Proiect-TW/mvc/public/home/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
         </ul>
     </div>
 </nav>
@@ -47,7 +47,7 @@ session_start();
 <div class="col-md-8 col-xs-12 col-sm-12  col-lg-8">
 
     <div class="formular">
-        <img alt="Logo2" src="../images/logocrop3.png" class="img-responsive Logo2">
+        <img alt="Logo2" src="/Proiect-TW/mvc/public/images/logocrop3.png" class="img-responsive Logo2">
         <form action="" method="post">
             <div class="form-group">
                 <label for="text">Username:</label>
@@ -69,10 +69,11 @@ session_start();
                 You must be at least 13 years old.
             </div>
             <div class="checkbox">
-                <label><input type="checkbox" required> Accept our terms and conditions available at <a href="terms.html">Terms & conditions</a></label>
+                <label><input type="checkbox" required> Accept our terms and conditions available at <a href="/Proiect-TW/mvc/public/home/terms">Terms & conditions</a></label>
             </div>
-            <button type="submit" class="btn btn-default">Sign Up</button>
 
+            <button type="submit" class="btn btn-default">Sign Up</button>
+            <?php if($data['retry']=='yes') echo '<h4><font color="red">REGISTER FAILED</font></h4>'; ?>
         </form>
     </div>
 </div>

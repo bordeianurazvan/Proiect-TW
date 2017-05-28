@@ -9,31 +9,47 @@
 class Home extends Controller
 {
 
-   public function login()
+   public function login($status=' ',$retry=' ')
    {
-       if (!isset($_POST['username']) || !isset($_POST['password']))
+       if($status=='failed' && $retry ='yes' )
        {
-           $this->view('home/login',[]);
-           return;
+           header('Location: /Proiect-TW/mvc/public/home/login/failedlogin');
+
        }
+            if (!isset($_POST['username']) || !isset($_POST['password'])) {
+              if($status=='failedlogin')
+                  $this->view('home/login', ['retry'=>'yes']);
+                  else
+                 $this->view('home/login', ['retry'=>'no']);
+                return;
+            }
 
-       $user = User::login($_POST['username'],$_POST['password']);
-        if($user!=null)
-        {
-            header('Location: home/privireAsupraSatului');
+            $user = User::login($_POST['username'], $_POST['password']);
+            if ($user != null) {
+                session_start();
+                $_SESSION['user_id'] = $user->user_id;
+                header('Location: /Proiect-TW/mvc/public/village/privireAsupraSatului/');
+            } else {
+
+
+                header('Location: /Proiect-TW/mvc/public/home/login/failed/yes');
+            }
         }
-        else
-        {
-            echo 'login nereusit';
-        }
 
 
-   }
-   public function register()
+
+   public function register($status=' ',$retry=' ')
    {
-       if (!isset($_POST['user_name']) || !isset($_POST['password']) ||!isset($_POST['c_password']) || !isset($_POST['bday']) )
+       if($status=='failed' && $retry ='yes' )
        {
-           $this->view('home/register',[]);
+           header('Location: /Proiect-TW/mvc/public/home/register/failedregister');
+
+       }
+       if (!isset($_POST['user_name']) || !isset($_POST['password']) ||!isset($_POST['c_password']) || !isset($_POST['bday']) )
+       {    if($status=='failedregister')
+           $this->view('home/register', ['retry'=>'yes']);
+       else
+           $this->view('home/register', ['retry'=>'no']);
            return;
        }
        $user = User::register($_POST['user_name'],$_POST['password'],$_POST['c_password'],$_POST['bday']);
@@ -41,12 +57,12 @@ class Home extends Controller
        {
            echo $user->user_id;
 
-           header('Location: ../login');
+           header('Location: /Proiect-TW/mvc/public/home/login');
        }
        else
        {
 
-           $this->view('home/register',[]);
+           header('Location: /Proiect-TW/mvc/public/home/register/failed/yes');
        }
    }
 
