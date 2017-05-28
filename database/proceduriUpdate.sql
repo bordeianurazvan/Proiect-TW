@@ -70,10 +70,14 @@ end;
 CREATE OR REPLACE procedure commands_update as
    suma_atacator int:=0;
    suma_aparator int:=0;
-   spear int:=0;
-   axe int:=0;
-   sword int:=0;
-   archer int :=0;
+   spear_att int:=0;
+   axe_att int:=0;
+   sword_att int:=0;
+   archer_att int :=0;
+   spear_def int:=0;
+   axe_def int:=0;
+   sword_def int:=0;
+   archer_def int :=0;
    zid int:=0;
    ratie number :=0;
    timp_intoarcere int:=0;
@@ -83,111 +87,95 @@ CREATE OR REPLACE procedure commands_update as
    nume2 varchar2(50);
    user1 int :=0;
    user2 int:=0;
+   spear_al int :=0;
+   axe_al int:=0;
+   sword_al int:=0;
+   archer_al int :=0;
    begin
    for i in(select * from commands) loop
    if(i.arrive_time<=current_timestamp)
    then
+     spear_att:=to_number(substr( i.units, 1, instr(i.units,' ',1,1)-1  )  );
+     axe_att :=to_number( substr  (i.units, instr(i.units,' ',1,1)+1  ,instr(i.units,' ',1,2)-1-instr(i.units,' ',1,1) ) );
+     sword_att :=to_number(substr(i.units,instr(i.units,' ',1,2)+1,instr(i.units,' ',1,3)-1 - instr(i.units,' ',1,2)));
+     archer_att :=to_number(substr(i.units,instr(i.units,' ',1,3)+1,length(i.units)));
    if(i.command_type ='defense')
    then
-     spear:=ratie*to_number(substr( i.units, 1, instr(i.units,' ',1,1)-1  )  );
-     axe :=ratie*to_number( substr  (i.units, instr(i.units,' ',1,1)+1  ,instr(i.units,' ',1,2)-1-instr(i.units,' ',1,1) ) );
-     sword :=ratie*to_number(substr(i.units,instr(i.units,' ',1,2)+1,instr(i.units,' ',1,3)-1 - instr(i.units,' ',1,2)));
-     archer :=ratie*to_number(substr(i.units,instr(i.units,' ',1,3)+1,length(i.units)));
-       update villagetroops set troop_number = troop_number+spear where village_id=i.to_village and troop_id =1;
-      update villagetroops set troop_number = troop_number+axe where village_id=i.to_village and troop_id =2;  
-        update villagetroops set troop_number = troop_number+sword where village_id=i.to_village and troop_id =3;
-         update villagetroops set troop_number = troop_number+archer where village_id=i.to_village and troop_id =4;
+      update villagetroops set troop_number = troop_number+spear_att where village_id=i.to_village and troop_id =1;
+      update villagetroops set troop_number = troop_number+axe_att where village_id=i.to_village and troop_id =2;  
+      update villagetroops set troop_number = troop_number+sword_att where village_id=i.to_village and troop_id =3;
+      update villagetroops set troop_number = troop_number+archer_att where village_id=i.to_village and troop_id =4;
    else
-   suma_atacator :=
-     20*to_number(substr( i.units, 1, instr(i.units,' ',1,1)-1  )  )
-   + 30*to_number( substr  (i.units, instr(i.units,' ',1,1)+1  ,instr(i.units,' ',1,2)-1-instr(i.units,' ',1,1) ) ) 
-   + 15*to_number(substr(i.units,instr(i.units,' ',1,2)+1,instr(i.units,' ',1,3)-1 - instr(i.units,' ',1,2)))
-   + 10*to_number(substr(i.units,instr(i.units,' ',1,3)+1,length(i.units)));
-   select building_level into zid from villagebuildings where building_id=2 and village_id=i.to_village;
-   select troop_number into spear from villagetroops where village_id=i.to_village and troop_id=1;
-   select troop_number into axe from villagetroops where village_id=i.to_village and troop_id=2;
-    select troop_number into sword from villagetroops where village_id=i.to_village and troop_id=3;
-    select troop_number into archer from villagetroops where village_id=i.to_village and troop_id=4;
-    suma_aparator :=zid * (10*spear + 5*axe + 50*sword + 45 *archer) + 200;
-    if suma_atacator >suma_aparator
-    then
-     ratie := suma_aparator/suma_atacator;
-     spear:=round(ratie*to_number(substr( i.units, 1, instr(i.units,' ',1,1)-1  )  ));
-     axe :=round(ratie*to_number( substr  (i.units, instr(i.units,' ',1,1)+1  ,instr(i.units,' ',1,2)-1-instr(i.units,' ',1,1) ) ));
-     sword :=round(ratie*to_number(substr(i.units,instr(i.units,' ',1,2)+1,instr(i.units,' ',1,3)-1 - instr(i.units,' ',1,2))));
-     archer :=round(ratie*to_number(substr(i.units,instr(i.units,' ',1,3)+1,length(i.units))));
-     timp_intoarcere := timp(i.from_village,i.to_village);
-    select current_timestamp + numToDSInterval( timp_intoarcere, 'second' ) INTO timpp from dual;
-     update villagetroops set troop_number=0 where village_id = i.to_village;
-     insert into commands(from_village,to_village,units,command_type,start_time,arrive_time) values (i.to_village,i.from_village,spear||' '||axe||' '||sword||' '||archer,'defense',current_timestamp,timpp);
-     select user_id into id_nou from villages where village_id = i.from_village;
-       select user_id into user1 from villages where village_id = i.from_village;
-         select user_id into user2 from villages where village_id = i.to_village;
-     update villages set user_id =id_nou where village_id=i.to_village;
-     select village_name into nume1 from villages where village_id=i.from_village;
-     select village_name into nume2 from villages where village_id=i.to_village;
-      select troop_number into spear from villagetroops where village_id=i.to_village and troop_id=1;
-   select troop_number into axe from villagetroops where village_id=i.to_village and troop_id=2;
-    select troop_number into sword from villagetroops where village_id=i.to_village and troop_id=3;
-    select troop_number into archer from villagetroops where village_id=i.to_village and troop_id=4;
-     insert into reports(title,sent_units,village_units,message,from_user,to_user,from_village,to_village,user_id) values(nume1||' attacks '||nume2,i.units,spear||' '||axe||' '||sword||' '||archer,nume1||' conquered '||nume2,user1,user2,i.from_village,i.to_village,user1);
-     insert into reports(title,sent_units,village_units,message,from_user,to_user,from_village,to_village,user_id) values(nume1||' attacks '||nume2,i.units,spear||' '||axe||' '||sword||' '||archer,nume1||' conquered '||nume2,user1,user2,i.from_village,i.to_village,user2);
-     elsif suma_atacator=suma_aparator
-     then
-      update villagetroops set troop_number=0 where village_id = i.to_village;
-       select user_id into user1 from villages where village_id = i.from_village;
-         select user_id into user2 from villages where village_id = i.to_village;
-     update villages set user_id =id_nou where village_id=i.to_village;
-     select village_name into nume1 from villages where village_id=i.from_village;
-     select village_name into nume2 from villages where village_id=i.to_village;
-      select troop_number into spear from villagetroops where village_id=i.to_village and troop_id=1;
-   select troop_number into axe from villagetroops where village_id=i.to_village and troop_id=2;
-    select troop_number into sword from villagetroops where village_id=i.to_village and troop_id=3;
-    select troop_number into archer from villagetroops where village_id=i.to_village and troop_id=4;   
-     insert into reports(title,sent_units,village_units,message,from_user,to_user,from_village,to_village,user_id) values(nume1||' attacks '||nume2,i.units,spear||' '||axe||' '||sword||' '||archer,nume1||' failed to conquer '||nume2,user1,user2,i.from_village,i.to_village,user1);
-     insert into reports(title,sent_units,village_units,message,from_user,to_user,from_village,to_village,user_id) values(nume1||' attacks '||nume2,i.units,spear||' '||axe||' '||sword||' '||archer,nume1||' failed to conquer '||nume2,user1,user2,i.from_village,i.to_village,user2);
-      elsif suma_atacator <suma_aparator
-      then
-     ratie := suma_atacator/suma_aparator;
-     spear:=round(ratie*to_number(substr( i.units, 1, instr(i.units,' ',1,1)-1  )  ));
-     axe :=round(ratie*to_number( substr  (i.units, instr(i.units,' ',1,1)+1  ,instr(i.units,' ',1,2)-1-instr(i.units,' ',1,1) ) ));
-     sword :=round(ratie*to_number(substr(i.units,instr(i.units,' ',1,2)+1,instr(i.units,' ',1,3)-1 - instr(i.units,' ',1,2))));
-     archer :=round(ratie*to_number(substr(i.units,instr(i.units,' ',1,3)+1,length(i.units))));
-     update villagetroops set troop_number = spear where village_id=i.to_village and troop_id =1;
-      update villagetroops set troop_number = axe where village_id=i.to_village and troop_id =2;  
-        update villagetroops set troop_number = sword where village_id=i.to_village and troop_id =3;
-         update villagetroops set troop_number = archer where village_id=i.to_village and troop_id =4;
-             select user_id into user1 from villages where village_id = i.from_village;
-         select user_id into user2 from villages where village_id = i.to_village;
-     update villages set user_id =id_nou where village_id=i.to_village;
-     select village_name into nume1 from villages where village_id=i.from_village;
+      suma_atacator :=
+          20*to_number(substr( i.units, 1, instr(i.units,' ',1,1)-1  )  )
+        + 30*to_number( substr  (i.units, instr(i.units,' ',1,1)+1  ,instr(i.units,' ',1,2)-1-instr(i.units,' ',1,1) ) ) 
+        + 15*to_number(substr(i.units,instr(i.units,' ',1,2)+1,instr(i.units,' ',1,3)-1 - instr(i.units,' ',1,2)))
+        + 10*to_number(substr(i.units,instr(i.units,' ',1,3)+1,length(i.units)));
+      select building_level into zid from villagebuildings where building_id=2 and village_id=i.to_village;
+      select troop_number into spear_def from villagetroops where village_id=i.to_village and troop_id=1;
+      select troop_number into axe_def from villagetroops where village_id=i.to_village and troop_id=2;
+      select troop_number into sword_def from villagetroops where village_id=i.to_village and troop_id=3;
+      select troop_number into archer_def from villagetroops where village_id=i.to_village and troop_id=4;
+      suma_aparator :=zid * (10*spear_def + 5*axe_def + 50*sword_def + 45 *archer_def) + 200;
+      select user_id into user1 from villages where village_id = i.from_village;
+      select user_id into user2 from villages where village_id = i.to_village;
+      select village_name into nume1 from villages where village_id=i.from_village;
       select village_name into nume2 from villages where village_id=i.to_village;
-   select troop_number into spear from villagetroops where village_id=i.to_village and troop_id=1;
-    select troop_number into axe from villagetroops where village_id=i.to_village and troop_id=2;
-    select troop_number into sword from villagetroops where village_id=i.to_village and troop_id=3;
-    select troop_number into archer from villagetroops where village_id=i.to_village and troop_id=4;   
-     insert into reports(title,sent_units,village_units,message,from_user,to_user,from_village,to_village,user_id) values(nume1||' attacks '||nume2,i.units,spear||' '||axe||' '||sword||' '||archer,nume1||' failed to conquer '||nume2,user1,user2,i.from_village,i.to_village,user1);
-     insert into reports(title,sent_units,village_units,message,from_user,to_user,from_village,to_village,user_id) values(nume1||' attacks '||nume2,i.units,spear||' '||axe||' '||sword||' '||archer,nume1||' failed to conquer '||nume2,user1,user2,i.from_village,i.to_village,user2);
-   end if;
-   end if;
+      if suma_atacator >suma_aparator
+        then
+          ratie := suma_aparator/suma_atacator;
+          spear_al:=round((1-ratie)*spear_att);
+          axe_al :=round((1-ratie)*axe_att);
+          sword_al :=round((1-ratie)*sword_att);
+          archer_al :=round((1-ratie)*archer_att);
+          timp_intoarcere := timp(i.from_village,i.to_village);
+          select current_timestamp + numToDSInterval( timp_intoarcere, 'second' ) INTO timpp from dual;
+          update villagetroops set troop_number=0 where village_id = i.to_village;
+          insert into commands(from_village,to_village,units,command_type,start_time,arrive_time) 
+          values (i.to_village,i.from_village,spear_al||' '||axe_al||' '||sword_al||' '||archer_al,'defense',current_timestamp,timpp);
+          update villages set user_id =user1 where village_id=i.to_village;
+          insert into reports(title,sent_units,village_units,message,from_user,to_user,from_village,to_village,user_id) 
+          values(nume1||' attacks '||nume2,i.units||'#'||spear_al||' '||axe_al||' '||sword_al||' '||archer_al,spear_def||' '||axe_def||' '||sword_def||' '||archer_def||'#'||'0 0 0 0',nume1||' conquered '||nume2,user1,user2,i.from_village,i.to_village,user1);
+          insert into reports(title,sent_units,village_units,message,from_user,to_user,from_village,to_village,user_id) 
+          values(nume1||' attacks '||nume2,i.units||'#'||spear_al||' '||axe_al||' '||sword_al||' '||archer_al,spear_def||' '||axe_def||' '||sword_def||' '||archer_def||'#'||'0 0 0 0',nume1||' conquered '||nume2,user1,user2,i.from_village,i.to_village,user2);
+        elsif suma_atacator=suma_aparator
+          then
+            update villagetroops set troop_number=0 where village_id = i.to_village;   
+            insert into reports(title,sent_units,village_units,message,from_user,to_user,from_village,to_village,user_id) 
+            values(nume1||' attacks '||nume2,i.units||'#'||'0 0 0 0',spear_def||' '||axe_def||' '||sword_def||' '||archer_def||'#'||'0 0 0 0',nume1||' failed to conquer '||nume2,user1,user2,i.from_village,i.to_village,user1);
+            insert into reports(title,sent_units,village_units,message,from_user,to_user,from_village,to_village,user_id) 
+            values(nume1||' attacks '||nume2,i.units||'#'||'0 0 0 0',spear_def||' '||axe_def||' '||sword_def||' '||archer_def||'#'||'0 0 0 0',nume1||' failed to conquer '||nume2,user1,user2,i.from_village,i.to_village,user2);
+          elsif suma_atacator <suma_aparator
+            then
+              ratie := suma_atacator/suma_aparator;
+              update villagetroops set troop_number = round((1-ratie)*spear_def) where village_id=i.to_village and troop_id =1;
+              update villagetroops set troop_number = round((1-ratie)*axe_def) where village_id=i.to_village and troop_id =2;  
+              update villagetroops set troop_number = round((1-ratie)*sword_def) where village_id=i.to_village and troop_id =3;
+              update villagetroops set troop_number = round((1-ratie)*archer_def) where village_id=i.to_village and troop_id =4;  
+              insert into reports(title,sent_units,village_units,message,from_user,to_user,from_village,to_village,user_id) 
+              values(nume1||' attacks '||nume2,i.units||'#'||'0 0 0 0',spear_def||' '||axe_def||' '||sword_def||' '||archer_def||'#'||round((1-ratie)*spear_def)||' '||round((1-ratie)*axe_def)||' '||round((1-ratie)*sword_def)||' '||round((1-ratie)*archer_def),nume1||' failed to conquer '||nume2,user1,user2,i.from_village,i.to_village,user1);
+              insert into reports(title,sent_units,village_units,message,from_user,to_user,from_village,to_village,user_id) 
+              values(nume1||' attacks '||nume2,i.units||'#'||'0 0 0 0',spear_def||' '||axe_def||' '||sword_def||' '||archer_def||'#'||round((1-ratie)*spear_def)||' '||round((1-ratie)*axe_def)||' '||round((1-ratie)*sword_def)||' '||round((1-ratie)*archer_def),nume1||' failed to conquer '||nume2,user1,user2,i.from_village,i.to_village,user2);
+       end if;
+    end if;
    delete from commands where id = i.id;
    end if;
    end loop;
-   end;
+end;
    
 /   
-   CREATE OR REPLACE FUNCTION timp(p_village_id1 int,p_village_id2 int) return int as
+CREATE OR REPLACE FUNCTION timp(p_village_id1 int,p_village_id2 int) return int as
    x1 int:=0;
    y1 int:=0;
    x2 int:=0;
    y2 int:=0;
   distanta int:=0;
-  begin
+begin
    select coord_x,coord_y into x1,y1 from villages where village_id=p_village_id1;
    select coord_x,coord_y into x2,y2 from villages where village_id=p_village_id2;
    distanta:= round(sqrt( (x2-x1)*(x2-x1) + (y2-y1)*(y2-y1)));
    return distanta *10;
-    end;
+end;
 
 /
 begin
@@ -196,10 +184,10 @@ end;
 /
 delete from commands;
 
-insert into commands(from_village,to_village,units,command_type,start_time,arrive_time) values (4,5,'0 0 50 0','attack',current_timestamp,current_timestamp);
+insert into commands(from_village,to_village,units,command_type,start_time,arrive_time) values (1,2,'0 0 50 0','attack',current_timestamp,current_timestamp);
 select * from commands;
 select * from reports;
-select * from villages;
+select * from village;
 select * from users;
 
             
