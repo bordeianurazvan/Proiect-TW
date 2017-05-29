@@ -10,24 +10,23 @@ class MapGenerator
 {
   public static function getMap()
   {
-      $query = "select tip  from map where coord_x=:i and coord_y=:j";
+      $query = "select *  from map  order by Coord_x,Coord_y";
+
       $conn = Db::getDbInstance();
-        $harta ="";
+      $stid = oci_parse($conn, $query);
+      $r = oci_execute($stid);
+      $harta ="";
       $harta =$harta.'<table class="tabel-map">';
-      for ($i = 1; $i <= 100; $i++){
-          $harta=$harta."<tr data-toggle='modal' data-id='1' data-target='#mini-menu'>";
-
-      for ($j = 1; $j <= 100; $j++) {
-          $stid = oci_parse($conn, $query);
-          oci_bind_by_name($stid, ":i", $i);
-          oci_bind_by_name($stid, ":j", $j);
-          $r = oci_execute($stid);
-          $row= oci_fetch_row($stid);
-          $tip = $row[0];
-          $harta=$harta.'<td onclick="myFunction(this)"><img alt="Resources" src="/Proiect-TW/mvc/public/images/' . $tip . '.png" title="' . $i . '|' . $j . '"> </td>';
-
+      $contor=1;
+      while (($row = oci_fetch_array($stid, OCI_BOTH)) != false)
+      {   if($row['COORD_X']==$contor) {
+          $harta = $harta . "<tr data-toggle='modal' data-id='1' data-target='#mini-menu'>";
+          $contor++;
       }
-      $harta=$harta.'</tr>';
+          $tip = $row['TIP'];
+          $harta=$harta.'<td onclick="myFunction(this)"><img alt="Resources" src="/Proiect-TW/mvc/public/images/' . $tip . '.png" title="' . $row['COORD_X'] . '|' . $row['COORD_Y'] . '"> </td>';
+          if($row['COORD_Y']==100)
+            $harta=$harta.'</tr>';
   }
      $harta=$harta.'</table>';
   return $harta;

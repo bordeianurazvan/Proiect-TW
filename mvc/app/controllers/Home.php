@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 /**
  * Created by PhpStorm.
  * User: Tudor
@@ -11,7 +11,6 @@ class Home extends Controller
 
    public function login($status=' ',$retry=' ')
    {
-       if(session_status() === PHP_SESSION_ACTIVE)
        session_destroy();
        if($status=='failed' && $retry ='yes' )
        {

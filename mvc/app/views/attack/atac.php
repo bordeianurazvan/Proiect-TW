@@ -57,11 +57,11 @@ echo $_SESSION['x'].' '.$_SESSION['y'];
         <form class="form-inline">
             <div class="form-group">
             <label for="x">X:</label>
-            <input type="number"  class="allign"  value="<?php echo $_SESSION['x'];?>"  name="x" id="x">
+            <input type="number"  class="allign"  value="<?php echo $_SESSION['x'];?>"  name="x" id="x" min="0">
         </div>
             <div class="form-group">
                 <label for="y">Y:</label>
-                <input type="number" class="allign"  value="<?php echo $_SESSION['y'];?>" name="y" id="y">
+                <input type="number" class="allign"  value="<?php echo $_SESSION['y'];?>" name="y" id="y" min="0">
             </div>
         </form>
     </div>
@@ -72,20 +72,20 @@ echo $_SESSION['x'].' '.$_SESSION['y'];
 
            <div class="form-group">
                <label for="archer"> <img alt="Archer" src="/Proiect-Tw/mvc/public/images/unit_archer.png" class="img-responsive"></label>
-                <input type="number" class="allign" name="archer" value=""  id="archer">
+                <input type="number" class="allign" name="archer" value=""  id="archer" min="0">
           </div>
         <div class="form-group">
             <label for="sword"> <img alt="Sword" src="/Proiect-Tw/mvc/public/images/unit_sword.png" class="img-responsive"></label>
-            <input type="number"  class="allign" name="sword" value=""  id="sword">
+            <input type="number"  class="allign" name="sword" value=""  id="sword" min="0">
         </div>
         <br>
         <div class="form-group">
             <label for="axe"> <img alt="Axe" src="/Proiect-Tw/mvc/public/images/unit_axe.png" class="img-responsive"></label>
-            <input type="number"  class="allign" name="axe" value=""  id="axe">
+            <input type="number"  class="allign" name="axe" value=""  id="axe" min="0">
         </div>
         <div class="form-group">
             <label for="spear"> <img alt="spear" src="/Proiect-Tw/mvc/public/images/unit_spear.png" class="img-responsive"></label>
-            <input type="number"  class="allign" name="spear" value=""  id="spear">
+            <input type="number"  class="allign" name="spear" value=""  id="spear" min="0">
         </div>
     </form>
             </div>

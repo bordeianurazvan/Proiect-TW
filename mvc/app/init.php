@@ -12,4 +12,5 @@ require_once 'models/Functions.php';
 require_once 'models/Profile.php';
 require_once 'models/Report.php';
 require_once  'models/MapGenerator.php';
+require_once  'models/SessionValidate.php';
 ?>
