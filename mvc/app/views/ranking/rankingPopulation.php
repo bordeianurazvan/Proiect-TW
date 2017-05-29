@@ -8,7 +8,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/jquery.dataTables.min.js"></script>
-    <link rel="stylesheet" href="css/Ranking.css">
+    <link rel="stylesheet" href="/Proiect-TW/mvc/public/css/Ranking.css">
 </head>
 <body>
 <nav class="navbar navbar-default">
@@ -19,18 +19,18 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-logo" href="#">
-                <img alt="Logo" src="images/logocrop60%25.png" class="img-responsive">
+            <a class="navbar-logo" href="/Proiect-TW/mvc/public/userProfile/info">
+                <img alt="Logo" src="/Proiect-TW/mvc/public/images/logocrop60%25.png" class="img-responsive">
             </a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="PrivireAsupraSatului.html"><span class="glyphicon glyphicon-home"></span> Home </a></li>
-                <li><a href="profile.html"><span class="glyphicon glyphicon-user"></span> Profile </a></li>
-                <li><a href="map.html"><span class="glyphicon glyphicon-globe"></span> Map </a></li>
-                <li><a href="reports.html"><span class="glyphicon glyphicon-comment"></span> Reports <span class="badge">17</span> </a></li>
-                <li><a href="Ranking.html"><span class="glyphicon glyphicon-stats"></span> Ranking </a></li>
-                <li><a href="login.html"><span class="glyphicon glyphicon-off"></span> LogOut </a></li>
+                <li><a href="/Proiect-TW/mvc/public/village/privireAsupraSatului"><span class="glyphicon glyphicon-home"></span> Home </a></li>
+                <li><a href="/Proiect-TW/mvc/public/userProfile/getProfile"><span class="glyphicon glyphicon-user"></span> Profile </a></li>
+                <li><a href="/Proiect-TW/mvc/public/map/getMap"><span class="glyphicon glyphicon-globe"></span> Map </a></li>
+                <li><a href="/Proiect-TW/mvc/public/reports/reportslist"><span class="glyphicon glyphicon-comment"></span> Reports <span class="badge">17</span> </a></li>
+                <li><a href="/Proiect-TW/mvc/public/ranking/rankingPopulation"><span class="glyphicon glyphicon-stats"></span> Ranking </a></li>
+                <li><a href="/Proiect-TW/mvc/public"><span class="glyphicon glyphicon-off"></span> LogOut </a></li>
             </ul>
         </div>
     </div>
@@ -38,23 +38,23 @@
 
 <div class="center">
     <div class="row">
-        <div class="col-md-4 col-xs-2 col-sm-6 col-lg-6 Village">Village (23|99) </div>
+        <div class="col-md-4 col-xs-2 col-sm-6 col-lg-6 Village"><?php echo $data['village_name']; ?></div>
         <div class="col md-2 col-xs-1 col-sm-2 col-lg-2"></div>
         <div class="col-md-6 col-xs-9 col-sm-4 col-lg-4 Iron">
-            234 <img alt="Iron" src="images/iron.png">
-            543 <img alt="Wood" src="images/wood.png">
-            532 <img alt="Stone" src="images/stone.png">
-            1000<img alt="Resources" src="images/resources.png">
+            <?php echo $data['iron']; ?><img alt="Iron" src="/Proiect-TW/mvc/public/images/iron.png">
+            <?php echo $data['wood']; ?><img alt="Wood" src="/Proiect-TW/mvc/public/images/wood.png">
+            <?php echo $data['stone']; ?><img alt="Stone" src="/Proiect-TW/mvc/public/images/stone.png">
+            <?php echo ($data['storage']*1000); ?><img alt="Resources" src="/Proiect-TW/mvc/public/images/resources.png">
         </div>
     </div>
     <div class="row">
         <div class="container-fluid">
             <div class="col-md-2 col-xs-2 col-lg-3 col-sm-2 RankingTitle ">Ranking</div>
             <div class="col-md-9 col-xs-10 col-lg-9 col-sm-9 Buttons">
-            <div class="btn-group-horizontal">
-                <button type="button" class="btn btn-primary btn-xs">Population</button>
-                <button type="button" class="btn btn-primary btn-xs">Attackers</button>
-            </div>
+                <div class="btn-group-horizontal">
+                    <button type="button" class="btn btn-primary btn-xs">Population</button>
+                    <button type="button" class="btn btn-primary btn-xs">Attackers</button>
+                </div>
             </div>
         </div>
     </div>
@@ -124,12 +124,12 @@
             </form>
         </div>
         <div class="col-md-5  col-xs-7 col-sm-5 col-lg-5 Paginare">
-                    <ul class="pagination">
-                        <li><a href="#"> &lt; Prev</a></li>
-                        <li><a href="#"> Next &gt; </a></li>
-                    </ul>
-                </div>
-            </div>
+            <ul class="pagination">
+                <li><a href="#"> &lt; Prev</a></li>
+                <li><a href="#"> Next &gt; </a></li>
+            </ul>
         </div>
+    </div>
+</div>
 </body>
 </html>
