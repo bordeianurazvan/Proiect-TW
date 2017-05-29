@@ -10,6 +10,8 @@ class Attack extends Controller
 {
     public function getAttack($status = ' ', $retry = ' ')
     {
+        SessionValidate::validateSession();
+
         if ($status == 'failed' && $retry = 'yes') {
             header('Location: /Proiect-TW/mvc/public/attack/getattack/failedattack');
 
@@ -24,21 +26,41 @@ class Attack extends Controller
         return;
         }
 
-        $cod_stare = AttackGenerator::generateAttack($_SESSION[village_id],$_POST['x'],$_POST['y'],
+        $cod_stare = AttackGenerator::generateAttack($_SESSION['village_id'],$_POST['x'],$_POST['y'],
             $_POST['spear'], $_POST['axe'] ,$_POST['sword'],$_POST['archer'] );
 
-        if ($cod_stare != null) {
+        if ($cod_stare == 1) {
 
-            header('Location: /Proiect-TW/mvc/public/attack/movements/');
+            header('Location: /Proiect-TW/mvc/public/Attack/movements');
         } else {
 
 
             header('Location: /Proiect-TW/mvc/public/attack/getattack/failed/yes');
         }
 }
-    public function movements()
+    public function movements($page='')
     {
-        $this->view('attack/movements', []);
+        SessionValidate::validateSession();
+        if ($page > TroopsMovements::getPages($_SESSION['village_id'])) {
+            header('Location: /Proiect-TW/mvc/public/attack/movements/1');
+        } else {
+            if ($page < 1) {
+                header('Location: /Proiect-TW/mvc/public/attack/movements/1');
+            } else {
+                $nextPage=$page+1;
+                $prevPage=$page-1;
+                $maxpage = TroopsMovements::getPages($_SESSION['village_id']);
+                $commands_table = TroopsMovements::generateCommands($page);
+                $village_name = VillageFunctions::getVillageName($_SESSION['user_id']);
+                $iron = VillageFunctions::getIronResources($_SESSION['village_id']);
+                $stone = VillageFunctions::getStoneResources($_SESSION['village_id']);
+                $wood = VillageFunctions::getWoodResources($_SESSION['village_id']);
+                $storage = VillageFunctions::getStorrageLevel($_SESSION['village_id']);
+                $this->view('attack/movements', ['maxPagesNumber'=>$maxpage,'prevPage'=>$prevPage,'nextPage'=>$nextPage,'village_name' => $village_name, 'iron' => $iron, 'stone' => $stone, 'wood' => $wood, 'storage' => (1000 * $storage), 'commands_table' => $commands_table]);
+            }
+
+        }
+        return;
     }
 
 

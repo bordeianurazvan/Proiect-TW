@@ -15,4 +15,6 @@ require_once  'models/MapGenerator.php';
 require_once  'models/SessionValidate.php';
 require_once 'models/MainBuilding.php';
 require_once 'models/Barracks.php';
+require_once  'models/AttackGenerator.php';
+require_once  'models/TroopsMovements.php';
 ?>
