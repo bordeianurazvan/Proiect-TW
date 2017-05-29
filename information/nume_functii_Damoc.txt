@@ -1,0 +1,8 @@
+PrivireAsupraSatului : village/privireAsupraSatului
+Wood : village/wood
+Stone : village/stone
+Iron : village/iron
+Storage : village/storage
+PrivireDeAnsamblu : village/privireDeAnsamblu
+Ranking attackers : ranking/rankingAttackers
+Ranking Population : ranking/rankingPopulation
