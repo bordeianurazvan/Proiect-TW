@@ -62,13 +62,16 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>**vodo**'s village 1(358|495)</td>
-                    <td>7852</td>
-                    <td>2340<img alt="Iron" src="/Proiect-TW/mvc/public/images/iron.png"> 5430<img alt="Wood" src="/Proiect-TW/mvc/public/images/wood.png"> 5320<img alt="Stone" src="/Proiect-TW/mvc/public/images/stone.png">
-                    </td>
-                    <td>10000</td>
-                </tr>
+                <?php
+                    for($index=0;$index<($data['villagesNumber']);$index++){
+                        echo '<tr>';
+                        echo '<td><a class="c-link" href="/Proiect-TW/mvc/public/village/privireAsupraSatului/' . $data['villagesCoords'][$index*2] . '/' . $data['villagesCoords'][($index*2)+1] . '">' . $data['villagesNames'][$index] . ' (' . $data['villagesCoords'][$index*2] . '|' . $data['villagesCoords'][($index*2)+1] . ')</a></td>';
+                        echo '<td>' . $data['villagesPoints'][$index] . '</td>';
+                        echo '<td>' . $data['villagesResources'][$index*4] . '<img alt="Iron" src="/Proiect-TW/mvc/public/images/iron.png"> ' . $data['villagesResources'][($index*4)+1] . '<img alt="Wood" src="/Proiect-TW/mvc/public/images/wood.png"> ' . $data['villagesResources'][($index*4)+2] . '<img alt="Stone" src="/Proiect-TW/mvc/public/images/stone.png"></td>';
+                        echo '<td>' . $data['villagesResources'][($index*4)+3] . '</td>';
+                        echo '</tr>';
+                    }
+                ?>
                 </tbody>
             </table>
         </div>
