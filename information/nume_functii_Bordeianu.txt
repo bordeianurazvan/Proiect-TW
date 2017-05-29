@@ -1,0 +1,1 @@
+UserProfile: getProfile/changePassword/changeUsername/delete

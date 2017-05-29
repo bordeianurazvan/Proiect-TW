@@ -88,7 +88,7 @@ class Profile
         }
         else
         {
-
+            //$ok = $newUsername;
             return $ok;
         }
 

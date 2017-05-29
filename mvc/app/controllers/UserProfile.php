@@ -72,7 +72,9 @@ class UserProfile extends Controller
         }
 
         $user = Profile::changeUsername($username,$_POST['password'], $_POST['newUsername']);
-        if ($user != null) {
+        if ($user != null)
+        {
+          //  $_SESSION['village_name'] = $user;
             header('Location: /Proiect-TW/mvc/public/UserProfile/getProfile');
         } else {
 
