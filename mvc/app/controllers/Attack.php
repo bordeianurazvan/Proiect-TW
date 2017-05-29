@@ -10,6 +10,8 @@ class Attack extends Controller
 {
     public function getAttack($status = ' ', $retry = ' ')
     {
+        SessionValidate::validateSession();
+
         if ($status == 'failed' && $retry = 'yes') {
             header('Location: /Proiect-TW/mvc/public/attack/getattack/failedattack');
 
@@ -23,13 +25,13 @@ class Attack extends Controller
                 $this->view('attack/atac', ['retry' => 'no']);
         return;
         }
-
-        $cod_stare = AttackGenerator::generateAttack($_SESSION[village_id],$_POST['x'],$_POST['y'],
+         echo ' incepe metoda';
+        $cod_stare = AttackGenerator::generateAttack($_SESSION['village_id'],$_POST['x'],$_POST['y'],
             $_POST['spear'], $_POST['axe'] ,$_POST['sword'],$_POST['archer'] );
 
-        if ($cod_stare != null) {
-
-            header('Location: /Proiect-TW/mvc/public/attack/movements/');
+        if ($cod_stare == 1) {
+            echo $cod_stare;
+            header('Location: /Proiect-TW/mvc/public/Attack/movements');
         } else {
 
 
@@ -38,7 +40,14 @@ class Attack extends Controller
 }
     public function movements()
     {
-        $this->view('attack/movements', []);
+        SessionValidate::validateSession();
+        $village_name = VillageFunctions::getVillageName($_SESSION['user_id']);
+        $iron = VillageFunctions::getIronResources($_SESSION['village_id']);
+        $stone = VillageFunctions::getStoneResources($_SESSION['village_id']);
+        $wood = VillageFunctions::getWoodResources($_SESSION['village_id']);
+        $storage = VillageFunctions::getStorrage($_SESSION['village_id']);
+        $this->view('attack/movements',['village_name'=>$village_name,'iron'=>$iron,'stone'=>$stone,'wood'=>$wood,'storage'=>$storage]);
+
     }
 
 

@@ -1,4 +1,4 @@
-CREATE OR REPLACE PROCEDURE atac(id_atacator int ,id_aparator int,p_spear int,p_axe int,p_sword int,p_archer int,cod_stare out int) as
+CREATE OR REPLACE PROCEDURE atac(id_atacator int ,x_aparator int,y_aparator int,p_spear int,p_axe int,p_sword int,p_archer int,cod_stare out int) as
 spear int;
 axe int;
 sword int;
@@ -6,7 +6,10 @@ archer int;
 timp_deplasare int;
 timp_total TIMESTAMP(6);
 units varchar(100);
+id_aparator int;
 begin
+      select village_id into id_aparator from villages where coord_x=x_aparator and coord_y=y_aparator;
+      
       select troop_number into spear from villagetroops where village_id=id_atacator and troop_id=1;
       select troop_number into axe from villagetroops where village_id=id_atacator and troop_id=2;
       select troop_number into sword from villagetroops where village_id=id_atacator and troop_id=3;
@@ -29,7 +32,4 @@ begin
         insert into commands(from_village,to_village,units,command_type,start_time,arrive_time) values (id_atacator,id_aparator,units,'attack',current_timestamp,timp_total);
         cod_stare:=1;
   end if;
-
 end;
-
-

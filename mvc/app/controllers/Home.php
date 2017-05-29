@@ -41,6 +41,8 @@ class Home extends Controller
 
    public function register($status=' ',$retry=' ')
    {
+       SessionValidate::validateSession();
+
        if($status=='failed' && $retry ='yes' )
        {
            header('Location: /Proiect-TW/mvc/public/home/register/failedregister');
@@ -69,7 +71,7 @@ class Home extends Controller
 
     public function terms()
     {
-
+        SessionValidate::validateSession();
             $this->view('home/terms',[]);
 
     }
