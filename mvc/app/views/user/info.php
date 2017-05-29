@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="css/info.css">
+    <link rel="stylesheet" href="/Proiect-TW/mvc/public/css/info.css">
 </head>
 <body>
 <nav class="navbar navbar-default">
@@ -18,18 +18,18 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-logo" href="info.html">
-                <img alt="Logo" src="images/logocrop60%25.png">
+            <a class="navbar-logo" href="/Proiect-TW/mvc/public/UserProfile/info">
+                <img alt="Logo" src="/Proiect-TW/mvc/public/images/logocrop60%25.png">
             </a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="PrivireAsupraSatului.html"><span class="glyphicon glyphicon-home"></span> Home </a></li>
-                <li><a href="profile.html"><span class="glyphicon glyphicon-user"></span> Profile </a></li>
-                <li><a href="map.html"><span class="glyphicon glyphicon-globe"></span> Map </a></li>
-                <li><a href="reports.html"><span class="glyphicon glyphicon-comment"></span> Reports <span class="badge">17</span> </a></li>
-                <li><a href="Ranking.html"><span class="glyphicon glyphicon-stats"></span> Ranking </a></li>
-                <li><a href="login.html"><span class="glyphicon glyphicon-off"></span> LogOut </a></li>
+                <li><a href="/Proiect-TW/mvc/public/village/privireAsupraSatului"><span class="glyphicon glyphicon-home"></span> Home </a></li>
+                <li><a href="/Proiect-TW/mvc/public/UserProfile/getProfile"><span class="glyphicon glyphicon-user"></span> Profile </a></li>
+                <li><a href="/Proiect-TW/mvc/public/map/getMap"><span class="glyphicon glyphicon-globe"></span> Map </a></li>
+                <li><a href="/Proiect-TW/mvc/public/reports/reports"><span class="glyphicon glyphicon-comment"></span> Reports <span class="badge">17</span> </a></li>
+                <li><a href="/Proiect-TW/mvc/ranking/ranking"><span class="glyphicon glyphicon-stats"></span> Ranking </a></li>
+                <li><a href="/Proiect-TW/mvc/public"><span class="glyphicon glyphicon-off"></span> LogOut </a></li>
             </ul>
         </div>
     </div>
@@ -89,10 +89,10 @@
                         </div>
                         <div class="modal-body">
                             <p>Please let us know about any inconvenience that you are experiencing</p>
-                            <form>
+                            <form action="" method="post">
                                 <div class="form-group">
                                     <label for="comment">Ticket:</label>
-                                    <textarea class="form-control textarea" rows="5" id="comment"></textarea>
+                                    <textarea class="form-control textarea" maxlength="420" rows="5" id="comment" required name="textarea"></textarea>
                                 </div>
                                 <button type="submit" class="btn btn-primary instruct" >Submit</button>
                             </form>

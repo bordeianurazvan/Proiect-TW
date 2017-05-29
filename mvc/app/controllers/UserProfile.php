@@ -10,6 +10,7 @@ class UserProfile extends Controller
 {
     public function getProfile()
     {
+        SessionValidate::validateSession();
         $username = Profile::getUsername($_SESSION['user_id']);
         $signUpDate = Profile::getSignUpDate($_SESSION['user_id']);
         $numberOfVillages = Profile::getNumberOfVillages($_SESSION['user_id']);
@@ -26,6 +27,7 @@ class UserProfile extends Controller
 
     public function changePassword($status=' ',$retry=' ')
     {
+        SessionValidate::validateSession();
         if($status=='failed' && $retry ='yes' )
         {
             header('Location: /Proiect-TW/mvc/public/UserProfile/changePassword/failedpassword');
@@ -40,8 +42,8 @@ class UserProfile extends Controller
             return;
         }
 
-        $user = Profile::changeUserPassword($_POST['username'], $_POST['oldPassword'], $_POST['newPassword']);
-        if ($user != null) {
+        $userId = Profile::changeUserPassword($_POST['username'], $_POST['oldPassword'], $_POST['newPassword']);
+        if ($userId != null) {
             header('Location: /Proiect-TW/mvc/public/UserProfile/getProfile');
         } else {
 
@@ -52,6 +54,7 @@ class UserProfile extends Controller
 
     public function changeUsername($status=' ',$retry=' ')
     {
+        SessionValidate::validateSession();
         $username = Profile::getUsername($_SESSION['user_id']);
 
 
@@ -71,8 +74,8 @@ class UserProfile extends Controller
             return;
         }
 
-        $user = Profile::changeUsername($username,$_POST['password'], $_POST['newUsername']);
-        if ($user != null)
+        $userId = Profile::changeUsername($username,$_POST['password'], $_POST['newUsername']);
+        if ($userId != null)
         {
           //  $_SESSION['village_name'] = $user;
             header('Location: /Proiect-TW/mvc/public/UserProfile/getProfile');
@@ -85,6 +88,7 @@ class UserProfile extends Controller
 
     public function delete($status=' ',$retry=' ')
     {
+        SessionValidate::validateSession();
         $username = Profile::getUsername($_SESSION['user_id']);
 
 
@@ -104,8 +108,8 @@ class UserProfile extends Controller
             return;
         }
 
-        $user = Profile::deleteUserAccount($username,$_POST['password']);
-        if ($user != null) {
+        $ok = Profile::deleteUserAccount($username,$_POST['password']);
+        if ($ok != null) {
             header('Location: /Proiect-TW/mvc/public');
         } else {
 
@@ -116,6 +120,21 @@ class UserProfile extends Controller
 
     public function info()
     {
+        SessionValidate::validateSession();
+        if (!isset($_POST['textarea']))
+        {
+            $this->view('user/info',[]);
+            return;
+        }
+
+        $userId = Profile::createTicket($_SESSION['user_id'],$_POST['textarea']);
+
+        if ($userId != null) {
+            header('Location: /Proiect-TW/mvc/public/UserProfile/info');
+        } else {
+
+            header('Location: /Proiect-TW/mvc/public/UserProfile/info');
+        }
 
     }
 

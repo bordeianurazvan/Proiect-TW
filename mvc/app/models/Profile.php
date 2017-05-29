@@ -116,4 +116,23 @@ class Profile
 
     }
 
+    public static function createTicket($userId,$ticketText)
+    {
+        $query = "begin functii.createTicket(:userId,:ticketText,:ok); end;";
+        $statement = oci_parse(Db::getDbInstance(), $query);
+        oci_bind_by_name($statement, ":ok", $ok);
+        oci_bind_by_name($statement, ":userId", $userId);
+        oci_bind_by_name($statement, ":ticketText", $ticketText);
+        $r = oci_execute($statement);
+        if($ok==-1)
+        {
+            return null;
+        }
+        else
+        {
+
+            return $ok;
+        }
+    }
+
 }

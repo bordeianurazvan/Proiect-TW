@@ -29,6 +29,8 @@ drop table reports cascade constraints purge;
 /
 drop table ranking cascade constraints purge;
 /
+drop table tickets cascade constraints purge;
+/
 CREATE TABLE Map
 (
   coord_x INT NOT NULL,
@@ -199,6 +201,34 @@ CREATE TABLE Ranking
   FOREIGN KEY (leaderboard_id) REFERENCES Leaderboard(leaderboard_id) ON DELETE CASCADE,
   FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE
 );
+/
+CREATE TABLE Tickets
+(
+  ticket_id  INT NOT NULL,
+  ticket_text VARCHAR2(430),
+  ticket_date TIMESTAMP(6),
+  user_id INT NOT NULL,
+  PRIMARY KEY (ticket_id),
+  FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE
+);
+/
+DROP SEQUENCE ticket_id_seq;
+/
+CREATE SEQUENCE ticket_id_seq
+MINVALUE 1
+MAXVALUE 999999999999999999999999999
+START WITH 1
+INCREMENT BY 1
+NOCACHE; 
+/
+CREATE OR REPLACE TRIGGER ticket_id_trg
+          before insert on tickets
+          for each row
+              begin
+          if :new.ticket_id is null then
+              select ticket_id_seq.nextval into :new.ticket_id from dual;
+          end if;
+end;
 /
 DROP SEQUENCE users_id_seq;
 /

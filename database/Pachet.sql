@@ -7,6 +7,7 @@ CREATE OR REPLACE PACKAGE functii AS
   PROCEDURE changePassword(p_username users.username%type , p_parolaVeche users.user_password%type,p_parolaNoua users.user_password%type,ok out int);
   PROCEDURE changeUsername(p_username users.username%type ,p_password users.user_password%type,p_newUsername users.username%type,ok out int);
   PROCEDURE deleteUser(p_username users.username%type ,p_password users.user_password%type,ok out int);
+  PROCEDURE createTicket(p_userId users.user_id%type,p_ticketText varchar2,ok out int);
  /*
   PROCEDURE stergere (p_username users.username%type , p_parola users.u_password%type,p_parola1 users.u_password%type,ok out int);
   PROCEDURE schimbare_parola (p_username users.username%type , p_parola users.u_password%type,p_parola1 users.u_password%type,ok out int);
@@ -88,6 +89,19 @@ else
       then
        ok := 1;
         delete from users where username = p_username;
+      else
+        ok:=-1;
+    end if;
+  end;
+  
+  PROCEDURE createTicket(p_userId users.user_id%type,p_ticketText varchar2,ok out int) AS
+  stare int := 0;
+  begin
+     select count(u.user_id) into stare from users u where u.user_id = p_userId;
+    if stare<>0
+      then
+       select user_id into ok from users where user_id=p_userId;
+        insert into tickets(ticket_text,ticket_date,user_id) values (p_ticketText,current_timestamp,p_userId);
       else
         ok:=-1;
     end if;
