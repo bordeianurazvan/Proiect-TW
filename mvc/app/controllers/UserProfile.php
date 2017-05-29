@@ -15,7 +15,7 @@ class UserProfile extends Controller
         $iron = VillageFunctions::getIronResources($_SESSION['village_id']);
         $stone = VillageFunctions::getStoneResources($_SESSION['village_id']);
         $wood = VillageFunctions::getWoodResources($_SESSION['village_id']);
-        $storage = VillageFunctions::getStorrage($_SESSION['village_id']);
+        $storage = VillageFunctions::getStorrageLevel($_SESSION['village_id'])*1000;
         $username = Profile::getUsername($_SESSION['user_id']);
         $signUpDate = Profile::getSignUpDate($_SESSION['user_id']);
         $numberOfVillages = Profile::getNumberOfVillages($_SESSION['user_id']);

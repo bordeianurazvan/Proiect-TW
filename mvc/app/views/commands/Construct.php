@@ -42,8 +42,8 @@
         <div class="col-md-6 col-xs-9 col-sm-4 col-lg-4 Iron">
             <?php echo $data['iron']; ?> <img alt="Iron" src="/Proiect-TW/mvc/public/images/iron.png">
             <?php echo $data['wood']; ?> <img alt="Wood" src="/Proiect-TW/mvc/public/images/wood.png">
-            <?php echo $data['stone'];; ?> <img alt="Stone" src="/Proiect-TW/mvc/public/images/stone.png">
-            1000<img alt="Resources" src="/Proiect-TW/mvc/public/images/resources.png">
+            <?php echo $data['stone']; ?> <img alt="Stone" src="/Proiect-TW/mvc/public/images/stone.png">
+            <?php echo $data['storage'];?><img alt="Resources" src="/Proiect-TW/mvc/public/images/resources.png">
         </div>
     </div>
 
