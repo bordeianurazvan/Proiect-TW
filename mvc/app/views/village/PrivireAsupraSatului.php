@@ -39,14 +39,13 @@
 </div>
 <div class="col-md-8 col-xs-10 col-lg-8 col-sm-10 center">
     <div class="row">
-        <div class="col-md-4 col-xs-2 col-sm-6 col-lg-6 Village"><?php echo $data['village_name']; ?>
-        </div>
+        <div class="col-md-4 col-xs-2 col-sm-6 col-lg-6 Village"><?php echo $data['village_name']; ?></div>
         <div class="col md-2 col-xs-1 col-sm-2 col-lb-2"></div>
         <div class="col-md-6 col-xs-9 col-sm-4 col-lg-4 Iron">
             <?php echo $data['iron']; ?><img alt="Iron" src="/Proiect-TW/mvc/public/images/iron.png">
             <?php echo $data['wood']; ?><img alt="Wood" src="/Proiect-TW/mvc/public/images/wood.png">
             <?php echo $data['stone']; ?><img alt="Stone" src="/Proiect-TW/mvc/public/images/stone.png">
-            <?php echo $data['storage']; ?><img alt="Resources" src="/Proiect-TW/mvc/public/images/resources.png">
+            <?php echo ($data['storage']*1000); ?><img alt="Resources" src="/Proiect-TW/mvc/public/images/resources.png">
         </div>
     </div>
     <div class="row">
@@ -66,30 +65,30 @@
                 <script>
                     window.onload = function () {
                         var ImageMap = function (map, img) {
-                                    var n,
-                                            areas = map.getElementsByTagName('area'),
-                                            len = areas.length,
-                                            coords = [],
-                                            previousWidth = 800;
+                                var n,
+                                    areas = map.getElementsByTagName('area'),
+                                    len = areas.length,
+                                    coords = [],
+                                    previousWidth = 800;
+                                for (n = 0; n < len; n++) {
+                                    coords[n] = areas[n].coords.split(',');
+                                }
+                                this.resize = function () {
+                                    var n, m, clen,
+                                        x = img.offsetWidth / previousWidth;
                                     for (n = 0; n < len; n++) {
-                                        coords[n] = areas[n].coords.split(',');
-                                    }
-                                    this.resize = function () {
-                                        var n, m, clen,
-                                                x = img.offsetWidth / previousWidth;
-                                        for (n = 0; n < len; n++) {
-                                            clen = coords[n].length;
-                                            for (m = 0; m < clen; m++) {
-                                                coords[n][m] *= x;
-                                            }
-                                            areas[n].coords = coords[n].join(',');
+                                        clen = coords[n].length;
+                                        for (m = 0; m < clen; m++) {
+                                            coords[n][m] *= x;
                                         }
-                                        previousWidth = img.offsetWidth;
-                                        return true;
-                                    };
-                                    window.onresize = this.resize;
-                                },
-                                imageMap = new ImageMap(document.getElementById('map_id'), document.getElementById('my_image'));
+                                        areas[n].coords = coords[n].join(',');
+                                    }
+                                    previousWidth = img.offsetWidth;
+                                    return true;
+                                };
+                                window.onresize = this.resize;
+                            },
+                            imageMap = new ImageMap(document.getElementById('map_id'), document.getElementById('my_image'));
                         imageMap.resize();
                         return;
                     }
@@ -102,10 +101,10 @@
     </div>
     <div class="coloana row">
         <div class="trupe">
-            <img alt="Spear" src="/Proiect-TW/mvc/public/images/unit_spear.png"> :500
-            <img alt="Sword" src="/Proiect-TW/mvc/public/images/unit_sword.png"> :1000
-            <img alt="Axe" src="/Proiect-TW/mvc/public/images/unit_axe.png"> :1500
-            <img alt="Archer" src="/Proiect-TW/mvc/public/images/unit_archer.png"> :2000
+            <img alt="Spear" src="/Proiect-TW/mvc/public/images/unit_spear.png"> :<?php echo $data['spear']; ?>
+            <img alt="Sword" src="/Proiect-TW/mvc/public/images/unit_sword.png"> :<?php echo $data['sword']; ?>
+            <img alt="Axe" src="/Proiect-TW/mvc/public/images/unit_axe.png"> :<?php echo $data['axe']; ?>
+            <img alt="Archer" src="/Proiect-TW/mvc/public/images/unit_archer.png"> :<?php echo $data['archer']; ?>
         </div>
     </div>
     <div class="row">

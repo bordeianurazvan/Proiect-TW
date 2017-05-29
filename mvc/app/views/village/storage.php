@@ -18,17 +18,17 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-logo" href="info">
+            <a class="navbar-logo" href="/Proiect-TW/mvc/public/userProfile/info">
                 <img alt="Logo" src="/Proiect-TW/mvc/public/images/logocrop60%25.png" class="img-responsive">
             </a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/Proiect-TW/mvc/public/village/PrivireAsupraSatului"><span class="glyphicon glyphicon-home"></span> Home </a></li>
-                <li><a href="/Proiect-TW/mvc/public/user/profile"><span class="glyphicon glyphicon-user"></span> Profile </a></li>
-                <li><a href="/Proiect-TW/mvc/public/map/map"><span class="glyphicon glyphicon-globe"></span> Map </a></li>
-                <li><a href="/Proiect-TW/mvc/public/reports/reports"><span class="glyphicon glyphicon-comment"></span> Reports <span class="badge">17</span> </a></li>
-                <li><a href="/Proiect-TW/mvc/public/ranking/Ranking"><span class="glyphicon glyphicon-stats"></span> Ranking </a></li>
+                <li><a href="/Proiect-TW/mvc/public/village/privireAsupraSatului"><span class="glyphicon glyphicon-home"></span> Home </a></li>
+                <li><a href="/Proiect-TW/mvc/public/userProfile/getProfile"><span class="glyphicon glyphicon-user"></span> Profile </a></li>
+                <li><a href="/Proiect-TW/mvc/public/map/getMap"><span class="glyphicon glyphicon-globe"></span> Map </a></li>
+                <li><a href="/Proiect-TW/mvc/public/reports/reportslist"><span class="glyphicon glyphicon-comment"></span> Reports <span class="badge">17</span> </a></li>
+                <li><a href="/Proiect-TW/mvc/ranking/rankingPopulation"><span class="glyphicon glyphicon-stats"></span> Ranking </a></li>
                 <li><a href="/Proiect-TW/mvc/public"><span class="glyphicon glyphicon-off"></span> LogOut </a></li>
             </ul>
         </div>
@@ -37,17 +37,17 @@
 
 <div class="center">
     <div class="row">
-        <div class="col-md-4 col-xs-2 col-sm-6 col-lg-6 Village">Village (23|99)</div>
+        <div class="col-md-4 col-xs-2 col-sm-6 col-lg-6 Village"><?php echo $data['village_name']; ?></div>
         <div class="col md-2 col-xs-1 col-sm-2 col-lb-2"></div>
         <div class="col-md-6 col-xs-9 col-sm-4 col-lg-4 Iron" >
-            234 <img  alt="Iron" src="/Proiect-TW/mvc/public/images/iron.png">
-            543 <img alt="Wood" src="/Proiect-TW/mvc/public/images/wood.png">
-            532 <img alt="Stone" src="/Proiect-TW/mvc/public/images/stone.png">
-            1000<img alt="Resources" src="/Proiect-TW/mvc/public/images/resources.png">
+            <?php echo $data['iron']; ?><img alt="Iron" src="/Proiect-TW/mvc/public/images/iron.png">
+            <?php echo $data['wood']; ?><img alt="Wood" src="/Proiect-TW/mvc/public/images/wood.png">
+            <?php echo $data['stone']; ?><img alt="Stone" src="/Proiect-TW/mvc/public/images/stone.png">
+            <?php echo ($data['storage']*1000); ?><img alt="Resources" src="/Proiect-TW/mvc/public/images/resources.png">
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12 col-xs-12 img-responsive name"><img  alt="Storage" src="/Proiect-TW/mvc/public/images/storage.png">Storage (Level 23)</div>
+        <div class="col-md-12 col-xs-12 img-responsive name"><img  alt="Storage" src="/Proiect-TW/mvc/public/images/storage.png">Storage (Level <?php echo $data['storage']; ?>)</div>
     </div>
     <div class="row description">
         <div>The warehouse stores your resources. The higher its level the more resources can be stored.</div>
@@ -64,11 +64,11 @@
                 <tbody>
                 <tr>
                     <td>Current storage capacity</td>
-                    <td>94.184</td>
+                    <td><?php echo ($data['storage']*1000); ?></td>
                 </tr>
                 <tr>
-                    <td>Storage capacity on level 24</td>
-                    <td>115.798</td>
+                    <td>Storage capacity on level <?php echo ($data['storage']+1); ?></td>
+                    <td><?php echo (($data['storage']+1)*1000); ?></td>
                 </tr>
                 </tbody>
             </table>
@@ -84,15 +84,15 @@
                 <tbody>
                 <tr>
                     <td> <img  alt="Wood" src="/Proiect-TW/mvc/public/images/wood.png">Wood</td>
-                    <td>99:11:23</td>
+                    <td><?php echo $data['storageWoodTime']; ?></td>
                 </tr>
                 <tr>
                     <td> <img  alt="Stone" src="/Proiect-TW/mvc/public/images/stone.png">Stone</td>
-                    <td>99:11:23</td>
+                    <td><?php echo $data['storageStoneTime']; ?></td>
                 </tr>
                 <tr>
                     <td> <img  alt="Iron" src="/Proiect-TW/mvc/public/images/iron.png">Iron</td>
-                    <td>99:11:23</td>
+                    <td><?php echo $data['storageIronTime']; ?></td>
                 </tr>
                 </tbody>
             </table>
