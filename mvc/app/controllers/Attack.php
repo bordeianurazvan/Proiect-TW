@@ -18,12 +18,27 @@ class Attack extends Controller
         }
 
         if (!isset($_POST['x']) || !isset($_POST['y']) || !isset($_POST['spear']) ||
-            !isset($_POST['axe']) || !isset($_POST['sword']) || !isset($_POST['archer'])){
-            if ($status == 'failedattack')
-                $this->view('attack/atac', ['retry' => 'yes']);
-            else
-                $this->view('attack/atac', ['retry' => 'no']);
-        return;
+            !isset($_POST['axe']) || !isset($_POST['sword']) || !isset($_POST['archer'])) {
+            if ($status == 'failedattack') {
+                $reportsCount=Report::getReportsCount($_SESSION['user_id']);
+                $village_name = VillageFunctions::getVillageName($_SESSION['user_id']);
+                $iron = VillageFunctions::getIronResources($_SESSION['village_id']);
+                $stone = VillageFunctions::getStoneResources($_SESSION['village_id']);
+                $wood = VillageFunctions::getWoodResources($_SESSION['village_id']);
+                $storage = VillageFunctions::getStorrageLevel($_SESSION['village_id']);
+
+            $this->view('attack/atac', ['retry' => 'yes', 'reportsCount' => $reportsCount, 'village_name' => $village_name, 'iron' => $iron, 'stone' => $stone, 'wood' => $wood, 'storage' => (1000 * $storage)]);
+                 }
+            else {
+                $reportsCount=Report::getReportsCount($_SESSION['user_id']);
+                $village_name = VillageFunctions::getVillageName($_SESSION['user_id']);
+                $iron = VillageFunctions::getIronResources($_SESSION['village_id']);
+                $stone = VillageFunctions::getStoneResources($_SESSION['village_id']);
+                $wood = VillageFunctions::getWoodResources($_SESSION['village_id']);
+                $storage = VillageFunctions::getStorrageLevel($_SESSION['village_id']);
+                $this->view('attack/atac', ['retry' => 'no', 'reportsCount' => $reportsCount,   'village_name' => $village_name, 'iron' => $iron, 'stone' => $stone, 'wood' => $wood, 'storage' => (1000 * $storage)]);
+            }
+                return;
         }
 
         $cod_stare = AttackGenerator::generateAttack($_SESSION['village_id'],$_POST['x'],$_POST['y'],
@@ -49,6 +64,7 @@ class Attack extends Controller
             } else {
                 $nextPage=$page+1;
                 $prevPage=$page-1;
+                $reportsCount=Report::getReportsCount($_SESSION['user_id']);
                 $maxpage = TroopsMovements::getPages($_SESSION['village_id']);
                 $commands_table = TroopsMovements::generateCommands($page);
                 $village_name = VillageFunctions::getVillageName($_SESSION['user_id']);
@@ -56,7 +72,7 @@ class Attack extends Controller
                 $stone = VillageFunctions::getStoneResources($_SESSION['village_id']);
                 $wood = VillageFunctions::getWoodResources($_SESSION['village_id']);
                 $storage = VillageFunctions::getStorrageLevel($_SESSION['village_id']);
-                $this->view('attack/movements', ['maxPagesNumber'=>$maxpage,'prevPage'=>$prevPage,'nextPage'=>$nextPage,'village_name' => $village_name, 'iron' => $iron, 'stone' => $stone, 'wood' => $wood, 'storage' => (1000 * $storage), 'commands_table' => $commands_table]);
+                $this->view('attack/movements', ['reportsCount'=>$reportsCount,'maxPagesNumber'=>$maxpage,'prevPage'=>$prevPage,'nextPage'=>$nextPage,'village_name' => $village_name, 'iron' => $iron, 'stone' => $stone, 'wood' => $wood, 'storage' => (1000 * $storage), 'commands_table' => $commands_table]);
             }
 
         }

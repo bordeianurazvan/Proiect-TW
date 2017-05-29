@@ -33,7 +33,7 @@
                 <li><a href="/Proiect-Tw/mvc/public/village/PrivireAsupraSatului"><span class="glyphicon glyphicon-home"></span> Home </a></li>
                 <li><a href="/Proiect-Tw/mvc/public/user/profile"><span class="glyphicon glyphicon-user"></span> Profile </a></li>
                 <li><a href="/Proiect-Tw/mvc/public/map/getmap"><span class="glyphicon glyphicon-globe"></span> Map </a></li>
-                <li><a href="/Proiect-Tw/mvc/public/reports/reportslist"><span class="glyphicon glyphicon-comment"></span> Reports <span class="badge">17</span> </a></li>
+                <li><a href="/Proiect-Tw/mvc/public/reports/reportslist"><span class="glyphicon glyphicon-comment"></span> Reports <span class="badge"><?php echo $data['reportsCount']; ?></span> </a></li>
                 <li><a href="/Proiect-Tw/mvc/public/ranking/Ranking"><span class="glyphicon glyphicon-stats"></span> Ranking </a></li>
                 <li><a href="/Proiect-Tw/mvc/public/home/login"><span class="glyphicon glyphicon-off"></span> LogOut </a></li>
             </ul>
@@ -42,13 +42,13 @@
 </nav>
 <div class="center">
     <div class="row">
-        <div class="col-md-4 col-xs-2 col-sm-6 col-lg-6 Village">Village (23|99) </div>
+        <div class="col-md-4 col-xs-2 col-sm-6 col-lg-6 Village"><?php echo $data['village_name']; ?> </div>
         <div class="col md-2 col-xs-1 col-sm-2 col-lb-2"></div>
         <div class="col-md-6 col-xs-9 col-sm-4 col-lg-4 Iron"  >
-            234 <img alt="Iron" src="/Proiect-Tw/mvc/public/images/iron.png">
-            543 <img alt="Wood" src="/Proiect-Tw/mvc/public/images/wood.png">
-            532 <img alt="Stone" src="/Proiect-Tw/mvc/public/images/stone.png">
-            1000<img alt="Resources" src="/Proiect-Tw/mvc/public/images/resources.png">
+            <?php echo $data['iron']; ?><img alt="Iron" src="/Proiect-TW/mvc/public/images/iron.png">
+            <?php echo $data['wood']; ?><img alt="Wood" src="/Proiect-TW/mvc/public/images/wood.png">
+            <?php echo $data['stone']; ?><img alt="Stone" src="/Proiect-TW/mvc/public/images/stone.png">
+            <?php echo $data['storage']; ?><img alt="Resources" src="/Proiect-TW/mvc/public/images/resources.png">
         </div>
         </div>
  <div class="legend">Target's coordinates:</div>

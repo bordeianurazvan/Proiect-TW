@@ -24,12 +24,13 @@ class Map extends Controller
         }
             else {
             $harta = MapGenerator::getMap();
+                $reportsCount=Report::getReportsCount($_SESSION['user_id']);
                 $village_name = VillageFunctions::getVillageName($_SESSION['user_id']);
                 $iron = VillageFunctions::getIronResources($_SESSION['village_id']);
                 $stone = VillageFunctions::getStoneResources($_SESSION['village_id']);
                 $wood = VillageFunctions::getWoodResources($_SESSION['village_id']);
                 $storage = VillageFunctions::getStorrageLevel($_SESSION['village_id']);
-                $this->view('map/map',['generatedMap'=>$harta,'village_name'=>$village_name,'iron'=>$iron,'stone'=>$stone,'wood'=>$wood,'storage'=>(1000*$storage)]);
+                $this->view('map/map',['reportsCount'=>$reportsCount,'generatedMap'=>$harta,'village_name'=>$village_name,'iron'=>$iron,'stone'=>$stone,'wood'=>$wood,'storage'=>(1000*$storage)]);
         }
     }
 
