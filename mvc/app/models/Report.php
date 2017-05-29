@@ -276,4 +276,82 @@ class Report
         $row=oci_fetch_row($stmt);
         return $row[0];
     }
+    public static function getReportsPageCount($user_id){
+        $id=$user_id;
+        $query1="SELECT count(*) FROM reports WHERE user_id=:id";
+        $stmt=oci_parse(Db::getDbInstance(),$query1);
+        oci_bind_by_name($stmt,":id",$id);
+        oci_execute($stmt);
+        $row=oci_fetch_row($stmt);
+        $pagesCount=$row[0]/10+1;
+        return $pagesCount;
+    }
+    public static function getReportsPage($page,$user_id){
+        $from=($page-1)*10+1;
+        $to=$page*10;
+        $id=$user_id;
+        $query1="select id, row_number 
+                from (select id, ROWNUM as row_number from
+                                        (SELECT id 
+                                        FROM reports 
+                                        WHERE user_id=:id
+                                        order by generation_time desc))
+                where row_number>=:from_pos and row_number<=:to_pos";
+        $stmt=oci_parse(Db::getDbInstance(),$query1);
+        oci_bind_by_name($stmt,":id",$id);
+        oci_bind_by_name($stmt,":from_pos",$from);
+        oci_bind_by_name($stmt,":to_pos",$to);
+        oci_execute($stmt);
+        $resultList=array();
+        while(($row=oci_fetch_row($stmt))!=false){
+            array_push($resultList,$row[0]);
+        }
+        return $resultList;
+    }
+
+    public static function getReportsTitlePage($page,$user_id){
+        $from=($page-1)*10+1;
+        $to=$page*10;
+        $id=$user_id;
+        $query1="select title, row_number 
+                from (select title, ROWNUM as row_number from
+                                        (SELECT title 
+                                        FROM reports 
+                                        WHERE user_id=:id
+                                        order by generation_time desc))
+                where row_number>=:from_pos and row_number<=:to_pos";
+        $stmt=oci_parse(Db::getDbInstance(),$query1);
+        oci_bind_by_name($stmt,":id",$id);
+        oci_bind_by_name($stmt,":from_pos",$from);
+        oci_bind_by_name($stmt,":to_pos",$to);
+        oci_execute($stmt);
+        $resultList=array();
+        while(($row=oci_fetch_row($stmt))!=false){
+            array_push($resultList,$row[0]);
+        }
+        return $resultList;
+    }
+
+    public static function getReportsTimePage($page,$user_id){
+        $from=($page-1)*10+1;
+        $to=$page*10;
+        $id=$user_id;
+        $query1="select cast(generation_time as timestamp(0)), row_number 
+                from (select generation_time, ROWNUM as row_number from
+                                        (SELECT generation_time 
+                                        FROM reports 
+                                        WHERE user_id=:id
+                                        order by generation_time desc))
+                where row_number>=:from_pos and row_number<=:to_pos";
+        $stmt=oci_parse(Db::getDbInstance(),$query1);
+        oci_bind_by_name($stmt,":id",$id);
+        oci_bind_by_name($stmt,":from_pos",$from);
+        oci_bind_by_name($stmt,":to_pos",$to);
+        oci_execute($stmt);
+        $resultList=array();
+        while(($row=oci_fetch_row($stmt))!=false){
+            array_push($resultList,$row[0]);
+        }
+        return $resultList;
+    }
 }

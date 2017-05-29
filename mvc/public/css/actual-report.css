@@ -24,7 +24,19 @@ body{
     background-size: 100% 100%;
 }
 
+.attackerText{
+    color:darkred;
+}
+.defenderText{
+    color:darkgreen;
+}
+.resMessageText{
 
+    background-image: url("../images/fontButon30%25.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    margin-bottom: 2px;
+}
 .row{
     margin: auto;
 

@@ -10,11 +10,39 @@ class Reports extends Controller
 {
     public function reportslist($page=' ')
     {
+        SessionValidate::validateSession();
         $reportsCount=Report::getReportsCount($_SESSION['user_id']);
-        $this->view('reports/reports',['reportsCount'=>$reportsCount]);
+        if($page>Report::getReportsPageCount($_SESSION['user_id'])) {
+            header('Location: /Proiect-TW/mvc/public/reports/reportslist/1');
+        }else{
+            if($page<1) {
+                header('Location: /Proiect-TW/mvc/public/reports/reportslist/1');
+            }else{
+                $currentPage=$page;
+                $nextPage=$page+1;
+                $prevPage=$page-1;
+                $maxPagesNumber=Report::getReportsPageCount($_SESSION['user_id']);
+                $resultsList=Report::getReportsPage($page,$_SESSION['user_id']);
+                $titlesList=Report::getReportsTitlePage($page,$_SESSION['user_id']);
+                $dateList=Report::getReportsTimePage($page,$_SESSION['user_id']);
+                $village_name = VillageFunctions::getVillageName($_SESSION['user_id']);
+                $iron = VillageFunctions::getIronResources($_SESSION['village_id']);
+                $stone = VillageFunctions::getStoneResources($_SESSION['village_id']);
+                $wood = VillageFunctions::getWoodResources($_SESSION['village_id']);
+                $storage = VillageFunctions::getStorrage($_SESSION['village_id']);
+
+                $this->view('reports/reports', ['reportsCount' => $reportsCount,
+                    'resultsList'=>$resultsList,'titlesList'=>$titlesList,'dateList'=>$dateList,
+                    'currentPage'=>$currentPage,'nextPage'=>$nextPage,'prevPage'=>$prevPage,
+                    'village_name'=>$village_name,'iron'=>$iron,'stone'=>$stone,'wood'=>$wood,
+                    'storage'=>$storage,'maxPagesNumber'=>$maxPagesNumber
+                    ]);
+            }
+        }
         return;
     }
     public function report($report_id=' '){
+        SessionValidate::validateSession();
         if(Report::checkReport($report_id)) {
             $reportsCount=Report::getReportsCount($_SESSION['user_id']);
             $title=Report::getTitle($report_id);
@@ -39,13 +67,19 @@ class Reports extends Controller
             $attVillageName=Report::getAttackerVillageName($report_id);
             $defVillageName=Report::getDefenderVillageName($report_id);
             $msg=Report::getMessage($report_id);
+            $village_name = VillageFunctions::getVillageName($_SESSION['user_id']);
+            $iron = VillageFunctions::getIronResources($_SESSION['village_id']);
+            $stone = VillageFunctions::getStoneResources($_SESSION['village_id']);
+            $wood = VillageFunctions::getWoodResources($_SESSION['village_id']);
+            $storage = VillageFunctions::getStorrage($_SESSION['village_id']);
             $this->view('reports/actual-report',
                 ['title'=>$title,'attSpearC'=>$attSearC,'attAxeC'=>$attAxeC,'attSwordC'=>$attSwordC,'attArcherC'=>$attArcherC,
                     'defSpearC'=>$defSpearC,'defAxeC'=>$defAxeC,'defSwordC'=>$defSwordC,'defArcherC'=>$defArcherC,
                     'attSpearD'=>$attSpearD,'attAxeD'=>$attAxeD,'attSwordD'=>$attSwordD,'attArcherD'=>$attArcherD,
                     'defSpearD'=>$defSpearD,'defAxeD'=>$defAxeD,'defSwordD'=>$defSwordD,'defArcherD'=>$defArcherD,
                     'attName'=>$attName,'defName'=>$defName,'attVillageName'=>$attVillageName,'defVillageName'=>$defVillageName,
-                    'msg'=>$msg,'reportsCount'=>$reportsCount
+                    'msg'=>$msg,'reportsCount'=>$reportsCount,'village_name'=>$village_name,'iron'=>$iron,'stone'=>$stone,
+                    'wood'=>$wood, 'storage'=>$storage
                     ]);
         }
         else{
