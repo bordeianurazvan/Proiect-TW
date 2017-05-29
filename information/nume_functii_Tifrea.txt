@@ -1,0 +1,2 @@
+reports:   reports/reportslist
+actual-report: reports/report
