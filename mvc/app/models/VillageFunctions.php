@@ -51,13 +51,76 @@ class VillageFunctions
         return $row[0];
     }
 
-    public  static function getStorrage($village_id)
+    public static function getStorrageLevel($village_id)
     {
         $query = "SELECT building_level FROM  villagebuildings WHERE  building_id = 7 and village_id = :village_id";
         $statement = oci_parse(Db::getDbInstance(),$query);
         oci_bind_by_name($statement, "village_id",$village_id);
         oci_execute($statement);
         $row =oci_fetch_row($statement);
-        return ($row[0]*1000);
+        return $row[0];
+    }
+    public static  function  getIronLevel($village_id)
+    {
+        $query = "SELECT building_level FROM  villagebuildings WHERE  building_id = 6 and village_id = :village_id";
+        $statement = oci_parse(Db::getDbInstance(), $query);
+        oci_bind_by_name($statement, "village_id", $village_id);
+        oci_execute($statement);
+        $row = oci_fetch_row($statement);
+        return ($row[0]);
+    }
+    public static  function  getStoneLevel($village_id)
+    {
+        $query = "SELECT building_level FROM  villagebuildings WHERE  building_id = 4 and village_id = :village_id";
+        $statement = oci_parse(Db::getDbInstance(), $query);
+        oci_bind_by_name($statement, "village_id", $village_id);
+        oci_execute($statement);
+        $row = oci_fetch_row($statement);
+        return ($row[0]);
+    }
+    public static  function  getWoodLevel($village_id)
+    {
+        $query = "SELECT building_level FROM  villagebuildings WHERE  building_id = 5 and village_id = :village_id";
+        $statement = oci_parse(Db::getDbInstance(), $query);
+        oci_bind_by_name($statement, "village_id", $village_id);
+        oci_execute($statement);
+        $row = oci_fetch_row($statement);
+        return ($row[0]);
+    }
+    public static function  getSpearNumber($village_id)
+    {
+        $query = "SELECT troop_number FROM  villagetroops WHERE  troop_id = 1 and village_id = :village_id";
+        $statement = oci_parse(Db::getDbInstance(), $query);
+        oci_bind_by_name($statement, "village_id", $village_id);
+        oci_execute($statement);
+        $row = oci_fetch_row($statement);
+        return ($row[0]);
+    }
+    public static function  getAxeNumber($village_id)
+    {
+        $query = "SELECT troop_number FROM  villagetroops WHERE  troop_id = 2 and village_id = :village_id";
+        $statement = oci_parse(Db::getDbInstance(), $query);
+        oci_bind_by_name($statement, "village_id", $village_id);
+        oci_execute($statement);
+        $row = oci_fetch_row($statement);
+        return ($row[0]);
+    }
+    public static function  getSwordNumber($village_id)
+    {
+        $query = "SELECT troop_number FROM  villagetroops WHERE  troop_id = 3 and village_id = :village_id";
+        $statement = oci_parse(Db::getDbInstance(), $query);
+        oci_bind_by_name($statement, "village_id", $village_id);
+        oci_execute($statement);
+        $row = oci_fetch_row($statement);
+        return ($row[0]);
+    }
+    public static function  getArcherNumber($village_id)
+    {
+        $query = "SELECT troop_number FROM  villagetroops WHERE  troop_id = 4 and village_id = :village_id";
+        $statement = oci_parse(Db::getDbInstance(), $query);
+        oci_bind_by_name($statement, "village_id", $village_id);
+        oci_execute($statement);
+        $row = oci_fetch_row($statement);
+        return ($row[0]);
     }
 }
