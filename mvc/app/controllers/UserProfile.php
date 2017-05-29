@@ -11,6 +11,11 @@ class UserProfile extends Controller
     public function getProfile()
     {
         SessionValidate::validateSession();
+        $village_name = VillageFunctions::getVillageName($_SESSION['user_id']);
+        $iron = VillageFunctions::getIronResources($_SESSION['village_id']);
+        $stone = VillageFunctions::getStoneResources($_SESSION['village_id']);
+        $wood = VillageFunctions::getWoodResources($_SESSION['village_id']);
+        $storage = VillageFunctions::getStorrage($_SESSION['village_id']);
         $username = Profile::getUsername($_SESSION['user_id']);
         $signUpDate = Profile::getSignUpDate($_SESSION['user_id']);
         $numberOfVillages = Profile::getNumberOfVillages($_SESSION['user_id']);
@@ -19,7 +24,8 @@ class UserProfile extends Controller
         if($username != null && $signUpDate != null && $numberOfVillages != null && $varsta != null )
         {
             $this->view('user/profile',['username'=>$username,'signUpDate'=>$signUpDate,
-                                              'numberOfVillages'=>$numberOfVillages,'varsta'=>$varsta]);
+                'numberOfVillages'=>$numberOfVillages,'varsta'=>$varsta,'village_name'=>$village_name,
+                'iron'=>$iron,'stone'=>$stone,'wood'=>$wood,'storage'=>$storage]);
         }
 
 

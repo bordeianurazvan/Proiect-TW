@@ -8,7 +8,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/jquery.dataTables.min.js"></script>
-    <link rel="stylesheet" href="css/Construct.css">
+    <link rel="stylesheet" href="/Proiect-TW/mvc/public/css/Construct.css">
 </head>
 <body>
 <nav class="navbar navbar-default">
@@ -19,31 +19,31 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-logo" href="info.html">
-                <img alt="Logo" src="images/logocrop60%25.png" class="img-responsive">
+            <a class="navbar-logo" href="/Proiect-TW/mvc/public/userProfile/info">
+                <img alt="Logo" src="/Proiect-TW/mvc/public/images/logocrop60%25.png" class="img-responsive">
             </a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="PrivireAsupraSatului.html"><span class="glyphicon glyphicon-home"></span> Home </a></li>
-                <li><a href="profile.html"><span class="glyphicon glyphicon-user"></span> Profile </a></li>
-                <li><a href="map.html"><span class="glyphicon glyphicon-globe"></span> Map </a></li>
-                <li><a href="reports.html"><span class="glyphicon glyphicon-comment"></span> Reports <span class="badge">17</span> </a></li>
-                <li><a href="Ranking.html"><span class="glyphicon glyphicon-stats"></span> Ranking </a></li>
-                <li><a href="login.html"><span class="glyphicon glyphicon-off"></span> LogOut </a></li>
+                <li><a href="/Proiect-TW/mvc/public/village/privireAsupraSatului"><span class="glyphicon glyphicon-home"></span> Home </a></li>
+                <li><a href="/Proiect-TW/mvc/public/userProfile/getProfile"><span class="glyphicon glyphicon-user"></span> Profile </a></li>
+                <li><a href="/Proiect-TW/mvc/public/map/getMap"><span class="glyphicon glyphicon-globe"></span> Map </a></li>
+                <li><a href="/Proiect-TW/mvc/public/reports/reportslist"><span class="glyphicon glyphicon-comment"></span> Reports <span class="badge">17</span> </a></li>
+                <li><a href="/Proiect-TW/mvc/ranking/rankingPopulation"><span class="glyphicon glyphicon-stats"></span> Ranking </a></li>
+                <li><a href="/Proiect-TW/mvc/public"><span class="glyphicon glyphicon-off"></span> LogOut </a></li>
             </ul>
         </div>
     </div>
 </nav>
 <div class="center">
     <div class="row">
-        <div class="col-md-4 col-xs-2 col-sm-6 col-lg-6 Village">Village (23|99) </div>
+        <div class="col-md-4 col-xs-2 col-sm-6 col-lg-6 Village"><?php echo $data['village_name']; ?></div>
         <div class="col md-2 col-xs-1 col-sm-2 col-lg-2"></div>
         <div class="col-md-6 col-xs-9 col-sm-4 col-lg-4 Iron">
-            234 <img alt="Iron" src="images/iron.png">
-            543 <img alt="Wood" src="images/wood.png">
-            532 <img alt="Stone" src="images/stone.png">
-            1000<img alt="Resources" src="images/resources.png">
+            <?php echo $data['iron']; ?> <img alt="Iron" src="/Proiect-TW/mvc/public/images/iron.png">
+            <?php echo $data['wood']; ?> <img alt="Wood" src="/Proiect-TW/mvc/public/images/wood.png">
+            <?php echo $data['stone'];; ?> <img alt="Stone" src="/Proiect-TW/mvc/public/images/stone.png">
+            1000<img alt="Resources" src="/Proiect-TW/mvc/public/images/resources.png">
         </div>
     </div>
 
@@ -56,10 +56,10 @@
                         <tbody>
                         <tr>
                             <td>
-                                <img src="images/main3.png" alt="Main Build" >
+                                <img src="/Proiect-TW/mvc/public/images/main3.png" alt="Main Build" >
                             </td>
                             <td>
-                                <h4>Main Building (Level 4)</h4>
+                                <h4>Main Building (Level <?php echo $data['mainBuildingLevel']; ?>)</h4>
 
                                 In the Main Building you can construct new buildings or upgrade existing ones.
                                 The higher the level of your headquarters, the faster the constructions will be finished.
@@ -78,120 +78,136 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <a><img src="images/main3.png"  alt="Main Building" class="img-responsive"></a>
+                                    <a><img src="/Proiect-TW/mvc/public/images/main3.png"  alt="Main Building" class="img-responsive"></a>
                                     Main Building
                                     <br>
-                                    <span style="font-size: 0.9em">Level 4</span>
+                                    <span style="font-size: 0.9em">Level <?php echo $data['mainBuildingLevel']; ?></span>
                                 </td>
-                                <td class="cost_wood"><img alt="Wood" src="images/wood.png">227</td>
-                                <td class="cost_stone"><img alt="Stone" src="images/stone.png">211</td>
-                                <td class="cost_iron"><img alt="Iron" src="images/iron.png">176</td>
-                                <td><span class="glyphicon glyphicon-time "></span> 0:11:48</td>
+                                <td class="cost_wood"><img alt="Wood" src="/Proiect-TW/mvc/public/images/wood.png"><?php echo $data['mainBuildingNecessities']; ?></td>
+                                <td class="cost_stone"><img alt="Stone" src="/Proiect-TW/mvc/public/images/stone.png"><?php echo $data['mainBuildingNecessities']; ?></td>
+                                <td class="cost_iron"><img alt="Iron" src="/Proiect-TW/mvc/public/images/iron.png"><?php echo $data['mainBuildingNecessities']; ?></td>
+                                <td><span class="glyphicon glyphicon-time "></span>
+                                    <span id="count"><?php echo $data['mainBuildingTimeFinal'] ?></span> seconds
+
+                                </td>
                                 <td>
 
+                                    <a type="button" class="btn btn-primary btn-xs" id="startClock" href="#">Level <?php echo $data['mainBuildingLevel']+1; ?> </a>
+                                    <script>$('#startClock').click(function(){
+                                            var counter = <?php echo $data['mainBuildingTimeFinal'] ?>;
+                                            setInterval(function() {
+                                                counter--;
+                                                if (counter >= 0) {
+                                                    span = document.getElementById("count");
+                                                    span.innerHTML = counter;
+                                                }
+                                                if (counter === 0) {
+                                                    alert('Construction Finished');
+                                                    clearInterval(counter);
+                                                }
+                                            }, 1000);
 
-                                    <button type="button" class="btn btn-primary btn-xs">Level 5</button>
-
+                                        });</script>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <a><img src="images/barracks3.png" alt="Barracks" class="img-responsive"></a>
+                                    <a><img src="/Proiect-TW/mvc/public/images/barracks3.png" alt="Barracks" class="img-responsive"></a>
                                     Barracks
                                     <br>
-                                    <span style="font-size: 0.9em">Level 3</span>
+                                    <span style="font-size: 0.9em">Level <?php echo $data['barracksLevel']; ?></span>
                                 </td>
-                                <td class="cost_wood"><img alt="Wood" src="images/wood.png">400</td>
-                                <td class="cost_stone"><img alt="Stone" src="images/stone.png">357</td>
-                                <td class="cost_iron"><img alt="Iron" src="images/iron.png">180</td>
-                                <td><span class="glyphicon glyphicon-time "></span> 0:12:21</td>
+                                <td class="cost_wood"><img alt="Wood" src="/Proiect-TW/mvc/public/images/wood.png"><?php echo $data['barracksNecessities']; ?></td>
+                                <td class="cost_stone"><img alt="Stone" src="/Proiect-TW/mvc/public/images/stone.png"><?php echo $data['barracksNecessities']; ?></td>
+                                <td class="cost_iron"><img alt="Iron" src="/Proiect-TW/mvc/public/images/iron.png"><?php echo $data['barracksNecessities']; ?></td>
+                                <td><span class="glyphicon glyphicon-time "></span> <span id="count"><?php echo $data['barracksTimeFinal'] ?></span> seconds</td>
                                 <td>
 
-                                    <button type="button" class="btn btn-primary btn-xs">Level 4</button>
+                                    <button type="button" class="btn btn-primary btn-xs">Level <?php echo $data['barracksLevel']+1; ?></button>
 
                                 </td>
                             </tr>
                             <tr >
                                 <td>
-                                    <a><img src="images/storage3.png"  alt="Storage" class="img-responsive"></a>
+                                    <a><img src="/Proiect-TW/mvc/public/images/storage3.png"  alt="Storage" class="img-responsive"></a>
                                     Storage
                                     <br>
-                                    <span style="font-size: 0.9em">Nivelul 2</span>
+                                    <span style="font-size: 0.9em">Nivelul <?php echo $data['storageLevel']; ?></span>
                                 </td>
-                                <td class="cost_wood"><img alt="Wood" src="images/wood.png">96</td>
-                                <td class="cost_stone"><img alt="Stone" src="images/stone.png">81</td>
-                                <td class="cost_iron"><img alt="Iron" src="images/iron.png"> 62</td>
-                                <td><span class="glyphicon glyphicon-time "></span> 0:02:15</td>
+                                <td class="cost_wood"><img alt="Wood" src="/Proiect-TW/mvc/public/images/wood.png"><?php echo $data['storageNecessities']; ?></td>
+                                <td class="cost_stone"><img alt="Stone" src="/Proiect-TW/mvc/public/images/stone.png"><?php echo $data['storageNecessities']; ?></td>
+                                <td class="cost_iron"><img alt="Iron" src="/Proiect-TW/mvc/public/images/iron.png"> <?php echo $data['storageNecessities']; ?></td>
+                                <td><span class="glyphicon glyphicon-time "></span> <span id="count"><?php echo $data['storageTimeFinal'] ?></span> seconds</td>
                                 <td>
 
-                                    <button type="button" class="btn btn-primary btn-xs">Level 3</button>
+                                    <button type="button" class="btn btn-primary btn-xs">Level <?php echo $data['storageLevel']+1; ?></button>
 
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <a><img src="images/wall3.png" alt="Wall" class="img-responsive"></a>
+                                    <a><img src="/Proiect-TW/mvc/public/images/wall3.png" alt="Wall" class="img-responsive"></a>
                                     Wall
                                     <br>
-                                    <span style="font-size: 0.9em">Level 1</span>
+                                    <span style="font-size: 0.9em">Level <?php echo $data['wallLevel']; ?></span>
                                 </td>
-                                <td class="cost_wood"><img alt="Wood" src="images/wood.png">63</td>
-                                <td class="cost_stone"><img alt="Stone" src="images/stone.png">128</td>
-                                <td class="cost_iron"><img alt="Iron" src="images/iron.png"> 25</td>
-                                <td><span class="glyphicon glyphicon-time "></span> 0:04:00</td>
+                                <td class="cost_wood"><img alt="Wood" src="/Proiect-TW/mvc/public/images/wood.png"><?php echo $data['wallNecessities']; ?></td>
+                                <td class="cost_stone"><img alt="Stone" src="/Proiect-TW/mvc/public/images/stone.png"><?php echo $data['wallNecessities']; ?></td>
+                                <td class="cost_iron"><img alt="Iron" src="/Proiect-TW/mvc/public/images/iron.png"> <?php echo $data['wallNecessities']; ?></td>
+                                <td><span class="glyphicon glyphicon-time "></span> <span id="count"><?php echo $data['wallTimeFinal'] ?></span> seconds</td>
                                 <td>
-                                    <button type="button" class="btn btn-primary btn-xs">Level 2</button>
+                                    <button type="button" class="btn btn-primary btn-xs">Level <?php echo $data['wallLevel']+1; ?></button>
 
                                 </td>
                             </tr>
 
                             <tr>
                                 <td>
-                                    <a><img src="images/wood3.png" alt="Wood" class="img-responsive"></a>
+                                    <a><img src="/Proiect-TW/mvc/public/images/wood3.png" alt="Wood" class="img-responsive"></a>
                                     Wood
                                     <br>
-                                    <span style="font-size: 0.9em">Level 1</span>
+                                    <span style="font-size: 0.9em">Level <?php echo $data['woodLevel']; ?></span>
                                 </td>
-                                <td class="cost_wood"><img alt="Wood" src="images/wood.png">70</td>
-                                <td class="cost_stone"><img alt="Stone" src="images/stone.png">130</td>
-                                <td class="cost_iron"><img alt="Iron" src="images/iron.png"> 30</td>
-                                <td><span class="glyphicon glyphicon-time "></span> 0:03:10</td>
+                                <td class="cost_wood"><img alt="Wood" src="/Proiect-TW/mvc/public/images/wood.png"><?php echo $data['woodNecessities']; ?></td>
+                                <td class="cost_stone"><img alt="Stone" src="/Proiect-TW/mvc/public/images/stone.png"><?php echo $data['woodNecessities']; ?></td>
+                                <td class="cost_iron"><img alt="Iron" src="/Proiect-TW/mvc/public/images/iron.png"> <?php echo $data['woodNecessities']; ?></td>
+                                <td><span class="glyphicon glyphicon-time "></span> <span id="count"><?php echo $data['woodTimeFinal'] ?></span> seconds</td>
                                 <td>
-                                    <button type="button" class="btn btn-primary btn-xs">Level 2</button>
+                                    <button type="button" class="btn btn-primary btn-xs">Level <?php echo $data['woodLevel']+1; ?></button>
 
                                 </td>
                             </tr>
 
                             <tr>
                                 <td>
-                                    <a><img src="images/iron3.png" alt="Iron" class="img-responsive"></a>
+                                    <a><img src="/Proiect-TW/mvc/public/images/iron3.png" alt="Iron" class="img-responsive"></a>
                                     Iron
                                     <br>
-                                    <span style="font-size: 0.9em">Level 1</span>
+                                    <span style="font-size: 0.9em">Level <?php echo $data['ironLevel']; ?></span>
                                 </td>
-                                <td class="cost_wood"><img alt="Wood" src="images/wood.png">75</td>
-                                <td class="cost_stone"><img alt="Stone" src="images/stone.png">100</td>
-                                <td class="cost_iron"><img alt="Iron" src="images/iron.png"> 80</td>
-                                <td><span class="glyphicon glyphicon-time "></span> 0:05:10</td>
+                                <td class="cost_wood"><img alt="Wood" src="/Proiect-TW/mvc/public/images/wood.png"><?php echo $data['ironNecessities']; ?></td>
+                                <td class="cost_stone"><img alt="Stone" src="/Proiect-TW/mvc/public/images/stone.png"><?php echo $data['ironNecessities']; ?></td>
+                                <td class="cost_iron"><img alt="Iron" src="/Proiect-TW/mvc/public/images/iron.png"> <?php echo $data['ironNecessities']; ?></td>
+                                <td><span class="glyphicon glyphicon-time "></span> <span id="count"><?php echo $data['ironTimeFinal'] ?></span> seconds</td>
                                 <td>
-                                    <button type="button" class="btn btn-primary btn-xs">Level 2</button>
+                                    <button type="button" class="btn btn-primary btn-xs">Level <?php echo $data['ironLevel']+1; ?></button>
 
                                 </td>
                             </tr>
 
                             <tr>
                                 <td>
-                                    <a><img src="images/stone3.png" alt="Stone" class="img-responsive"></a>
+                                    <a><img src="/Proiect-TW/mvc/public/images/stone3.png" alt="Stone" class="img-responsive"></a>
                                     Stone
                                     <br>
-                                    <span style="font-size: 0.9em">Level 1</span>
+                                    <span style="font-size: 0.9em">Level <?php echo $data['stoneLevel']; ?></span>
                                 </td>
-                                <td class="cost_wood"><img alt="Wood" src="images/wood.png">60</td>
-                                <td class="cost_stone"><img alt="Stone" src="images/stone.png">80</td>
-                                <td class="cost_iron"><img alt="Iron" src="images/iron.png">150</td>
-                                <td><span class="glyphicon glyphicon-time "></span> 0:06:10</td>
+                                <td class="cost_wood"><img alt="Wood" src="/Proiect-TW/mvc/public/images/wood.png"><?php echo $data['stoneNecessities']; ?></td>
+                                <td class="cost_stone"><img alt="Stone" src="/Proiect-TW/mvc/public/images/stone.png"><?php echo $data['stoneNecessities']; ?></td>
+                                <td class="cost_iron"><img alt="Iron" src="/Proiect-TW/mvc/public/images/iron.png"><?php echo $data['stoneNecessities']; ?></td>
+                                <td><span class="glyphicon glyphicon-time "></span> <span id="count"><?php echo $data['stoneTimeFinal'] ?></span> seconds</td>
                                 <td>
-                                    <button type="button" class="btn btn-primary btn-xs">Level 2</button>
+                                    <button type="button" class="btn btn-primary btn-xs">Level <?php echo $data['stoneLevel']+1; ?></button>
 
                                 </td>
                             </tr>
