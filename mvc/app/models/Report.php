@@ -283,7 +283,7 @@ class Report
         oci_bind_by_name($stmt,":id",$id);
         oci_execute($stmt);
         $row=oci_fetch_row($stmt);
-        $pagesCount=$row[0]/10+1;
+        $pagesCount=intdiv($row[0],10)+1;
         return $pagesCount;
     }
     public static function getReportsPage($page,$user_id){

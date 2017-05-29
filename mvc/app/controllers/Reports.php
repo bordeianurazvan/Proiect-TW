@@ -8,7 +8,7 @@ session_start();
  */
 class Reports extends Controller
 {
-    public function reportslist($page=' ')
+    public function reportslist($page='')
     {
         SessionValidate::validateSession();
         $reportsCount=Report::getReportsCount($_SESSION['user_id']);
@@ -29,7 +29,7 @@ class Reports extends Controller
                 $iron = VillageFunctions::getIronResources($_SESSION['village_id']);
                 $stone = VillageFunctions::getStoneResources($_SESSION['village_id']);
                 $wood = VillageFunctions::getWoodResources($_SESSION['village_id']);
-                $storage = VillageFunctions::getStorrage($_SESSION['village_id']);
+                $storage = VillageFunctions::getStorrageLevel($_SESSION['village_id'])*1000;
 
                 $this->view('reports/reports', ['reportsCount' => $reportsCount,
                     'resultsList'=>$resultsList,'titlesList'=>$titlesList,'dateList'=>$dateList,
@@ -41,7 +41,7 @@ class Reports extends Controller
         }
         return;
     }
-    public function report($report_id=' '){
+    public function report($report_id=''){
         SessionValidate::validateSession();
         if(Report::checkReport($report_id)) {
             $reportsCount=Report::getReportsCount($_SESSION['user_id']);
@@ -71,7 +71,7 @@ class Reports extends Controller
             $iron = VillageFunctions::getIronResources($_SESSION['village_id']);
             $stone = VillageFunctions::getStoneResources($_SESSION['village_id']);
             $wood = VillageFunctions::getWoodResources($_SESSION['village_id']);
-            $storage = VillageFunctions::getStorrage($_SESSION['village_id']);
+            $storage = VillageFunctions::getStorrageLevel($_SESSION['village_id'])*1000;
             $this->view('reports/actual-report',
                 ['title'=>$title,'attSpearC'=>$attSearC,'attAxeC'=>$attAxeC,'attSwordC'=>$attSwordC,'attArcherC'=>$attArcherC,
                     'defSpearC'=>$defSpearC,'defAxeC'=>$defAxeC,'defSwordC'=>$defSwordC,'defArcherC'=>$defArcherC,
