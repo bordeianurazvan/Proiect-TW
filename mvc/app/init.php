@@ -17,4 +17,5 @@ require_once 'models/MainBuilding.php';
 require_once 'models/Barracks.php';
 require_once  'models/AttackGenerator.php';
 require_once  'models/TroopsMovements.php';
+require_once 'models/RankingFunctions.php';
 ?>

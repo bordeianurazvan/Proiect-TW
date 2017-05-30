@@ -37,6 +37,15 @@ class VillageFunctions
         $_SESSION['village_id']=$row1[0];
         return $row[0];
     }
+    public static function getVillageNameById($village_id)
+    {
+        $query="select village_name from villages where village_id = :village_id";
+        $statement = oci_parse(Db::getDbInstance(),$query);
+        oci_bind_by_name($statement, "village_id", $village_id);
+        oci_execute($statement);
+        $row = oci_fetch_row($statement);
+        return $row[0];
+    }
     public static function validateVillage($x, $y , $user_id)
     {
         $query="select user_id from villages where coord_x = $x and coord_y = $y ";
