@@ -29,7 +29,7 @@
                 <li><a href="/Proiect-TW/mvc/public/userProfile/getProfile"><span class="glyphicon glyphicon-user"></span> Profile </a></li>
                 <li><a href="/Proiect-TW/mvc/public/map/getMap"><span class="glyphicon glyphicon-globe"></span> Map </a></li>
                 <li><a href="/Proiect-TW/mvc/public/reports/reportslist"><span class="glyphicon glyphicon-comment"></span> Reports <span class="badge">17</span> </a></li>
-                <li><a href="/Proiect-TW/mvc/ranking/rankingPopulation"><span class="glyphicon glyphicon-stats"></span> Ranking </a></li>
+                <li><a href="/Proiect-TW/mvc/public/ranking/rankingPopulation"><span class="glyphicon glyphicon-stats"></span> Ranking </a></li>
                 <li><a href="/Proiect-TW/mvc/public"><span class="glyphicon glyphicon-off"></span> LogOut </a></li>
             </ul>
         </div>
@@ -87,27 +87,13 @@
                                 <td class="cost_stone"><img alt="Stone" src="/Proiect-TW/mvc/public/images/stone.png"><?php echo $data['mainBuildingNecessities']; ?></td>
                                 <td class="cost_iron"><img alt="Iron" src="/Proiect-TW/mvc/public/images/iron.png"><?php echo $data['mainBuildingNecessities']; ?></td>
                                 <td><span class="glyphicon glyphicon-time "></span>
-                                    <span id="count"><?php echo $data['mainBuildingTimeFinal'] ?></span> seconds
+                                    <span><?php if ($data['mainInConstruction']==0) echo 'Construction time:'.$data['mainBuildingTimeFinal'].' seconds'; ?></span>
+                                    <span><?php  if ($data['mainInConstruction']!=0) echo 'Construction finish on: '.$data['mainBuildingEndTime']; ?></span>
 
                                 </td>
                                 <td>
 
-                                    <a type="button" class="btn btn-primary btn-xs" id="startClock" href="#">Level <?php echo $data['mainBuildingLevel']+1; ?> </a>
-                                    <script>$('#startClock').click(function(){
-                                            var counter = <?php echo $data['mainBuildingTimeFinal'] ?>;
-                                            setInterval(function() {
-                                                counter--;
-                                                if (counter >= 0) {
-                                                    span = document.getElementById("count");
-                                                    span.innerHTML = counter;
-                                                }
-                                                if (counter === 0) {
-                                                    alert('Construction Finished');
-                                                    clearInterval(counter);
-                                                }
-                                            }, 1000);
-
-                                        });</script>
+                                    <a type="button" class="btn btn-primary btn-xs" id="startClock" href="/Proiect-Tw/mvc/public/commands/contructOrder/1">Level <?php echo $data['mainBuildingLevel']+1; ?> </a>
                                 </td>
                             </tr>
                             <tr>
@@ -120,11 +106,14 @@
                                 <td class="cost_wood"><img alt="Wood" src="/Proiect-TW/mvc/public/images/wood.png"><?php echo $data['barracksNecessities']; ?></td>
                                 <td class="cost_stone"><img alt="Stone" src="/Proiect-TW/mvc/public/images/stone.png"><?php echo $data['barracksNecessities']; ?></td>
                                 <td class="cost_iron"><img alt="Iron" src="/Proiect-TW/mvc/public/images/iron.png"><?php echo $data['barracksNecessities']; ?></td>
-                                <td><span class="glyphicon glyphicon-time "></span> <span id="count"><?php echo $data['barracksTimeFinal'] ?></span> seconds</td>
+                                <td><span class="glyphicon glyphicon-time "></span>
+                                    <span><?php if ($data['barracksInConstruction']==0) echo 'Construction time:'.$data['barracksTimeFinal'].' seconds'; ?></span>
+                                    <span><?php  if ($data['barracksInConstruction']!=0) echo 'Construction finish on: '.$data['barracksEndTime']; ?></span>
+
+                                </td>
                                 <td>
 
-                                    <button type="button" class="btn btn-primary btn-xs">Level <?php echo $data['barracksLevel']+1; ?></button>
-
+                                    <a type="button" class="btn btn-primary btn-xs" id="startClock" href="/Proiect-Tw/mvc/public/commands/contructOrder/1">Level <?php echo $data['barracksLevel']+1; ?> </a>
                                 </td>
                             </tr>
                             <tr >
@@ -132,16 +121,19 @@
                                     <a><img src="/Proiect-TW/mvc/public/images/storage3.png"  alt="Storage" class="img-responsive"></a>
                                     Storage
                                     <br>
-                                    <span style="font-size: 0.9em">Nivelul <?php echo $data['storageLevel']; ?></span>
+                                    <span style="font-size: 0.9em">Level <?php echo $data['storageLevel']; ?></span>
                                 </td>
                                 <td class="cost_wood"><img alt="Wood" src="/Proiect-TW/mvc/public/images/wood.png"><?php echo $data['storageNecessities']; ?></td>
                                 <td class="cost_stone"><img alt="Stone" src="/Proiect-TW/mvc/public/images/stone.png"><?php echo $data['storageNecessities']; ?></td>
                                 <td class="cost_iron"><img alt="Iron" src="/Proiect-TW/mvc/public/images/iron.png"> <?php echo $data['storageNecessities']; ?></td>
-                                <td><span class="glyphicon glyphicon-time "></span> <span id="count"><?php echo $data['storageTimeFinal'] ?></span> seconds</td>
+                                <td><span class="glyphicon glyphicon-time "></span>
+                                    <span><?php if ($data['storageInConstruction']==0) echo 'Construction time:'.$data['storageTimeFinal'].' seconds'; ?></span>
+                                    <span><?php  if ($data['storageInConstruction']!=0) echo 'Construction finish on: '.$data['storageEndTime']; ?></span>
+
+                                </td>
                                 <td>
 
-                                    <button type="button" class="btn btn-primary btn-xs">Level <?php echo $data['storageLevel']+1; ?></button>
-
+                                    <a type="button" class="btn btn-primary btn-xs" id="startClock" href="/Proiect-Tw/mvc/public/commands/contructOrder/1">Level <?php echo $data['storageLevel']+1; ?> </a>
                                 </td>
                             </tr>
                             <tr>
@@ -154,10 +146,14 @@
                                 <td class="cost_wood"><img alt="Wood" src="/Proiect-TW/mvc/public/images/wood.png"><?php echo $data['wallNecessities']; ?></td>
                                 <td class="cost_stone"><img alt="Stone" src="/Proiect-TW/mvc/public/images/stone.png"><?php echo $data['wallNecessities']; ?></td>
                                 <td class="cost_iron"><img alt="Iron" src="/Proiect-TW/mvc/public/images/iron.png"> <?php echo $data['wallNecessities']; ?></td>
-                                <td><span class="glyphicon glyphicon-time "></span> <span id="count"><?php echo $data['wallTimeFinal'] ?></span> seconds</td>
-                                <td>
-                                    <button type="button" class="btn btn-primary btn-xs">Level <?php echo $data['wallLevel']+1; ?></button>
+                                <td><span class="glyphicon glyphicon-time "></span>
+                                    <span><?php if ($data['wallInConstruction']==0) echo 'Construction time:'.$data['wallTimeFinal'].' seconds'; ?></span>
+                                    <span><?php  if ($data['wallInConstruction']!=0) echo 'Construction finish on: '.$data['wallEndTime']; ?></span>
 
+                                </td>
+                                <td>
+
+                                    <a type="button" class="btn btn-primary btn-xs" id="startClock" href="/Proiect-Tw/mvc/public/commands/contructOrder/1">Level <?php echo $data['wallLevel']+1; ?> </a>
                                 </td>
                             </tr>
 
@@ -171,10 +167,14 @@
                                 <td class="cost_wood"><img alt="Wood" src="/Proiect-TW/mvc/public/images/wood.png"><?php echo $data['woodNecessities']; ?></td>
                                 <td class="cost_stone"><img alt="Stone" src="/Proiect-TW/mvc/public/images/stone.png"><?php echo $data['woodNecessities']; ?></td>
                                 <td class="cost_iron"><img alt="Iron" src="/Proiect-TW/mvc/public/images/iron.png"> <?php echo $data['woodNecessities']; ?></td>
-                                <td><span class="glyphicon glyphicon-time "></span> <span id="count"><?php echo $data['woodTimeFinal'] ?></span> seconds</td>
-                                <td>
-                                    <button type="button" class="btn btn-primary btn-xs">Level <?php echo $data['woodLevel']+1; ?></button>
+                                <td><span class="glyphicon glyphicon-time "></span>
+                                    <span><?php if ($data['woodInConstruction']==0) echo 'Construction time:'.$data['woodTimeFinal'].' seconds'; ?></span>
+                                    <span><?php  if ($data['woodInConstruction']!=0) echo 'Construction finish on: '.$data['woodEndTime']; ?></span>
 
+                                </td>
+                                <td>
+
+                                    <a type="button" class="btn btn-primary btn-xs" id="startClock" href="/Proiect-Tw/mvc/public/commands/contructOrder/1">Level <?php echo $data['woodLevel']+1; ?> </a>
                                 </td>
                             </tr>
 
@@ -188,10 +188,14 @@
                                 <td class="cost_wood"><img alt="Wood" src="/Proiect-TW/mvc/public/images/wood.png"><?php echo $data['ironNecessities']; ?></td>
                                 <td class="cost_stone"><img alt="Stone" src="/Proiect-TW/mvc/public/images/stone.png"><?php echo $data['ironNecessities']; ?></td>
                                 <td class="cost_iron"><img alt="Iron" src="/Proiect-TW/mvc/public/images/iron.png"> <?php echo $data['ironNecessities']; ?></td>
-                                <td><span class="glyphicon glyphicon-time "></span> <span id="count"><?php echo $data['ironTimeFinal'] ?></span> seconds</td>
-                                <td>
-                                    <button type="button" class="btn btn-primary btn-xs">Level <?php echo $data['ironLevel']+1; ?></button>
+                                <td><span class="glyphicon glyphicon-time "></span>
+                                    <span><?php if ($data['ironInConstruction']==0) echo 'Construction time:'.$data['ironTimeFinal'].' seconds'; ?></span>
+                                    <span><?php  if ($data['ironInConstruction']!=0) echo 'Construction finish on: '.$data['ironEndTime']; ?></span>
 
+                                </td>
+                                <td>
+
+                                    <a type="button" class="btn btn-primary btn-xs" id="startClock" href="/Proiect-Tw/mvc/public/commands/contructOrder/1">Level <?php echo $data['ironLevel']+1; ?> </a>
                                 </td>
                             </tr>
 
@@ -205,10 +209,14 @@
                                 <td class="cost_wood"><img alt="Wood" src="/Proiect-TW/mvc/public/images/wood.png"><?php echo $data['stoneNecessities']; ?></td>
                                 <td class="cost_stone"><img alt="Stone" src="/Proiect-TW/mvc/public/images/stone.png"><?php echo $data['stoneNecessities']; ?></td>
                                 <td class="cost_iron"><img alt="Iron" src="/Proiect-TW/mvc/public/images/iron.png"><?php echo $data['stoneNecessities']; ?></td>
-                                <td><span class="glyphicon glyphicon-time "></span> <span id="count"><?php echo $data['stoneTimeFinal'] ?></span> seconds</td>
-                                <td>
-                                    <button type="button" class="btn btn-primary btn-xs">Level <?php echo $data['stoneLevel']+1; ?></button>
+                                <td><span class="glyphicon glyphicon-time "></span>
+                                    <span><?php if ($data['stoneInConstruction']==0) echo 'Construction time:'.$data['stoneTimeFinal'].' seconds'; ?></span>
+                                    <span><?php  if ($data['stoneInConstruction']!=0) echo 'Construction finish on: '.$data['stoneEndTime']; ?></span>
 
+                                </td>
+                                <td>
+
+                                    <a type="button" class="btn btn-primary btn-xs" id="startClock" href="/Proiect-Tw/mvc/public/commands/contructOrder/1">Level <?php echo $data['stoneLevel']+1; ?> </a>
                                 </td>
                             </tr>
                             </tbody>

@@ -36,7 +36,7 @@ class Commands extends Controller
         ]);
 
     }
-    public function construct()
+    public function construct($status='')
     {
         SessionValidate::validateSession();
 
@@ -54,13 +54,13 @@ class Commands extends Controller
         $woodLevel = MainBuilding::getWoodLevel($villageId);
         $ironLevel = MainBuilding::getIronLevel($villageId);
         $storageLevel = MainBuilding::getStorageLevel($villageId);
-        $mainBuildingNecessities = MainBuilding::getMainBuildingNecessities($villageId);
-        $wallNecessities = MainBuilding::getWallNecessities($villageId);
-        $barracksNecessities = MainBuilding::getBarracksNecessities($villageId);
-        $stoneNecessities = MainBuilding::getStoneNecessities($villageId);
-        $woodNecessities = MainBuilding::getWoodNecessities($villageId);
-        $ironNecessities = MainBuilding::getIronNecessities($villageId);
-        $storageNecessities = MainBuilding::getStorageNecessities($villageId);
+        $mainBuildingNecessities = MainBuilding::getMainBuildingNecessities($villageId)*$mainBuildingLevel;
+        $wallNecessities = MainBuilding::getWallNecessities($villageId)*$wallLevel;
+        $barracksNecessities = MainBuilding::getBarracksNecessities($villageId)*$barracksLevel;
+        $stoneNecessities = MainBuilding::getStoneNecessities($villageId)*$stoneLevel;
+        $woodNecessities = MainBuilding::getWoodNecessities($villageId)*$woodLevel;
+        $ironNecessities = MainBuilding::getIronNecessities($villageId)*$ironLevel;
+        $storageNecessities = MainBuilding::getStorageNecessities($villageId)*$storageLevel;
         $mainBuildingTime = MainBuilding::getMainBuildingTime($villageId);
         $mainBuldingTimeFinal = ($mainBuildingTime*$mainBuildingLevel);
         $wallTime = MainBuilding::getWallTime($villageId);
@@ -75,6 +75,17 @@ class Commands extends Controller
         $ironTimeFinal = ($ironTime*$ironLevel);
         $storageTime = MainBuilding::getStorageTime($villageId);
         $storageTimeFinal = ($storageTime*$storageLevel);
+        $mainBuildingEndTime = MainBuilding::getMainBuildingEndTime($villageId);
+
+        $mainBuildingInConstruction = MainBuilding::buildingInConstruction($villageId,1);
+        $wallInConstruction = MainBuilding::buildingInConstruction($villageId,2);
+        $barracksInConstruction = MainBuilding::buildingInConstruction($villageId,3);
+        $stoneInConstruction = MainBuilding::buildingInConstruction($villageId,4);
+        $woodInConstruction = MainBuilding::buildingInConstruction($villageId,5);
+        $ironInConstruction = MainBuilding::buildingInConstruction($villageId,6);
+        $storageInConstruction = MainBuilding::buildingInConstruction($villageId,7);
+
+
 
         $this->view('commands/construct',['mainBuildingLevel'=>$mainBuildingLevel,'wallLevel'=>$wallLevel,'barracksLevel'=>$barracksLevel,
             'stoneLevel'=>$stoneLevel,'woodLevel'=>$woodLevel,'ironLevel'=>$ironLevel,'storageLevel'=>$storageLevel,
@@ -83,8 +94,24 @@ class Commands extends Controller
             'storageNecessities'=>$storageNecessities,'iron'=>$iron,'wood'=>$wood,'stone'=>$stone,'village_name'=>$village_name,
         'mainBuildingTimeFinal'=>$mainBuldingTimeFinal,'wallTimeFinal'=>$wallTimeFinal,'barracksTimeFinal'=>$barracksTimeFinal,
             'stoneTimeFinal'=>$stoneTimeFinal,'woodTimeFinal'=>$woodTimeFinal,'ironTimeFinal'=>$ironTimeFinal,
-            'storageTimeFinal'=>$storageTimeFinal,'storage'=>$storage]);
+            'storageTimeFinal'=>$storageTimeFinal,'storage'=>$storage,'mainBuildingEndTime'=>$mainBuildingEndTime,'status'=>$status,
+            'mainInConstruction'=>$mainBuildingInConstruction,'wallInConstruction'=>$wallInConstruction,'barracksInConstruction'=>$barracksInConstruction,
+            'stoneInConstruction'=>$stoneInConstruction,'woodInConstruction'=>$woodInConstruction,'ironInConstruction'=>$ironInConstruction,
+            'storageInConstruction'=>$storageInConstruction]);
 
+    }
+
+    public function contructOrder($buildingId='')
+    {
+        $villageId = $_SESSION['village_id'];
+        $ok = MainBuilding::levelUpBuilding($villageId,$buildingId);
+
+        if($ok!=null)
+        {
+            header('Location: /Proiect-TW/mvc/public/commands/construct/loading');
+        }
+        else
+            header('Location: /Proiect-TW/mvc/public/commands/construct/fail');
     }
 
 }
