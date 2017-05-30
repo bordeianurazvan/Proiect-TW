@@ -75,7 +75,7 @@
                 for($index=0;$index<count($data['resultsList']);$index++){
                     echo '<tr>';
                     echo '<td>' . ((($data['prevPage'])*5) + $index+1) . '</td>';
-                    echo '<td>' . $data['resultsList'][$index] . '</td>';
+                    echo '<td><a class="c-link" href="/Proiect-TW/mvc/public/userprofile/getOtherProfile/' . $data['resultsList'][$index] . '">' . $data['resultsList'][$index] .  '</a></td>';
                     echo '<td>' . $data['villageList'][$index] . '</td>';
                     echo '<td>' . $data['pointsList'][$index] . '</td>';
                     echo '</tr>';
