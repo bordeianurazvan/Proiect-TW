@@ -174,4 +174,36 @@ class RankingFunctions
         }
         return $pointsList;
     }
+    public static function searchUsername($username){
+        $query ="select count(*) from users where username = :username";
+        $stmt=oci_parse(Db::getDbInstance(),$query);
+        oci_bind_by_name($stmt,":username",$username);
+        oci_execute($stmt);
+        $row=oci_fetch_row($stmt);
+        return $row[0];
+    }
+    public static function getPagePopulationByUser($username){
+        $query = " select rown from (select username, rownum as rown from (select username from users order by general_points desc)) where username = :username";
+        $stmt=oci_parse(Db::getDbInstance(),$query);
+        oci_bind_by_name($stmt,":username",$username);
+        oci_execute($stmt);
+        $row=oci_fetch_row($stmt);
+        if(($row[0]) % 5 > 0){
+            return ((int)(($row[0]) / 5) + 1);
+        }else{
+            return ((int)(($row[0]) / 5));
+        }
+    }
+    public static function getPageAttackByUser($username){
+        $query = " select rown from (select username, rownum as rown from (select username from users order by battle_points desc)) where username = :username";
+        $stmt=oci_parse(Db::getDbInstance(),$query);
+        oci_bind_by_name($stmt,":username",$username);
+        oci_execute($stmt);
+        $row=oci_fetch_row($stmt);
+        if(($row[0]) % 5 > 0){
+            return ((int)(($row[0]) / 5) + 1);
+        }else{
+            return ((int)(($row[0]) / 5));
+        }
+    }
 }

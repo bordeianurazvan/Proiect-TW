@@ -28,7 +28,7 @@
                 <li><a href="/Proiect-TW/mvc/public/village/privireAsupraSatului"><span class="glyphicon glyphicon-home"></span> Home </a></li>
                 <li><a href="/Proiect-TW/mvc/public/userProfile/getProfile"><span class="glyphicon glyphicon-user"></span> Profile </a></li>
                 <li><a href="/Proiect-TW/mvc/public/map/getMap"><span class="glyphicon glyphicon-globe"></span> Map </a></li>
-                <li><a href="/Proiect-TW/mvc/public/reports/reportslist"><span class="glyphicon glyphicon-comment"></span> Reports <span class="badge">17</span> </a></li>
+                <li><a href="/Proiect-TW/mvc/public/reports/reportslist"><span class="glyphicon glyphicon-comment"></span> Reports <span class="badge"><?php echo $data['reportsCount']; ?></span> </a></li>
                 <li><a href="/Proiect-TW/mvc/public/ranking/rankingPopulation"><span class="glyphicon glyphicon-stats"></span> Ranking </a></li>
                 <li><a href="/Proiect-TW/mvc/public"><span class="glyphicon glyphicon-off"></span> LogOut </a></li>
             </ul>
@@ -89,9 +89,9 @@
     <div class="row">
         <div class="col-md-1 col-sm-1 col-xs-0"></div>
         <div class="col-md-6 col-xs-5 col-sm-6 col-lg-6">
-            <form class="navbar-form Search" role="search">
+            <form class="navbar-form Search" role="search" action="" method="post">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search username">
+                    <input name="search" type="text" class="form-control" placeholder="Search username">
                 </div>
                 <button type="submit" class="btn btn-primary SearchButton">Search</button>
             </form>
