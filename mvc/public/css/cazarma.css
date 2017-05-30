@@ -72,7 +72,7 @@ Table{
 
 
 .troops{
-    margin-left:15%;
+    margin-left:8%;
 }
 .trupe{
    margin-top:2%;
@@ -94,7 +94,7 @@ Table{
 
 }
 .sword_form,.axe_form,.archer_form,.spear_form{
-    width:35%;
+    width:40%;
 }
 .active_commands{
     margin-left:10%;
@@ -159,6 +159,9 @@ Table{
     table{
         background-size: 83% 100%;
     }
+    .sword_form,.axe_form,.archer_form,.spear_form{
+        width:90%;
+    }
 
 }
 @media only screen and (min-device-width : 300px) and (max-device-width : 1100px) {
@@ -168,6 +171,12 @@ Table{
     }
     .tabel{
         margin-left:0;
+    }
+    .sword_form,.axe_form,.archer_form,.spear_form{
+        width:75%;
+    }
+    .troops{
+        margin-left:6%;
     }
 
 
@@ -179,5 +188,6 @@ Table{
      }
 
 }
+
 
 

@@ -24,7 +24,7 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/Proiect-TW/mvc/public/village/PrivireAsupraSatului"><span class="glyphicon glyphicon-home"></span> Home </a></li>
+                <li><a href="/Proiect-TW/mvc/public/village/villageView"><span class="glyphicon glyphicon-home"></span> Home </a></li>
                 <li><a href="/Proiect-TW/mvc/public/UserProfile/getProfile"><span class="glyphicon glyphicon-user"></span> Profile </a></li>
                 <li><a href="/Proiect-TW/mvc/public/map/getMap"><span class="glyphicon glyphicon-globe"></span> Map </a></li>
                 <li><a href="/Proiect-TW/mvc/public/reports/reportslist"><span class="glyphicon glyphicon-comment"></span> Reports <span class="badge"><?php echo $data['reportsCount']; ?></span> </a></li>
@@ -62,10 +62,10 @@
                 <tr>
                     <th class="col-md-4 col-xs-4 col-sm-4 col-lg-4">Attacker</th>
 
-                    <th class="col-md-2 col-xs-2 col-sm-2 col-lg-2"><img alt="Sword" src="/Proiect-TW/mvc/public/images/unit_sword.png" class="img-responsive"></th>
-                    <th class="col-md-2 col-xs-2 col-sm-2 col-lg-2"><img alt="Sword" src="/Proiect-TW/mvc/public/images/unit_axe.png" class="img-responsive"></th>
-                    <th class="col-md-2 col-xs-2 col-sm-2 col-lg-2"><img alt="Sword" src="/Proiect-TW/mvc/public/images/unit_archer.png" class="img-responsive"></th>
                     <th class="col-md-2 col-xs-2 col-sm-2 col-lg-2"><img alt="Sword" src="/Proiect-TW/mvc/public/images/unit_spear.png" class="img-responsive"></th>
+                    <th class="col-md-2 col-xs-2 col-sm-2 col-lg-2"><img alt="Sword" src="/Proiect-TW/mvc/public/images/unit_axe.png" class="img-responsive"></th>
+                    <th class="col-md-2 col-xs-2 col-sm-2 col-lg-2"><img alt="Sword" src="/Proiect-TW/mvc/public/images/unit_sword.png" class="img-responsive"></th>
+                    <th class="col-md-2 col-xs-2 col-sm-2 col-lg-2"><img alt="Sword" src="/Proiect-TW/mvc/public/images/unit_archer.png" class="img-responsive"></th>
 
                 </tr>
                 </thead>
@@ -102,10 +102,11 @@
                 <thead>
                 <tr>
                     <th class="col-md-4 col-xs-4 col-sm-4 col-lg-4">Defender</th>
-                    <th class="col-md-2 col-xs-2 col-sm-2 col-lg-2"><img alt="Sword" src="/Proiect-TW/mvc/public/images/unit_sword.png" class="img-responsive"></th>
-                    <th class="col-md-2 col-xs-2 col-sm-2 col-lg-2"><img alt="Sword" src="/Proiect-TW/mvc/public/images/unit_axe.png" class="img-responsive"></th>
-                    <th class="col-md-2 col-xs-2 col-sm-2 col-lg-2"><img alt="Sword" src="/Proiect-TW/mvc/public/images/unit_archer.png" class="img-responsive"></th>
+
                     <th class="col-md-2 col-xs-2 col-sm-2 col-lg-2"><img alt="Sword" src="/Proiect-TW/mvc/public/images/unit_spear.png" class="img-responsive"></th>
+                    <th class="col-md-2 col-xs-2 col-sm-2 col-lg-2"><img alt="Sword" src="/Proiect-TW/mvc/public/images/unit_axe.png" class="img-responsive"></th>
+                    <th class="col-md-2 col-xs-2 col-sm-2 col-lg-2"><img alt="Sword" src="/Proiect-TW/mvc/public/images/unit_sword.png" class="img-responsive"></th>
+                    <th class="col-md-2 col-xs-2 col-sm-2 col-lg-2"><img alt="Sword" src="/Proiect-TW/mvc/public/images/unit_archer.png" class="img-responsive"></th>
 
                 </tr>
                 </thead>

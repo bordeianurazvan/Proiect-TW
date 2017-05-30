@@ -81,7 +81,9 @@ CREATE TABLE Troops
   troop_name VARCHAR2(20) NOT NULL,
   troop_attackPower INT NOT NULL,
   troop_defensePower INT NOT NULL,
-  troop_cost INT NOT NULL,
+  troop_stone_cost INT NOT NULL,
+  troop_wood_cost INT NOT NULL,
+  troop_iron_cost INT NOT NULL,
   troop_time INT NOT NULL,
   PRIMARY KEY (troop_id)
 );

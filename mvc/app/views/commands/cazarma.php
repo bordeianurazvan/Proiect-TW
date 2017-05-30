@@ -24,7 +24,7 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/Proiect-TW/mvc/public/village/PrivireAsupraSatului"><span class="glyphicon glyphicon-home"></span> Home </a></li>
+                <li><a href="/Proiect-TW/mvc/public/village/villageView"><span class="glyphicon glyphicon-home"></span> Home </a></li>
                 <li><a href="/Proiect-TW/mvc/public/UserProfile/getProfile"><span class="glyphicon glyphicon-user"></span> Profile </a></li>
                 <li><a href="/Proiect-TW/mvc/public/map/getMap"><span class="glyphicon glyphicon-globe"></span> Map </a></li>
                 <li><a href="/Proiect-TW/mvc/public/reports/reportslist"><span class="glyphicon glyphicon-comment"></span> Reports <span class="badge"><?php echo $data['reportsCount']; ?></span> </a></li>
@@ -36,7 +36,6 @@
 </nav>
 <div class="left"></div>
 <div class="center">
-
 
     <div class="row">
         <div class="col-md-4 col-xs-2 col-sm-6 col-lg-6 Village"><?php echo $data['village_name']; ?></div>
@@ -74,43 +73,43 @@
        </div>
 
        <div class="row cost">
-           <div class="col-xs-3 col-md-3 col-lg-3 ">Cost: <?php echo $data['spearCost']; ?>
-               <img alt="spear" src="/Proiect-TW/mvc/public/images/resources.png" class="img-responsive"></div>
-           <div class="col-xs-3 col-md-3 col-lg-3 ">Cost: <?php echo $data['axeCost']; ?>
-               <img alt="Axe" src="/Proiect-TW/mvc/public/images/resources.png" class="img-responsive">
+           <div class="col-xs-3 col-md-3 col-lg-3 "> <?php echo $data['spearIronCost'].'/'.$data['spearWoodCost'] .'/'.$data['spearStoneCost']; ?>
+               <img alt="spear" src="/Proiect-TW/mvc/public/images/all_resources.png" class="img-responsive">
            </div>
-           <div class="col-xs-3 col-md-3 col-lg-3 ">Cost: <?php echo $data['swordCost']; ?>
-               <img alt="Swords" src="/Proiect-TW/mvc/public/images/resources.png" class="img-responsive"></div>
-           <div class="col-xs-3 col-md-3 col-lg-3 ">Cost: <?php echo $data['archerCost']; ?>
-               <img alt="Archer" src="/Proiect-TW/mvc/public/images/resources.png" class="img-responsive"></div>
+           <div class="col-xs-3 col-md-3 col-lg-3 "> <?php echo $data['axeIronCost'].'/'.$data['axeWoodCost'] .'/'.$data['axeStoneCost']; ?>
+               <img alt="Axe" src="/Proiect-TW/mvc/public/images/all_resources.png" class="img-responsive">
+           </div>
+           <div class="col-xs-3 col-md-3 col-lg-3 "> <?php echo $data['swordIronCost'].'/'.$data['swordWoodCost'] .'/'.$data['swordStoneCost']; ?>
+               <img alt="Swords" src="/Proiect-TW/mvc/public/images/all_resources.png" class="img-responsive"></div>
+           <div class="col-xs-3 col-md-3 col-lg-3 "> <?php echo $data['archerIronCost'].'/'.$data['archerWoodCost'] .'/'.$data['archerStoneCost']; ?>
+               <img alt="Archer" src="/Proiect-TW/mvc/public/images/all_resources.png" class="img-responsive"></div>
        </div>
        <div class="row comanda">
            <form action="" method="POST">
-           <div class="col-xs-3 col-md-3 col-lg-3 Spear_command">
+           <div class="col-xs-3 col-md-3 col-lg-3 col-sm-3 Spear_command">
 
-                   <div>
-
-                       <input type="number" class="form-control spear_form"  min="0" name="spear">
+                   <div class="row">
+                       <input type="number" class="form-control spear_form" min="0"name="spear">
                    </div>
 
                </div>
-           <div class="col-xs-3 col-md-3 col-lg-3 Axe_command">
+           <div class="col-xs-3 col-md-3 col-lg-3 col-sm-3 Axe_command">
 
-                   <div>
+                   <div class="row">
                        <input type="number" class="form-control axe_form"  min="0" name="axe">
                    </div>
 
            </div>
-           <div class="col-xs-3 col-md-3 col-lg-3 Sword_command">
+           <div class="col-xs-3 col-md-3 col-lg-3 col-sm-3 Sword_command">
 
-                   <div>
+                   <div class="row">
                        <input type="number" class="form-control sword_form"  min="0" name="sword">
                    </div>
 
                </div>
-           <div class="col-xs-3 col-md-3 col-lg-3 Archer_command">
+           <div class="col-xs-3 col-md-3 col-lg-3 col-sm-3 Archer_command">
 
-                   <div>
+                   <div class="row">
                        <input type="number" class="form-control archer_form"  min="0" name="archer">
                    </div>
 

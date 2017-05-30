@@ -21,14 +21,14 @@ end;
 --POPULARE TABELA TROOPS
 declare
 begin
- Insert into Troops(troop_id,troop_name,troop_attackPower,troop_defensePower,troop_cost,troop_time)
- values (1,'Spear',20,10,30,35);
-  Insert into Troops(troop_id,troop_name,troop_attackPower,troop_defensePower,troop_cost,troop_time)
- values (2,'Axe',30,5,50,60);
-   Insert into Troops(troop_id,troop_name,troop_attackPower,troop_defensePower,troop_cost,troop_time)
- values (3,'Sword',15,50,20,45);
-   Insert into Troops(troop_id,troop_name,troop_attackPower,troop_defensePower,troop_cost,troop_time)
- values (4,'Archer',10,45,18,35);
+ Insert into Troops(troop_id,troop_name,troop_attackPower,troop_defensePower,troop_stone_cost,troop_wood_cost,troop_iron_cost,troop_time)
+ values (1,'Spear',20,10,30,20,40,35);
+  Insert into Troops(troop_id,troop_name,troop_attackPower,troop_defensePower,troop_stone_cost,troop_wood_cost,troop_iron_cost,troop_time)
+ values (2,'Axe',30,5,50,25,30,60);
+   Insert into Troops(troop_id,troop_name,troop_attackPower,troop_defensePower,troop_stone_cost,troop_wood_cost,troop_iron_cost,troop_time)
+ values (3,'Sword',15,50,20,60,15,45);
+   Insert into Troops(troop_id,troop_name,troop_attackPower,troop_defensePower,troop_stone_cost,troop_wood_cost,troop_iron_cost,troop_time)
+ values (4,'Archer',10,45,15,40,30,35);
 end;
 /
 --POPULARE TABELA BUILDINGS

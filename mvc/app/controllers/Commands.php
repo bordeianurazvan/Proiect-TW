@@ -10,32 +10,51 @@ class Commands extends Controller
 {
     public function cazarma()
     {
+        SessionValidate::validateSession();
         if(isset($_POST['spear'])&&isset($_POST['axe'])&&isset($_POST['sword'])&&isset($_POST['archer'])){
             $ok=Barracks::addTroopsCommand($_SESSION['village_id'],$_POST['spear'],$_POST['axe'],$_POST['sword'],$_POST['archer']);
         }
-        SessionValidate::validateSession();
+
         $reportsCount=Report::getReportsCount($_SESSION['user_id']);
         $village_name = VillageFunctions::getVillageName($_SESSION['user_id']);
         $iron = VillageFunctions::getIronResources($_SESSION['village_id']);
         $stone = VillageFunctions::getStoneResources($_SESSION['village_id']);
         $wood = VillageFunctions::getWoodResources($_SESSION['village_id']);
         $storage = VillageFunctions::getStorrageLevel($_SESSION['village_id'])*1000;
-        $spearCost=Barracks::getSpearCost();
-        $axeCost=Barracks::getAxeCost();
-        $swordCost=Barracks::getSwordCost();
-        $archerCost=Barracks::getArcherCost();
+
+        $spearStoneCost=Barracks::getSpearStoneCost();
+        $spearWoodCost=Barracks::getSpearWoodCost();
+        $spearIronCost=Barracks::getSpearIronCost();
+
+        $axeStoneCost=Barracks::getAxeStoneCost();
+        $axeWoodCost=Barracks::getAxeWoodCost();
+        $axeIronCost=Barracks::getAxeIronCost();
+
+        $swordStoneCost=Barracks::getSwordStoneCost();
+        $swordWoodCost=Barracks::getSwordWoodCost();
+        $swordIronCost=Barracks::getSwordIronCost();
+
+        $archerStoneCost=Barracks::getArcherStoneCost();
+        $archerWoodCost=Barracks::getArcherWoodCost();
+        $archerIronCost=Barracks::getArcherIronCost();
+
         $troopsName=Barracks::getTroopNames($_SESSION['village_id']);
         $troopsNumber=Barracks::getTroopsNumber($_SESSION['village_id']);
         $troopsTime=Barracks::getTroopsTime($_SESSION['village_id']);
         $this->view('commands/cazarma',['reportsCount'=>$reportsCount,
             'village_name'=>$village_name,'iron'=>$iron,'stone'=>$stone,
-            'wood'=>$wood,'storage'=>$storage,'archerCost'=>$archerCost,'swordCost'=>$swordCost,
-            'axeCost'=>$axeCost,'spearCost'=>$spearCost,'troopsName'=>$troopsName,'troopsNumber'=>$troopsNumber,
+            'wood'=>$wood,'storage'=>$storage,
+            'archerStoneCost'=>$archerStoneCost,'archerWoodCost'=>$archerWoodCost,'archerIronCost'=>$archerIronCost,
+            'swordStoneCost'=>$swordStoneCost,'swordWoodCost'=>$swordWoodCost,'swordIronCost'=>$swordIronCost,
+            'axeStoneCost'=>$axeStoneCost,'axeWoodCost'=>$axeWoodCost,'axeIronCost'=>$axeIronCost,
+            'spearStoneCost'=>$spearStoneCost,'spearWoodCost'=>$spearWoodCost,'spearIronCost'=>$spearIronCost,
+            'troopsName'=>$troopsName,'troopsNumber'=>$troopsNumber,
             'troopsTime'=>$troopsTime
 
         ]);
 
     }
+    
     public function construct($status='')
     {
         SessionValidate::validateSession();

@@ -8,34 +8,94 @@
  */
 class Barracks
 {
-    public static function getSpearCost(){
-        $query1="SELECT troop_cost FROM troops WHERE troop_id=1";
+    public static function getSpearStoneCost(){
+        $query1="SELECT troop_stone_cost FROM troops WHERE troop_id=1";
         $stmt=oci_parse(Db::getDbInstance(),$query1);
         oci_execute($stmt);
         $row=oci_fetch_row($stmt);
         return $row[0];
     }
-    public static function getAxeCost(){
-        $query1="SELECT troop_cost FROM troops WHERE troop_id=2";
+    public static function getSpearWoodCost(){
+        $query1="SELECT troop_wood_cost FROM troops WHERE troop_id=1";
         $stmt=oci_parse(Db::getDbInstance(),$query1);
         oci_execute($stmt);
         $row=oci_fetch_row($stmt);
         return $row[0];
     }
-    public static function getSwordCost(){
-        $query1="SELECT troop_cost FROM troops WHERE troop_id=3";
+    public static function getSpearIronCost(){
+        $query1="SELECT troop_iron_cost FROM troops WHERE troop_id=1";
         $stmt=oci_parse(Db::getDbInstance(),$query1);
         oci_execute($stmt);
         $row=oci_fetch_row($stmt);
         return $row[0];
     }
-    public static function getArcherCost(){
-        $query1="SELECT troop_cost FROM troops WHERE troop_id=4";
+
+    public static function getAxeStoneCost(){
+        $query1="SELECT troop_stone_cost FROM troops WHERE troop_id=2";
         $stmt=oci_parse(Db::getDbInstance(),$query1);
         oci_execute($stmt);
         $row=oci_fetch_row($stmt);
         return $row[0];
     }
+    public static function getAxeWoodCost(){
+        $query1="SELECT troop_wood_cost FROM troops WHERE troop_id=2";
+        $stmt=oci_parse(Db::getDbInstance(),$query1);
+        oci_execute($stmt);
+        $row=oci_fetch_row($stmt);
+        return $row[0];
+    }
+    public static function getAxeIronCost(){
+        $query1="SELECT troop_iron_cost FROM troops WHERE troop_id=2";
+        $stmt=oci_parse(Db::getDbInstance(),$query1);
+        oci_execute($stmt);
+        $row=oci_fetch_row($stmt);
+        return $row[0];
+    }
+
+    public static function getSwordStoneCost(){
+        $query1="SELECT troop_stone_cost FROM troops WHERE troop_id=3";
+        $stmt=oci_parse(Db::getDbInstance(),$query1);
+        oci_execute($stmt);
+        $row=oci_fetch_row($stmt);
+        return $row[0];
+    }
+    public static function getSwordWoodCost(){
+        $query1="SELECT troop_wood_cost FROM troops WHERE troop_id=3";
+        $stmt=oci_parse(Db::getDbInstance(),$query1);
+        oci_execute($stmt);
+        $row=oci_fetch_row($stmt);
+        return $row[0];
+    }
+    public static function getSwordIronCost(){
+        $query1="SELECT troop_iron_cost FROM troops WHERE troop_id=3";
+        $stmt=oci_parse(Db::getDbInstance(),$query1);
+        oci_execute($stmt);
+        $row=oci_fetch_row($stmt);
+        return $row[0];
+    }
+
+    public static function getArcherStoneCost(){
+        $query1="SELECT troop_stone_cost FROM troops WHERE troop_id=4";
+        $stmt=oci_parse(Db::getDbInstance(),$query1);
+        oci_execute($stmt);
+        $row=oci_fetch_row($stmt);
+        return $row[0];
+    }
+    public static function getArcherWoodCost(){
+        $query1="SELECT troop_wood_cost FROM troops WHERE troop_id=4";
+        $stmt=oci_parse(Db::getDbInstance(),$query1);
+        oci_execute($stmt);
+        $row=oci_fetch_row($stmt);
+        return $row[0];
+    }
+    public static function getArcherIronCost(){
+        $query1="SELECT troop_iron_cost FROM troops WHERE troop_id=4";
+        $stmt=oci_parse(Db::getDbInstance(),$query1);
+        oci_execute($stmt);
+        $row=oci_fetch_row($stmt);
+        return $row[0];
+    }
+
     public static function getTroopNames($village_id){
         $query1="SELECT troop_id from createtroops where village_id=:id order by end_time";
         $stmt=oci_parse(Db::getDbInstance(),$query1);
