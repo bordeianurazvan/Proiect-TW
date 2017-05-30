@@ -90,8 +90,31 @@ CREATE OR REPLACE procedure commands_update as
    puncte int:=0;
    att_name varchar(50);
    def_name varchar(50);
+   validate_village1 int;
+   validate_village2 int;
    begin
    for i in(select * from commands) loop
+   select count(village_id) into validate_village1 from villages where village_id=i.from_village;
+   select count(village_id) into validate_village2 from villages where village_id=i.to_village;
+   if(validate_village1<1 and validate_village2<1)
+    then
+      delete from commands where id=i.id;
+   elsif(validate_village1<1)
+      then
+        delete from commands where id=i.id;
+    elsif(validate_village2<1)
+      then
+        spear_att:=to_number(substr( i.units, 1, instr(i.units,' ',1,1)-1  )  );
+        axe_att :=to_number( substr  (i.units, instr(i.units,' ',1,1)+1  ,instr(i.units,' ',1,2)-1-instr(i.units,' ',1,1) ) );
+        sword_att :=to_number(substr(i.units,instr(i.units,' ',1,2)+1,instr(i.units,' ',1,3)-1 - instr(i.units,' ',1,2)));
+        archer_att :=to_number(substr(i.units,instr(i.units,' ',1,3)+1,length(i.units)));
+        update villagetroops set troop_number = troop_number+spear_att where village_id=i.from_village and troop_id =1;
+        update villagetroops set troop_number = troop_number+axe_att where village_id=i.from_village and troop_id =2;  
+        update villagetroops set troop_number = troop_number+sword_att where village_id=i.from_village and troop_id =3;
+        update villagetroops set troop_number = troop_number+archer_att where village_id=i.from_village and troop_id =4;
+        delete from commands where id=i.id;
+  
+    else
    if(i.arrive_time<=current_timestamp)
    then
      spear_att:=to_number(substr( i.units, 1, instr(i.units,' ',1,1)-1  )  );
@@ -199,6 +222,7 @@ CREATE OR REPLACE procedure commands_update as
        end if;
     end if;
    delete from commands where id = i.id;
+   end if;
    end if;
    end loop;
 end;
