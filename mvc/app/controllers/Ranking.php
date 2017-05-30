@@ -18,6 +18,7 @@ class Ranking extends Controller
                 if ($page < 1) {
                     header('Location: /Proiect-TW/mvc/public/ranking/rankingAttackers/1');
                 } else {
+                    $reportsCount=Report::getReportsCount($_SESSION['user_id']);
                     $currentPage = $page;
                     $nextPage = $page + 1;
                     $prevPage = $page - 1;
@@ -33,7 +34,7 @@ class Ranking extends Controller
                     $this->view('ranking/rankingAttackers', ['village_name' => $village_name, 'iron' => $iron,
                         'stone' => $stone, 'wood' => $wood, 'storage' => $storage, 'currentPage' => $currentPage,
                         'nextPage' => $nextPage, 'prevPage' => $prevPage, 'maxPagesNumber' => $maxPagesNumber,
-                        'villageList' => $villageList, 'pointsList' => $pointsList, 'resultsList' => $resultsList]);
+                        'villageList' => $villageList, 'pointsList' => $pointsList, 'resultsList' => $resultsList,'reportsCount'=>$reportsCount]);
                 }
             }
         }else{
@@ -44,6 +45,7 @@ class Ranking extends Controller
                     if ($page < 1) {
                         header('Location: /Proiect-TW/mvc/public/ranking/rankingAttackers/1');
                     } else {
+                        $reportsCount=Report::getReportsCount($_SESSION['user_id']);
                         $currentPage = $page;
                         $nextPage = $page + 1;
                         $prevPage = $page - 1;
@@ -59,7 +61,7 @@ class Ranking extends Controller
                         $this->view('ranking/rankingAttackers', ['village_name' => $village_name, 'iron' => $iron,
                             'stone' => $stone, 'wood' => $wood, 'storage' => $storage, 'currentPage' => $currentPage,
                             'nextPage' => $nextPage, 'prevPage' => $prevPage, 'maxPagesNumber' => $maxPagesNumber,
-                            'villageList' => $villageList, 'pointsList' => $pointsList, 'resultsList' => $resultsList]);
+                            'villageList' => $villageList, 'pointsList' => $pointsList, 'resultsList' => $resultsList,'reportsCount'=>$reportsCount]);
                     }
                 }
             }else{
@@ -80,6 +82,7 @@ class Ranking extends Controller
                 if ($page < 1) {
                     header('Location: /Proiect-TW/mvc/public/ranking/rankingPopulation/1');
                 } else {
+                    $reportsCount=Report::getReportsCount($_SESSION['user_id']);
                     $currentPage = $page;
                     $nextPage = $page + 1;
                     $prevPage = $page - 1;
@@ -95,7 +98,7 @@ class Ranking extends Controller
                     $this->view('ranking/rankingPopulation', ['village_name' => $village_name, 'iron' => $iron,
                         'stone' => $stone, 'wood' => $wood, 'storage' => $storage, 'currentPage' => $currentPage,
                         'nextPage' => $nextPage, 'prevPage' => $prevPage, 'maxPagesNumber' => $maxPagesNumber,
-                        'villageList' => $villageList, 'pointsList' => $pointsList, 'resultsList' => $resultsList]);
+                        'villageList' => $villageList, 'pointsList' => $pointsList, 'resultsList' => $resultsList,'reportsCount'=>$reportsCount]);
                 }
             }
         } else{
@@ -107,6 +110,7 @@ class Ranking extends Controller
                     if ($page < 1) {
                         header('Location: /Proiect-TW/mvc/public/ranking/rankingPopulation/1');
                     } else {
+                        $reportsCount=Report::getReportsCount($_SESSION['user_id']);
                         $currentPage = $page;
                         $nextPage = $page + 1;
                         $prevPage = $page - 1;
@@ -122,7 +126,7 @@ class Ranking extends Controller
                         $this->view('ranking/rankingPopulation', ['village_name' => $village_name, 'iron' => $iron,
                             'stone' => $stone, 'wood' => $wood, 'storage' => $storage, 'currentPage' => $currentPage,
                             'nextPage' => $nextPage, 'prevPage' => $prevPage, 'maxPagesNumber' => $maxPagesNumber,
-                            'villageList' => $villageList, 'pointsList' => $pointsList, 'resultsList' => $resultsList]);
+                            'villageList' => $villageList, 'pointsList' => $pointsList, 'resultsList' => $resultsList,'reportsCount'=>$reportsCount]);
                     }
                 }
 
