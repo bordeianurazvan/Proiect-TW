@@ -118,6 +118,27 @@
             <a href="/Proiect-TW/mvc/public/village/iron" class="btn btn-primary " role="button">Iron</a>
             <a href="/Proiect-TW/mvc/public/attack/movements" class="btn btn-primary " role="button">Movements</a>
             <a href="/Proiect-TW/mvc/public/village/privireDeAnsamblu/1" class="btn btn-primary " role="button">Villages</a>
+            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#support">Change VillageName</button>
+            <div class="modal fade" id="support">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Change village name</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Put in the Name that you prefer</p>
+                            <form action="/Proiect-tw/mvc/public/VillageName/changeVillageName/" method="post">
+                                <div class="form-group">
+                                    <label for="text">Village Name:</label>
+                                    <input type="text" class="form-control" id="text" placeholder="Enter Village Name" name="name"
+                                </div>
+                                <button type="submit" class="btn btn-primary instruct" >Commit Changes</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

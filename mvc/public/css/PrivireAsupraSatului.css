@@ -132,3 +132,14 @@ body{
     align-content: center;
     text-align: center;
 }
+.modal-content{
+    background-image: url("../images/textura.png");
+    background-size: 100% 100%;
+}
+.modal-header{
+    border-width:0;
+}
+.instruct
+{
+    margin-top: 0.5%;
+}
