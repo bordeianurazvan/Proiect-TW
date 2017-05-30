@@ -93,7 +93,12 @@
                                 </td>
                                 <td>
 
-                                    <a type="button" class="btn btn-primary btn-xs" id="startClock" href="/Proiect-Tw/mvc/public/commands/contructOrder/1">Level <?php echo $data['mainBuildingLevel']+1; ?> </a>
+                                <?php
+                                if ($data['mainInConstruction']!=0)
+                                  echo '<a type="button"  class="btn btn-primary btn-xs" style="pointer-events: none; cursor: default;" href="/Proiect-Tw/mvc/public/commands/constructOrder/1">Level'.($data['mainBuildingLevel']+1).' </a>';
+                                else
+                                  echo '<a type="button"  class="btn btn-primary btn-xs" href="/Proiect-Tw/mvc/public/commands/constructOrder/1">Level'.($data['mainBuildingLevel']+1).' </a>';
+                                ?>
                                 </td>
                             </tr>
                             <tr>
@@ -113,7 +118,12 @@
                                 </td>
                                 <td>
 
-                                    <a type="button" class="btn btn-primary btn-xs" id="startClock" href="/Proiect-Tw/mvc/public/commands/contructOrder/3">Level <?php echo $data['barracksLevel']+1; ?> </a>
+                                    <?php
+                                    if ($data['barracksInConstruction']!=0)
+                                        echo '<a type="button"  class="btn btn-primary btn-xs" style="pointer-events: none; cursor: default;" href="/Proiect-Tw/mvc/public/commands/constructOrder/3">Level'.($data['barracksLevel']+1).' </a>';
+                                    else
+                                        echo '<a type="button"  class="btn btn-primary btn-xs" href="/Proiect-Tw/mvc/public/commands/constructOrder/3">Level'.($data['barracksLevel']+1).' </a>';
+                                    ?>
                                 </td>
                             </tr>
                             <tr >
@@ -133,7 +143,12 @@
                                 </td>
                                 <td>
 
-                                    <a type="button" class="btn btn-primary btn-xs" id="startClock" href="/Proiect-Tw/mvc/public/commands/contructOrder/7">Level <?php echo $data['storageLevel']+1; ?> </a>
+                                    <?php
+                                    if ($data['storageInConstruction']!=0)
+                                        echo '<a type="button"  class="btn btn-primary btn-xs" style="pointer-events: none; cursor: default;" href="/Proiect-Tw/mvc/public/commands/constructOrder/7">Level'.($data['storageLevel']+1).' </a>';
+                                    else
+                                        echo '<a type="button"  class="btn btn-primary btn-xs" href="/Proiect-Tw/mvc/public/commands/constructOrder/7">Level'.($data['storageLevel']+1).' </a>';
+                                    ?>
                                 </td>
                             </tr>
                             <tr>
@@ -153,7 +168,12 @@
                                 </td>
                                 <td>
 
-                                    <a type="button" class="btn btn-primary btn-xs" id="startClock" href="/Proiect-Tw/mvc/public/commands/contructOrder/2">Level <?php echo $data['wallLevel']+1; ?> </a>
+                                    <?php
+                                    if ($data['wallInConstruction']!=0)
+                                        echo '<a type="button"  class="btn btn-primary btn-xs" style="pointer-events: none; cursor: default;" href="/Proiect-Tw/mvc/public/commands/constructOrder/2">Level'.($data['wallLevel']+1).' </a>';
+                                    else
+                                        echo '<a type="button"  class="btn btn-primary btn-xs" href="/Proiect-Tw/mvc/public/commands/constructOrder/2">Level'.($data['wallLevel']+1).' </a>';
+                                    ?>
                                 </td>
                             </tr>
 
@@ -174,7 +194,12 @@
                                 </td>
                                 <td>
 
-                                    <a type="button" class="btn btn-primary btn-xs" id="startClock" href="/Proiect-Tw/mvc/public/commands/contructOrder/5">Level <?php echo $data['woodLevel']+1; ?> </a>
+                                    <?php
+                                    if ($data['woodInConstruction']!=0)
+                                        echo '<a type="button"  class="btn btn-primary btn-xs" style="pointer-events: none; cursor: default;" href="/Proiect-Tw/mvc/public/commands/constructOrder/5">Level'.($data['woodLevel']+1).' </a>';
+                                    else
+                                        echo '<a type="button"  class="btn btn-primary btn-xs" href="/Proiect-Tw/mvc/public/commands/constructOrder/5">Level'.($data['woodLevel']+1).' </a>';
+                                    ?>
                                 </td>
                             </tr>
 
@@ -195,7 +220,12 @@
                                 </td>
                                 <td>
 
-                                    <a type="button" class="btn btn-primary btn-xs" id="startClock" href="/Proiect-Tw/mvc/public/commands/contructOrder/6">Level <?php echo $data['ironLevel']+1; ?> </a>
+                                    <?php
+                                    if ($data['ironInConstruction']!=0)
+                                        echo '<a type="button"  class="btn btn-primary btn-xs" style="pointer-events: none; cursor: default;" href="/Proiect-Tw/mvc/public/commands/constructOrder/6">Level'.($data['ironLevel']+1).' </a>';
+                                    else
+                                        echo '<a type="button"  class="btn btn-primary btn-xs" href="/Proiect-Tw/mvc/public/commands/constructOrder/6">Level'.($data['ironLevel']+1).' </a>';
+                                    ?>
                                 </td>
                             </tr>
 
@@ -216,7 +246,12 @@
                                 </td>
                                 <td>
 
-                                    <a type="button" class="btn btn-primary btn-xs" id="startClock" href="/Proiect-Tw/mvc/public/commands/contructOrder/4">Level <?php echo $data['stoneLevel']+1; ?> </a>
+                                    <?php
+                                    if ($data['stoneInConstruction']!=0)
+                                        echo '<a type="button"  class="btn btn-primary btn-xs" style="pointer-events: none; cursor: default;" href="/Proiect-Tw/mvc/public/commands/constructOrder/4">Level'.($data['stoneLevel']+1).' </a>';
+                                    else
+                                        echo '<a type="button"  class="btn btn-primary btn-xs" href="/Proiect-Tw/mvc/public/commands/constructOrder/4">Level'.($data['stoneLevel']+1).' </a>';
+                                    ?>
                                 </td>
                             </tr>
                             </tbody>

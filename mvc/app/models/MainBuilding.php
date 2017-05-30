@@ -300,6 +300,78 @@ class MainBuilding
         return $row[0];
     }
 
+    public static function getWallEndTime($villageId)
+    {
+        $buildingId = 2;
+        $query = "SELECT substr(to_char(cast(end_time as timestamp(0))),1,16)||substr(cast(end_time as timestamp(0)),20,22) from build where village_id=:villageId and building_id=:buildingId order by end_time";
+        $statement = oci_parse(Db::getDbInstance(),$query);
+        oci_bind_by_name($statement,":buildingId",$buildingId);
+        oci_bind_by_name($statement,":villageId",$villageId);
+        oci_execute($statement);
+        $row=oci_fetch_row($statement);
+        return $row[0];
+    }
+
+    public static function getBarracksEndTime($villageId)
+    {
+        $buildingId = 3;
+        $query = "SELECT substr(to_char(cast(end_time as timestamp(0))),1,16)||substr(cast(end_time as timestamp(0)),20,22) from build where village_id=:villageId and building_id=:buildingId order by end_time";
+        $statement = oci_parse(Db::getDbInstance(),$query);
+        oci_bind_by_name($statement,":buildingId",$buildingId);
+        oci_bind_by_name($statement,":villageId",$villageId);
+        oci_execute($statement);
+        $row=oci_fetch_row($statement);
+        return $row[0];
+    }
+
+    public static function getStoneEndTime($villageId)
+    {
+        $buildingId = 4;
+        $query = "SELECT substr(to_char(cast(end_time as timestamp(0))),1,16)||substr(cast(end_time as timestamp(0)),20,22) from build where village_id=:villageId and building_id=:buildingId order by end_time";
+        $statement = oci_parse(Db::getDbInstance(),$query);
+        oci_bind_by_name($statement,":buildingId",$buildingId);
+        oci_bind_by_name($statement,":villageId",$villageId);
+        oci_execute($statement);
+        $row=oci_fetch_row($statement);
+        return $row[0];
+    }
+
+    public static function getWoodEndTime($villageId)
+    {
+        $buildingId = 5;
+        $query = "SELECT substr(to_char(cast(end_time as timestamp(0))),1,16)||substr(cast(end_time as timestamp(0)),20,22) from build where village_id=:villageId and building_id=:buildingId order by end_time";
+        $statement = oci_parse(Db::getDbInstance(),$query);
+        oci_bind_by_name($statement,":buildingId",$buildingId);
+        oci_bind_by_name($statement,":villageId",$villageId);
+        oci_execute($statement);
+        $row=oci_fetch_row($statement);
+        return $row[0];
+    }
+
+    public static function getIronEndTime($villageId)
+    {
+        $buildingId = 6;
+        $query = "SELECT substr(to_char(cast(end_time as timestamp(0))),1,16)||substr(cast(end_time as timestamp(0)),20,22) from build where village_id=:villageId and building_id=:buildingId order by end_time";
+        $statement = oci_parse(Db::getDbInstance(),$query);
+        oci_bind_by_name($statement,":buildingId",$buildingId);
+        oci_bind_by_name($statement,":villageId",$villageId);
+        oci_execute($statement);
+        $row=oci_fetch_row($statement);
+        return $row[0];
+    }
+
+    public static function getStorageEndTime($villageId)
+    {
+        $buildingId = 7;
+        $query = "SELECT substr(to_char(cast(end_time as timestamp(0))),1,16)||substr(cast(end_time as timestamp(0)),20,22) from build where village_id=:villageId and building_id=:buildingId order by end_time";
+        $statement = oci_parse(Db::getDbInstance(),$query);
+        oci_bind_by_name($statement,":buildingId",$buildingId);
+        oci_bind_by_name($statement,":villageId",$villageId);
+        oci_execute($statement);
+        $row=oci_fetch_row($statement);
+        return $row[0];
+    }
+
     public static function levelUpBuilding($villageId,$buildingId)
     {
         $query = "begin levelUp_building(:villageId,:buildingId,:ok); end;";

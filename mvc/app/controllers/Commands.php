@@ -76,6 +76,14 @@ class Commands extends Controller
         $storageTime = MainBuilding::getStorageTime($villageId);
         $storageTimeFinal = ($storageTime*$storageLevel);
         $mainBuildingEndTime = MainBuilding::getMainBuildingEndTime($villageId);
+        $wallEndTime = MainBuilding::getWallEndTime($villageId);
+        $barracksEndTime = MainBuilding::getBarracksEndTime($villageId);
+        $stoneEndTime = MainBuilding::getStoneEndTime($villageId);
+        $woodEndTime = MainBuilding::getWoodEndTime($villageId);
+        $ironEndTime = MainBuilding::getIronEndTime($villageId);
+        $storageEndTime = MainBuilding::getStorageEndTime($villageId);
+
+
 
         $mainBuildingInConstruction = MainBuilding::buildingInConstruction($villageId,1);
         $wallInConstruction = MainBuilding::buildingInConstruction($villageId,2);
@@ -92,16 +100,17 @@ class Commands extends Controller
             'mainBuildingNecessities'=>$mainBuildingNecessities,'wallNecessities'=>$wallNecessities,'barracksNecessities'=>$barracksNecessities,
             'stoneNecessities'=>$stoneNecessities,'woodNecessities'=>$woodNecessities,'ironNecessities'=>$ironNecessities,
             'storageNecessities'=>$storageNecessities,'iron'=>$iron,'wood'=>$wood,'stone'=>$stone,'village_name'=>$village_name,
-        'mainBuildingTimeFinal'=>$mainBuldingTimeFinal,'wallTimeFinal'=>$wallTimeFinal,'barracksTimeFinal'=>$barracksTimeFinal,
+            'mainBuildingTimeFinal'=>$mainBuldingTimeFinal,'wallTimeFinal'=>$wallTimeFinal,'barracksTimeFinal'=>$barracksTimeFinal,
             'stoneTimeFinal'=>$stoneTimeFinal,'woodTimeFinal'=>$woodTimeFinal,'ironTimeFinal'=>$ironTimeFinal,
-            'storageTimeFinal'=>$storageTimeFinal,'storage'=>$storage,'mainBuildingEndTime'=>$mainBuildingEndTime,'status'=>$status,
-            'mainInConstruction'=>$mainBuildingInConstruction,'wallInConstruction'=>$wallInConstruction,'barracksInConstruction'=>$barracksInConstruction,
-            'stoneInConstruction'=>$stoneInConstruction,'woodInConstruction'=>$woodInConstruction,'ironInConstruction'=>$ironInConstruction,
-            'storageInConstruction'=>$storageInConstruction]);
+            'storageTimeFinal'=>$storageTimeFinal,'storage'=>$storage,'mainBuildingEndTime'=>$mainBuildingEndTime,'wallEndTime'=>$wallEndTime,
+            'barracksEndTime'=>$barracksEndTime,'stoneEndTime'=>$stoneEndTime,'woodEndTime'=>$woodEndTime,'ironEndTime'=>$ironEndTime,
+            'storageEndTime'=>$storageEndTime, 'status'=>$status, 'mainInConstruction'=>$mainBuildingInConstruction,'wallInConstruction'=>$wallInConstruction,
+            'barracksInConstruction'=>$barracksInConstruction,'stoneInConstruction'=>$stoneInConstruction,'woodInConstruction'=>$woodInConstruction,
+            'ironInConstruction'=>$ironInConstruction,'storageInConstruction'=>$storageInConstruction]);
 
     }
 
-    public function contructOrder($buildingId='')
+    public function constructOrder($buildingId='')
     {
         $villageId = $_SESSION['village_id'];
         $ok = MainBuilding::levelUpBuilding($villageId,$buildingId);
