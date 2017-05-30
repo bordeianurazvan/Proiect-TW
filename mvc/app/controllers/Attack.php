@@ -8,9 +8,14 @@ session_start();
  */
 class Attack extends Controller
 {
-    public function getAttack($status = ' ', $retry = ' ')
+    public function getAttack($status = ' ', $retry = ' ',$x='',$y='')
     {
         SessionValidate::validateSession();
+        if($x!=null && $y!=null) {
+            $_SESSION['x'] = $x;
+            $_SESSION['y'] = $y;
+        }
+
 
         if ($status == 'failed' && $retry = 'yes') {
             header('Location: /Proiect-TW/mvc/public/attack/getattack/failedattack');
@@ -40,7 +45,7 @@ class Attack extends Controller
             }
                 return;
         }
-          echo 'apelez functia';
+
         $cod_stare = AttackGenerator::generateAttack($_SESSION['village_id'],$_POST['x'],$_POST['y'],
             $_POST['spear'], $_POST['axe'] ,$_POST['sword'],$_POST['archer'] );
          echo 'validez raspunsul';

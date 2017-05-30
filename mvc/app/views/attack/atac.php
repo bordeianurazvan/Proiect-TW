@@ -30,11 +30,11 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/Proiect-Tw/mvc/public/village/PrivireAsupraSatului"><span class="glyphicon glyphicon-home"></span> Home </a></li>
+                <li><a href="/Proiect-Tw/mvc/public/village/villageView"><span class="glyphicon glyphicon-home"></span> Home </a></li>
                 <li><a href="/Proiect-Tw/mvc/public/userprofile/getprofile"><span class="glyphicon glyphicon-user"></span> Profile </a></li>
                 <li><a href="/Proiect-Tw/mvc/public/map/getmap"><span class="glyphicon glyphicon-globe"></span> Map </a></li>
                 <li><a href="/Proiect-Tw/mvc/public/reports/reportslist"><span class="glyphicon glyphicon-comment"></span> Reports <span class="badge"><?php echo $data['reportsCount']; ?></span> </a></li>
-                <li><a href="/Proiect-Tw/mvc/public/ranking/Ranking"><span class="glyphicon glyphicon-stats"></span> Ranking </a></li>
+                <li><a href="/Proiect-Tw/mvc/public/ranking/rankingPopulation"><span class="glyphicon glyphicon-stats"></span> Ranking </a></li>
                 <li><a href="/Proiect-Tw/mvc/public/home/login"><span class="glyphicon glyphicon-off"></span> LogOut </a></li>
             </ul>
         </div>
@@ -78,6 +78,7 @@
         </form>
 
     <?php
+
     if($data['retry']=='yes')
     echo '<h3 class ="mesaj-eroare">Invalid Parameters!</h3>';
 ?>

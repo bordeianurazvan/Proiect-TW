@@ -29,7 +29,7 @@ CREATE OR REPLACE TRIGGER first_village_trg
          insert into villages(village_name,points,attacks_number,user_id,coord_x,coord_y) values( :new.username||'''s Village',0,0,:new.user_id,x,y);
          for i in 1..10 loop
           parcela_libera(x,y);
-         insert into villages(village_name,points,attacks_number,user_id,coord_x,coord_y) values( :new.username||'''s Village',0,0,1,x,y);
+         insert into villages(village_name,points,attacks_number,user_id,coord_x,coord_y) values('Barbar Village',0,0,1,x,y);
          end loop;
          
          
