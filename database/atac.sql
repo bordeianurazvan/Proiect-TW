@@ -1,4 +1,4 @@
-CREATE OR REPLACE PROCEDURE atac(id_atacator int ,id_aparator int,p_spear int,p_axe int,p_sword int,p_archer int,cod_stare out int) as
+CREATE OR REPLACE PROCEDURE atac(id_atacator int ,x int,y int ,p_spear int,p_axe int,p_sword int,p_archer int,cod_stare out int) as
 spear int;
 axe int;
 sword int;
@@ -8,12 +8,19 @@ timp_total TIMESTAMP(6);
 units varchar(100);
 village_user_id int;
 current_user_id int;
+id_aparator int;
 begin
+      
+      select village_id into id_aparator from villages where coord_x=x and coord_y=y;
+   
       select user_id into village_user_id from villages where village_id=id_aparator;
-       select user_id into current_user_id from villages where village_id=id_atacator;
-      if(village_user_id=current_user_id)
+      
+      select user_id into current_user_id from villages where village_id=id_atacator;
+      
+      if(village_user_id<>current_user_id)
       then
-    
+  
+      
       select troop_number into spear from villagetroops where village_id=id_atacator and troop_id=1;
       select troop_number into axe from villagetroops where village_id=id_atacator and troop_id=2;
       select troop_number into sword from villagetroops where village_id=id_atacator and troop_id=3;
@@ -23,6 +30,7 @@ begin
   then
   cod_stare :=-1;
   else
+
         update villagetroops set troop_number = troop_number-p_spear where village_id=id_atacator and troop_id=1;
         update villagetroops set troop_number = troop_number-p_axe where village_id=id_atacator and troop_id=2;
         update villagetroops set troop_number = troop_number-p_sword where village_id=id_atacator and troop_id=3;
@@ -35,12 +43,22 @@ begin
          select current_timestamp + numToDSInterval( timp_deplasare, 'second' ) INTO timp_total from dual;
          
         insert into commands(from_village,to_village,units,command_type,start_time,arrive_time) values (id_atacator,id_aparator,units,'attack',current_timestamp,timp_total);
+        
+    
         cod_stare:=1;
   end if;
   else
   cod_stare :=-1;
+
   end if;
 
 end;
-
+set serveroutput on;
+declare
+ok int;
+begin
+atac(7,1,115,110,110,0,ok);
+dbms_output.put_line(ok);
+end;
+select * from commands;
 
