@@ -13,7 +13,14 @@ class Village extends Controller
         if ($x == '' || $y == '') {
             SessionValidate::validateSession();
             $reportsCount=Report::getReportsCount($_SESSION['user_id']);
-            $village_name = VillageFunctions::getVillageName($_SESSION['user_id']);
+            if(isset($_SESSION['village_name'])){
+                $village_name = VillageFunctions::getVillageName($_SESSION['user_id']);
+            }else{
+                $village_name = VillageFunctions::getFirstUserVillageName($_SESSION['user_id']);
+                VillageFunctions::setSessionVillageName($village_name);
+                $village_id = VillageFunctions::getFirstUserVillageId($_SESSION['user_id']);
+                VillageFunctions::setSessionVillageId($village_id);
+            }
             $iron = VillageFunctions::getIronResources($_SESSION['village_id']);
             $stone = VillageFunctions::getStoneResources($_SESSION['village_id']);
             $wood = VillageFunctions::getWoodResources($_SESSION['village_id']);
@@ -47,7 +54,14 @@ class Village extends Controller
             else{
                 SessionValidate::validateSession();
                 $reportsCount=Report::getReportsCount($_SESSION['user_id']);
-                $village_name = VillageFunctions::getVillageName($_SESSION['user_id']);
+                if(isset($_SESSION['village_name'])){
+                    $village_name = VillageFunctions::getVillageName($_SESSION['user_id']);
+                }else{
+                    $village_name = VillageFunctions::getFirstUserVillageName($_SESSION['user_id']);
+                    VillageFunctions::setSessionVillageName($village_name);
+                    $village_id = VillageFunctions::getFirstUserVillageId($_SESSION['user_id']);
+                    VillageFunctions::setSessionVillageId($village_id);
+                }
                 $iron = VillageFunctions::getIronResources($_SESSION['village_id']);
                 $stone = VillageFunctions::getStoneResources($_SESSION['village_id']);
                 $wood = VillageFunctions::getWoodResources($_SESSION['village_id']);
@@ -56,9 +70,9 @@ class Village extends Controller
                 $axe = VillageFunctions::getAxeNumber($_SESSION['village_id']);
                 $sword = VillageFunctions::getSwordNumber($_SESSION['village_id']);
                 $archer = VillageFunctions::getArcherNumber($_SESSION['village_id']);
-                $this->view('village/villageView', ['village_name' => $village_name, 'iron' => $iron,
-                    'stone' => $stone, 'wood' => $wood, 'storage' => $storage, 'spear' => $spear, 'axe' => $axe,
-                    'sword' => $sword, 'archer' => $archer,'reportsCount'=>$reportsCount]);
+                $this->view('village/villageView', ['village_name' => $village_name,
+                    'iron' => $iron, 'stone' => $stone, 'wood' => $wood, 'storage' => $storage,
+                    'spear' => $spear, 'axe' => $axe, 'sword' => $sword, 'archer' => $archer,'reportsCount'=>$reportsCount]);
             }
         }
     }

@@ -22,6 +22,6 @@ public function changeVillageName()
             oci_bind_by_name($stid,"user_id",$_SESSION['user_id']);
             oci_execute($stid);
         }
-        header('Location: /Proiect-tw/mvc/public/village/privireasuprasatului');
+        header('Location: /Proiect-tw/mvc/public/village/villageView');
     }
 }

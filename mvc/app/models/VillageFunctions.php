@@ -11,17 +11,21 @@ class VillageFunctions
 
     public static function getVillageName($user_id)
     {
+          return ($_SESSION['village_name']);
+    }
+    public static function getFirstUserVillageName($user_id){
         $query="SELECT *  from( select village_name from villages where user_id ='$user_id' order by village_id) where rownum < 2 ";
         $statement = oci_parse(Db::getDbInstance(),$query);
         oci_execute($statement);
         $row = oci_fetch_row($statement);
+        return $row[0];
+    }
+    public static function getFirstUserVillageId($user_id){
         $query1="SELECT *  from( select village_id from villages where user_id ='$user_id' order by village_id) where rownum < 2 ";
         $statement1 = oci_parse(Db::getDbInstance(),$query1);
         oci_execute($statement1);
         $row1 = oci_fetch_row($statement1);
-        $_SESSION['village_name']=$row[0];
-        $_SESSION['village_id']=$row1[0];
-        return $row[0];
+        return $row1[0];
     }
     public static function getVillageNameByCoords($x, $y)
     {
@@ -36,6 +40,12 @@ class VillageFunctions
         $_SESSION['village_name']=$row[0];
         $_SESSION['village_id']=$row1[0];
         return $row[0];
+    }
+    public static function setSessionVillageId($village_id){
+        $_SESSION['village_id'] = $village_id;
+    }
+    public static function setSessionVillageName($village_name){
+        $_SESSION['village_name'] = $village_name;
     }
     public static function getVillageNameById($village_id)
     {
