@@ -40,17 +40,17 @@ class Attack extends Controller
             }
                 return;
         }
-
+          echo 'apelez functia';
         $cod_stare = AttackGenerator::generateAttack($_SESSION['village_id'],$_POST['x'],$_POST['y'],
             $_POST['spear'], $_POST['axe'] ,$_POST['sword'],$_POST['archer'] );
-
+         echo 'validez raspunsul';
         if ($cod_stare == 1) {
 
-            header('Location: /Proiect-TW/mvc/public/Attack/movements');
+           header('Location: /Proiect-TW/mvc/public/Attack/movements');
         } else {
 
 
-            header('Location: /Proiect-TW/mvc/public/attack/getattack/failed/yes');
+          header('Location: /Proiect-TW/mvc/public/attack/getattack/failed/yes');
         }
 }
     public function movements($page='')

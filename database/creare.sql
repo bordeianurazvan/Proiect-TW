@@ -233,9 +233,9 @@ end;
 DROP SEQUENCE users_id_seq;
 /
 CREATE SEQUENCE users_id_seq
-MINVALUE 1
+MINVALUE 2
 MAXVALUE 999999999999999999999999999
-START WITH 1
+START WITH 2
 INCREMENT BY 1
 NOCACHE; 
 / 
@@ -356,3 +356,5 @@ CREATE OR REPLACE TRIGGER reports_id_trg
               select reports_id_seq.nextval into :new.id from dual;
           end if;
 end;
+/
+insert into users(user_id,username,user_password,new_report,birthday,data_inregistrare,general_points,battle_points) values (1,'Barbar','qwerty',0,current_timestamp,current_timestamp,0,0);

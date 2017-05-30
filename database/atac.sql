@@ -53,12 +53,4 @@ begin
   end if;
 
 end;
-set serveroutput on;
-declare
-ok int;
-begin
-atac(7,1,115,110,110,0,ok);
-dbms_output.put_line(ok);
-end;
-select * from commands;
 

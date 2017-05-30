@@ -11,7 +11,7 @@ class AttackGenerator
    public static function generateAttack($user_id,$x,$y,$spear,$axe,$sword,$archer)
    {
 
-       //echo 'am intrat aici'.$user_id.' '.$x.' '.$y.' '.$spear.' '.$axe.' '.$sword.' '.$archer;
+       echo 'am intrat aici'.$user_id.' '.$x.' '.$y.' '.$spear.' '.$axe.' '.$sword.' '.$archer;
        $query = "select tip  from map where COORD_X=:x and COORD_Y=:y";
        $conn = Db::getDbInstance();
        $stid = oci_parse($conn, $query);

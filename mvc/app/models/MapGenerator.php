@@ -24,7 +24,7 @@ class MapGenerator
           $contor++;
       }
           $tip = $row['TIP'];
-          if($tip==1)
+          if($tip==1 ||$tip==2)
           $harta=$harta.'<td data-toggle=\'modal\' data-id=\'1\' data-target=\'#mini-menu\' onclick="myFunction(this)"><img alt="Resources" src="/Proiect-TW/mvc/public/images/' . $tip . '.png" title="' . $row['COORD_X'] . '|' . $row['COORD_Y'] . '"> </td>';
           else
               $harta=$harta.'<td onclick="myFunction(this)"><img alt="Resources" src="/Proiect-TW/mvc/public/images/' . $tip . '.png" title="' . $row['COORD_X'] . '|' . $row['COORD_Y'] . ' " id="' . $row['COORD_X'] . '|' . $row['COORD_Y'] . ' " > </td>';
