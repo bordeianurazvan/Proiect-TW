@@ -135,4 +135,46 @@ class Profile
         }
     }
 
+    public static function getUserId($username)
+    {
+        $query = "SELECT user_id from users where username = :username ";
+        $statement = oci_parse(Db::getDbInstance(),$query);
+        oci_bind_by_name($statement,':username',$username);
+        oci_execute($statement);
+        $row = oci_fetch_row($statement);
+        return $row[0];
+    }
+
+    public static function validateUser($username)
+    {
+        $query = "SELECT count(user_id) from users where username = :username ";
+        $statement = oci_parse(Db::getDbInstance(),$query);
+        oci_bind_by_name($statement,':username',$username);
+        oci_execute($statement);
+        $row = oci_fetch_row($statement);
+        return $row[0];
+    }
+
+    public static function getUsernameByMap($coord_x,$coord_y)
+    {
+        $query = "SELECT  count(username) from users where user_id in (select user_id from villages where COORD_X=:coord_x and COORD_Y=:coord_y) ";
+        $statement = oci_parse(Db::getDbInstance(),$query);
+        oci_bind_by_name($statement, ':coord_x', $coord_x);
+        oci_bind_by_name($statement, ':coord_y', $coord_y);
+        oci_execute($statement);
+        $row = oci_fetch_row($statement);
+        if($row[0]==0)
+            return null;
+        else {
+
+            $query = "SELECT username from users where user_id in (select user_id from villages where COORD_X=:coord_x and COORD_Y=:coord_y) ";
+            $statement = oci_parse(Db::getDbInstance(), $query);
+            oci_bind_by_name($statement, ':coord_x', $coord_x);
+            oci_bind_by_name($statement, ':coord_y', $coord_y);
+            oci_execute($statement);
+            $row = oci_fetch_row($statement);
+            return $row[0];
+        }
+    }
+
 }

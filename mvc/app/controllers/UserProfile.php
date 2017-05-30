@@ -23,9 +23,13 @@ class UserProfile extends Controller
 
         if($username != null && $signUpDate != null && $numberOfVillages != null && $varsta != null )
         {
+            $battleRank = RankingFunctions::getUsersAttackPoints($username);
+            $generalRank = RankingFunctions::getUsersGeneralPoints($username);
+
             $this->view('user/profile',['username'=>$username,'signUpDate'=>$signUpDate,
                 'numberOfVillages'=>$numberOfVillages,'varsta'=>$varsta,'village_name'=>$village_name,
-                'iron'=>$iron,'stone'=>$stone,'wood'=>$wood,'storage'=>$storage]);
+                'iron'=>$iron,'stone'=>$stone,'wood'=>$wood,'storage'=>$storage,
+                'generalPoints'=>$generalRank,'battlePoints'=>$battleRank]);
         }
 
 
@@ -140,6 +144,79 @@ class UserProfile extends Controller
         } else {
 
             header('Location: /Proiect-TW/mvc/public/UserProfile/info');
+        }
+
+    }
+
+    public function getOtherProfile($username='')
+    {
+        SessionValidate::validateSession();
+        $village_name = VillageFunctions::getVillageName($_SESSION['user_id']);
+        $iron = VillageFunctions::getIronResources($_SESSION['village_id']);
+        $stone = VillageFunctions::getStoneResources($_SESSION['village_id']);
+        $wood = VillageFunctions::getWoodResources($_SESSION['village_id']);
+        $storage = VillageFunctions::getStorrageLevel($_SESSION['village_id'])*1000;
+
+        $otherUsername = $username;
+        $ok = Profile::validateUser($otherUsername);
+
+        if($ok == 0)
+            header('Location: /Proiect-TW/mvc/public/ranking/rankingPopulation/1');
+
+        if($otherUsername != null)
+            $otherUserId = Profile::getUserId($username);
+
+             $battleRank = RankingFunctions::getUsersAttackPoints($otherUsername);
+             $generalRank = RankingFunctions::getUsersGeneralPoints($otherUsername);
+
+            $signUpDate = Profile::getSignUpDate($otherUserId);
+            $numberOfVillages = Profile::getNumberOfVillages($otherUserId);
+            $varsta = Profile::getUserAge($otherUserId);
+
+
+
+        if($otherUsername != null && $signUpDate != null && $numberOfVillages != null && $varsta != null )
+        {
+            $this->view('user/otherProfile',['otherUsername'=>$otherUsername,'signUpDate'=>$signUpDate,
+                'numberOfVillages'=>$numberOfVillages,'varsta'=>$varsta,'village_name'=>$village_name,
+                'iron'=>$iron,'stone'=>$stone,'wood'=>$wood,'storage'=>$storage,'otherUserID'=>$otherUserId,
+                'generalPoints'=>$generalRank,'battlePoints'=>$battleRank]);
+        }
+    }
+
+    public function getOtherProfileByMap($coord_x = '',$coord_y='')
+    {
+        SessionValidate::validateSession();
+        $village_name = VillageFunctions::getVillageName($_SESSION['user_id']);
+        $iron = VillageFunctions::getIronResources($_SESSION['village_id']);
+        $stone = VillageFunctions::getStoneResources($_SESSION['village_id']);
+        $wood = VillageFunctions::getWoodResources($_SESSION['village_id']);
+        $storage = VillageFunctions::getStorrageLevel($_SESSION['village_id'])*1000;
+
+
+        $otherUsername = Profile::getUsernameByMap($coord_x,$coord_y);
+        if($otherUsername == null)
+            header('Location: /Proiect-TW/mvc/public/map/getMap');
+        else
+        {
+            $battleRank = RankingFunctions::getUsersAttackPoints($otherUsername);
+            $generalRank = RankingFunctions::getUsersGeneralPoints($otherUsername);
+
+            $otherUserId = Profile::getUserId($otherUsername);
+
+            $signUpDate = Profile::getSignUpDate($otherUserId);
+            $numberOfVillages = Profile::getNumberOfVillages($otherUserId);
+            $varsta = Profile::getUserAge($otherUserId);
+
+
+
+            if($otherUsername != null && $signUpDate != null && $numberOfVillages != null && $varsta != null )
+            {
+                $this->view('user/otherProfile',['otherUsername'=>$otherUsername,'signUpDate'=>$signUpDate,
+                    'numberOfVillages'=>$numberOfVillages,'varsta'=>$varsta,'village_name'=>$village_name,
+                    'iron'=>$iron,'stone'=>$stone,'wood'=>$wood,'storage'=>$storage,'otherUserID'=>$otherUserId,
+                    'generalPoints'=>$generalRank,'battlePoints'=>$battleRank]);
+            }
         }
 
     }

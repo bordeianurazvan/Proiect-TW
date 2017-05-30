@@ -48,14 +48,14 @@
             1000<img alt="Resources" src="/Proiect-TW/mvc/public/images/resources.png">
         </div>
     </div>
-<h4 class="legend"><?php echo $data['username']; ?>'s profile</h4>
+    <h4 class="legend"><?php echo $data['otherUsername']; ?>'s profile</h4>
     <table class="table no-border">
         <tr>
             <th>Username:</th>
-            <td><?php echo $data['username']; ?></td>
+            <td><?php echo $data['otherUsername']; ?></td>
         </tr>
         <tr><th>Sign up date:</th>
-        <td><?php echo $data['signUpDate']; ?></td></tr>
+            <td><?php echo $data['signUpDate']; ?></td></tr>
         <tr><th>Battle points: </th>
             <td><?php echo $data['battlePoints']; ?></td>
         </tr>
@@ -63,17 +63,15 @@
             <td><?php echo $data['generalPoints']; ?></td>
         </tr>
         <tr><th>Number of villages:</th>
-        <td><?php echo $data['numberOfVillages']; ?></td>
+            <td><?php echo $data['numberOfVillages']; ?></td>
         </tr>
         <tr><th>Age:</th>
-        <td><?php echo $data['varsta']; ?></td></tr>
-
+            <td><?php echo $data['varsta']; ?></td></tr>
 
 
     </table>
 
-
-<a class="btn btn-primary buton" href="/Proiect-TW/mvc/public/UserProfile/changePassword"><span class="glyphicon glyphicon-cog"></span>Settings</a>
+    <a class="btn btn-primary buton" href="/Proiect-TW/mvc/public/village/userVillages/<?php echo $data['otherUserID'];?>/1"><?php echo $data['otherUsername'].'\'s Villages'; ?></a>
 </div>
 <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2"></div>
 </body>
