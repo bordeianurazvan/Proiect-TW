@@ -1,8 +1,9 @@
-PrivireAsupraSatului : village/privireAsupraSatului
-Wood : village/wood
-Stone : village/stone
-Iron : village/iron
-Storage : village/storage
-PrivireDeAnsamblu : village/privireDeAnsamblu
-Ranking attackers : ranking/rankingAttackers
-Ranking Population : ranking/rankingPopulation
+Privire asupra satului in care se afla utilizatorul curent : village/villageView
+Cladirea in care se produce lemnul : village/wood
+Cladirea in care se produce piatra : village/stone
+Cladirea in care se produce fierul : village/iron
+Locul unde sunt depozitate resursele : village/storage
+Privire asupra propriilor sate cu detalii utile : village/overview/1
+Clasamentul jucatorilor facut dupa numarul de puncte din inamici invinsi : ranking/rankingAttackers
+Clasamentul jucatorilor in functie de numarul punctelor detinute : ranking/rankingPopulation
+Privire asupra satelor unui anumit jucator : village/userVillages
