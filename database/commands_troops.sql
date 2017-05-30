@@ -90,11 +90,3 @@ begin
   end if;
 end;
 
-declare
-  ok int :=-1;
-begin
-  barracks_create_troops(1,0,2,0,3,ok);
-  dbms_output.put_line(ok);
-end;
-select resource_number from villageresources where village_id=1;
-select * from createtroops where village_id=1;

@@ -88,6 +88,8 @@ CREATE OR REPLACE procedure commands_update as
    sword_al int:=0;
    archer_al int :=0;
    puncte int:=0;
+   att_name varchar(50);
+   def_name varchar(50);
    begin
    for i in(select * from commands) loop
    if(i.arrive_time<=current_timestamp)
@@ -124,6 +126,8 @@ CREATE OR REPLACE procedure commands_update as
       select village_name into nume1 from villages where village_id=i.from_village;
       select village_name into nume2 from villages where village_id=i.to_village;
       
+      select username into att_name from users where user_id=user1;
+      select username into def_name from users where user_id=user2;
       if suma_atacator >suma_aparator
         then
         
@@ -148,10 +152,10 @@ CREATE OR REPLACE procedure commands_update as
           update villages set user_id =user1 where village_id=i.to_village;
           
           insert into reports(title,sent_units,village_units,message,from_user,to_user,from_village,to_village,user_id,generation_time) 
-          values(nume1||' attacks '||nume2,i.units||'#'||spear_al||' '||axe_al||' '||sword_al||' '||archer_al,spear_def||' '||axe_def||' '||sword_def||' '||archer_def||'#'||'0 0 0 0',nume1||' conquered '||nume2,user1,user2,i.from_village,i.to_village,user1,current_timestamp);
+          values(nume1||' attacks '||nume2,i.units||'#'||spear_al||' '||axe_al||' '||sword_al||' '||archer_al,spear_def||' '||axe_def||' '||sword_def||' '||archer_def||'#'||'0 0 0 0',nume1||' conquered '||nume2,att_name,def_name,nume1,nume2,user1,current_timestamp);
           
           insert into reports(title,sent_units,village_units,message,from_user,to_user,from_village,to_village,user_id,generation_time) 
-          values(nume1||' attacks '||nume2,i.units||'#'||spear_al||' '||axe_al||' '||sword_al||' '||archer_al,spear_def||' '||axe_def||' '||sword_def||' '||archer_def||'#'||'0 0 0 0',nume1||' conquered '||nume2,user1,user2,i.from_village,i.to_village,user2,current_timestamp);
+          values(nume1||' attacks '||nume2,i.units||'#'||spear_al||' '||axe_al||' '||sword_al||' '||archer_al,spear_def||' '||axe_def||' '||sword_def||' '||archer_def||'#'||'0 0 0 0',nume1||' conquered '||nume2,att_name,def_name,nume1,nume2,user2,current_timestamp);
       
         elsif suma_atacator=suma_aparator
       
@@ -165,9 +169,9 @@ CREATE OR REPLACE procedure commands_update as
           
             update villagetroops set troop_number=0 where village_id = i.to_village;   
             insert into reports(title,sent_units,village_units,message,from_user,to_user,from_village,to_village,user_id,generation_time) 
-            values(nume1||' attacks '||nume2,i.units||'#'||'0 0 0 0',spear_def||' '||axe_def||' '||sword_def||' '||archer_def||'#'||'0 0 0 0',nume1||' failed to conquer '||nume2,user1,user2,i.from_village,i.to_village,user1,current_timestamp);
+            values(nume1||' attacks '||nume2,i.units||'#'||'0 0 0 0',spear_def||' '||axe_def||' '||sword_def||' '||archer_def||'#'||'0 0 0 0',nume1||' failed to conquer '||nume2,att_name,def_name,nume1,nume2,user1,current_timestamp);
             insert into reports(title,sent_units,village_units,message,from_user,to_user,from_village,to_village,user_id,generation_time) 
-            values(nume1||' attacks '||nume2,i.units||'#'||'0 0 0 0',spear_def||' '||axe_def||' '||sword_def||' '||archer_def||'#'||'0 0 0 0',nume1||' failed to conquer '||nume2,user1,user2,i.from_village,i.to_village,user2,current_timestamp);
+            values(nume1||' attacks '||nume2,i.units||'#'||'0 0 0 0',spear_def||' '||axe_def||' '||sword_def||' '||archer_def||'#'||'0 0 0 0',nume1||' failed to conquer '||nume2,att_name,def_name,nume1,nume2,user2,current_timestamp);
           elsif suma_atacator <suma_aparator
             then
             
@@ -189,9 +193,9 @@ CREATE OR REPLACE procedure commands_update as
               update villagetroops set troop_number = round((1-ratie)*sword_def) where village_id=i.to_village and troop_id =3;
               update villagetroops set troop_number = round((1-ratie)*archer_def) where village_id=i.to_village and troop_id =4;  
               insert into reports(title,sent_units,village_units,message,from_user,to_user,from_village,to_village,user_id,generation_time) 
-              values(nume1||' attacks '||nume2,i.units||'#'||'0 0 0 0',spear_def||' '||axe_def||' '||sword_def||' '||archer_def||'#'||round((1-ratie)*spear_def)||' '||round((1-ratie)*axe_def)||' '||round((1-ratie)*sword_def)||' '||round((1-ratie)*archer_def),nume1||' failed to conquer '||nume2,user1,user2,i.from_village,i.to_village,user1,current_timestamp);
+              values(nume1||' attacks '||nume2,i.units||'#'||'0 0 0 0',spear_def||' '||axe_def||' '||sword_def||' '||archer_def||'#'||round((1-ratie)*spear_def)||' '||round((1-ratie)*axe_def)||' '||round((1-ratie)*sword_def)||' '||round((1-ratie)*archer_def),nume1||' failed to conquer '||nume2,att_name,def_name,nume1,nume2,user1,current_timestamp);
               insert into reports(title,sent_units,village_units,message,from_user,to_user,from_village,to_village,user_id,generation_time) 
-              values(nume1||' attacks '||nume2,i.units||'#'||'0 0 0 0',spear_def||' '||axe_def||' '||sword_def||' '||archer_def||'#'||round((1-ratie)*spear_def)||' '||round((1-ratie)*axe_def)||' '||round((1-ratie)*sword_def)||' '||round((1-ratie)*archer_def),nume1||' failed to conquer '||nume2,user1,user2,i.from_village,i.to_village,user2,current_timestamp);
+              values(nume1||' attacks '||nume2,i.units||'#'||'0 0 0 0',spear_def||' '||axe_def||' '||sword_def||' '||archer_def||'#'||round((1-ratie)*spear_def)||' '||round((1-ratie)*axe_def)||' '||round((1-ratie)*sword_def)||' '||round((1-ratie)*archer_def),nume1||' failed to conquer '||nume2,att_name,def_name,nume1,nume2,user2,current_timestamp);
        end if;
     end if;
    delete from commands where id = i.id;

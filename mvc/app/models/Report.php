@@ -228,8 +228,8 @@ class Report
         return Report::getsDefArcherCount($report_id)-$lista[6];
     }
     public static function getAttackerUsername($report_id){
-        $uid=Report::getAttackerUID($report_id);
-        $query1="SELECT username FROM users WHERE user_id=:id";
+        $uid=$report_id;
+        $query1="SELECT from_user FROM reports WHERE id=:id";
         $stmt=oci_parse(Db::getDbInstance(),$query1);
         oci_bind_by_name($stmt,":id",$uid);
         oci_execute($stmt);
@@ -238,8 +238,8 @@ class Report
 
     }
     public static function getDefenderUsername($report_id){
-        $uid=Report::getDefenderUID($report_id);
-        $query1="SELECT username FROM users WHERE user_id=:id";
+        $uid=$report_id;
+        $query1="SELECT to_user FROM reports WHERE id=:id";
         $stmt=oci_parse(Db::getDbInstance(),$query1);
         oci_bind_by_name($stmt,":id",$uid);
         oci_execute($stmt);
@@ -248,8 +248,8 @@ class Report
 
     }
     public static function getAttackerVillageName($report_id){
-        $uid=Report::getAttackerVID($report_id);
-        $query1="SELECT village_name FROM villages WHERE village_id=:id";
+        $uid=$report_id;
+        $query1="SELECT from_village FROM reports WHERE id=:id";
         $stmt=oci_parse(Db::getDbInstance(),$query1);
         oci_bind_by_name($stmt,":id",$uid);
         oci_execute($stmt);
@@ -259,8 +259,8 @@ class Report
     }
 
     public static function getDefenderVillageName($report_id){
-        $uid=Report::getDefenderVID($report_id);
-        $query1="SELECT village_name FROM villages WHERE village_id=:id";
+        $uid=$report_id;
+        $query1="SELECT to_village FROM reports WHERE id=:id";
         $stmt=oci_parse(Db::getDbInstance(),$query1);
         oci_bind_by_name($stmt,":id",$uid);
         oci_execute($stmt);
