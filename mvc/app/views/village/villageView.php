@@ -24,7 +24,7 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/Proiect-TW/mvc/public/village/privireAsupraSatului"><span class="glyphicon glyphicon-home"></span> Home </a></li>
+                <li><a href="/Proiect-TW/mvc/public/village/villageView"><span class="glyphicon glyphicon-home"></span> Home </a></li>
                 <li><a href="/Proiect-TW/mvc/public/userProfile/getProfile"><span class="glyphicon glyphicon-user"></span> Profile </a></li>
                 <li><a href="/Proiect-TW/mvc/public/map/getMap"><span class="glyphicon glyphicon-globe"></span> Map </a></li>
                 <li><a href="/Proiect-TW/mvc/public/reports/reportslist"><span class="glyphicon glyphicon-comment"></span> Reports <span class="badge"><?php echo $data['reportsCount']; ?></span> </a></li>
@@ -117,7 +117,7 @@
             <a href="/Proiect-TW/mvc/public/village/stone" class="btn btn-primary " role="button">Stone</a>
             <a href="/Proiect-TW/mvc/public/village/iron" class="btn btn-primary " role="button">Iron</a>
             <a href="/Proiect-TW/mvc/public/attack/movements" class="btn btn-primary " role="button">Movements</a>
-            <a href="/Proiect-TW/mvc/public/village/privireDeAnsamblu/1" class="btn btn-primary " role="button">Villages</a>
+            <a href="/Proiect-TW/mvc/public/village/overview/1" class="btn btn-primary " role="button">Villages</a>
             <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#support">Change VillageName</button>
             <div class="modal fade" id="support">
                 <div class="modal-dialog">

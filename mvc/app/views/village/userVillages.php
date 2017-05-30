@@ -79,17 +79,17 @@
         <ul class="pagination">
             <?php
             if($data['prevPage']<1){
-                echo '<li><a href="/Proiect-TW/mvc/public/village/sateJucator/' . $data['id'] . '/' . $data['prevPage'] . '" style="pointer-events: none; cursor: default;"> &lt; Prev</a></li> ';
+                echo '<li><a href="/Proiect-TW/mvc/public/village/userVillages/' . $data['id'] . '/' . $data['prevPage'] . '" style="pointer-events: none; cursor: default;"> &lt; Prev</a></li> ';
             }else{
-                echo '<li><a href="/Proiect-TW/mvc/public/village/sateJucator/' . $data['id'] . '/' . $data['prevPage'] . '"> &lt; Prev</a></li> ';
+                echo '<li><a href="/Proiect-TW/mvc/public/village/userVillages/' . $data['id'] . '/' . $data['prevPage'] . '"> &lt; Prev</a></li> ';
             }
             ?>
             <?php
             if($data['nextPage']>$data['maxPagesNumber']){
-                echo '<li><a href="/Proiect-TW/mvc/public/village/sateJucator/' . $data['id'] . '/' . $data['nextPage'] . '" style="pointer-events: none; cursor: default;"> Next &gt;</a></li> ';
+                echo '<li><a href="/Proiect-TW/mvc/public/village/userVillages/' . $data['id'] . '/' . $data['nextPage'] . '" style="pointer-events: none; cursor: default;"> Next &gt;</a></li> ';
             }
             else{
-                echo '<li><a href="/Proiect-TW/mvc/public/village/sateJucator/' . $data['id'] . '/' . $data['nextPage'] . '"> Next &gt;</a></li> ';
+                echo '<li><a href="/Proiect-TW/mvc/public/village/userVillages/' . $data['id'] . '/' . $data['nextPage'] . '"> Next &gt;</a></li> ';
             }
             ?>
         </ul>

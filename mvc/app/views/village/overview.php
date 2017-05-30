@@ -24,7 +24,7 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/Proiect-TW/mvc/public/village/privireAsupraSatului"><span class="glyphicon glyphicon-home"></span> Home </a></li>
+                <li><a href="/Proiect-TW/mvc/public/village/villageView"><span class="glyphicon glyphicon-home"></span> Home </a></li>
                 <li><a href="/Proiect-TW/mvc/public/userProfile/getProfile"><span class="glyphicon glyphicon-user"></span> Profile </a></li>
                 <li><a href="/Proiect-TW/mvc/public/map/getMap"><span class="glyphicon glyphicon-globe"></span> Map </a></li>
                 <li><a href="/Proiect-TW/mvc/public/reports/reportslist"><span class="glyphicon glyphicon-comment"></span> Reports <span class="badge"><?php echo $data['reportsCount']; ?></span> </a></li>
@@ -65,7 +65,7 @@
                     <?php
                     for($index=0;$index<count(($data['villageList']));$index++){
                         echo '<tr>';
-                        echo '<td><a class="c-link" href="/Proiect-TW/mvc/public/village/privireAsupraSatului/' . $data['coordsList'][$index*2] . '/' . $data['coordsList'][($index*2)+1] . '">' . $data['villageList'][$index] . ' (' . $data['coordsList'][$index*2] . '|' . $data['coordsList'][($index*2)+1] . ')</a></td>';
+                        echo '<td><a class="c-link" href="/Proiect-TW/mvc/public/village/villageView/' . $data['coordsList'][$index*2] . '/' . $data['coordsList'][($index*2)+1] . '">' . $data['villageList'][$index] . ' (' . $data['coordsList'][$index*2] . '|' . $data['coordsList'][($index*2)+1] . ')</a></td>';
                         echo '<td>' . $data['pointsList'][$index] . '</td>';
                         echo '<td>' . $data['resourcesList'][$index*4] . '<img alt="Iron" src="/Proiect-TW/mvc/public/images/iron.png"> ' . $data['resourcesList'][($index*4)+1] . '<img alt="Wood" src="/Proiect-TW/mvc/public/images/wood.png"> ' . $data['resourcesList'][($index*4)+2] . '<img alt="Stone" src="/Proiect-TW/mvc/public/images/stone.png"></td>';
                         echo '<td>' . $data['resourcesList'][($index*4)+3] . '</td>';
@@ -81,17 +81,17 @@
         <ul class="pagination">
             <?php
             if($data['prevPage']<1){
-                echo '<li><a href="/Proiect-TW/mvc/public/village/privireDeAnsamblu/' . $data['prevPage'] . '" style="pointer-events: none; cursor: default;"> &lt; Prev</a></li> ';
+                echo '<li><a href="/Proiect-TW/mvc/public/village/overview/' . $data['prevPage'] . '" style="pointer-events: none; cursor: default;"> &lt; Prev</a></li> ';
             }else{
-                echo '<li><a href="/Proiect-TW/mvc/public/village/privireDeAnsamblu/' . $data['prevPage'] . '"> &lt; Prev</a></li> ';
+                echo '<li><a href="/Proiect-TW/mvc/public/village/overview/' . $data['prevPage'] . '"> &lt; Prev</a></li> ';
             }
             ?>
             <?php
             if($data['nextPage']>$data['maxPagesNumber']){
-                echo '<li><a href="/Proiect-TW/mvc/public/village/privireDeAnsamblu/' . $data['nextPage'] . '" style="pointer-events: none; cursor: default;"> Next &gt;</a></li> ';
+                echo '<li><a href="/Proiect-TW/mvc/public/village/overview/' . $data['nextPage'] . '" style="pointer-events: none; cursor: default;"> Next &gt;</a></li> ';
             }
             else{
-                echo '<li><a href="/Proiect-TW/mvc/public/village/privireDeAnsamblu/' . $data['nextPage'] . '"> Next &gt;</a></li> ';
+                echo '<li><a href="/Proiect-TW/mvc/public/village/overview/' . $data['nextPage'] . '"> Next &gt;</a></li> ';
             }
             ?>
         </ul>

@@ -8,7 +8,7 @@ session_start();
  */
 class Village extends Controller
 {
-    public function privireAsupraSatului($x='',$y='')
+    public function villageView($x='',$y='')
     {
         if ($x == '' || $y == '') {
             SessionValidate::validateSession();
@@ -22,7 +22,7 @@ class Village extends Controller
             $axe = VillageFunctions::getAxeNumber($_SESSION['village_id']);
             $sword = VillageFunctions::getSwordNumber($_SESSION['village_id']);
             $archer = VillageFunctions::getArcherNumber($_SESSION['village_id']);
-            $this->view('village/privireAsupraSatului', ['village_name' => $village_name,
+            $this->view('village/villageView', ['village_name' => $village_name,
                 'iron' => $iron, 'stone' => $stone, 'wood' => $wood, 'storage' => $storage,
                 'spear' => $spear, 'axe' => $axe, 'sword' => $sword, 'archer' => $archer,'reportsCount'=>$reportsCount]);
         }
@@ -39,7 +39,7 @@ class Village extends Controller
                 $axe = VillageFunctions::getAxeNumber($_SESSION['village_id']);
                 $sword = VillageFunctions::getSwordNumber($_SESSION['village_id']);
                 $archer = VillageFunctions::getArcherNumber($_SESSION['village_id']);
-                $this->view('village/privireAsupraSatului', ['village_name' => $village_name,
+                $this->view('village/villageView', ['village_name' => $village_name,
                     'iron' => $iron, 'stone' => $stone, 'wood' => $wood, 'storage' => $storage,
                     'spear' => $spear, 'axe' => $axe, 'sword' => $sword, 'archer' => $archer,'reportsCount'=>$reportsCount]);
 
@@ -56,7 +56,7 @@ class Village extends Controller
                 $axe = VillageFunctions::getAxeNumber($_SESSION['village_id']);
                 $sword = VillageFunctions::getSwordNumber($_SESSION['village_id']);
                 $archer = VillageFunctions::getArcherNumber($_SESSION['village_id']);
-                $this->view('village/privireAsupraSatului', ['village_name' => $village_name, 'iron' => $iron,
+                $this->view('village/villageView', ['village_name' => $village_name, 'iron' => $iron,
                     'stone' => $stone, 'wood' => $wood, 'storage' => $storage, 'spear' => $spear, 'axe' => $axe,
                     'sword' => $sword, 'archer' => $archer,'reportsCount'=>$reportsCount]);
             }
@@ -136,14 +136,14 @@ class Village extends Controller
             'stone'=>$stone,'wood'=>$wood,'storage'=>$storage,'storageIronTime'=>$storageIronTime,
             'storageWoodTime'=>$storageWoodTime,'storageStoneTime'=>$storageStoneTime,'reportsCount'=>$reportsCount]);
     }
-    public function privireDeAnsamblu($page='')
+    public function Overview($page='')
     {
         SessionValidate::validateSession();
         if ($page > VillageFunctions::getNumberOfPages($_SESSION['user_id'])) {
-            header('Location: /Proiect-TW/mvc/public/villages/privireDeAnsamblu/1');
+            header('Location: /Proiect-TW/mvc/public/villages/Overview/1');
         } else {
             if ($page < 1) {
-                header('Location: /Proiect-TW/mvc/public/villages/privireDeAnsamblu/1');
+                header('Location: /Proiect-TW/mvc/public/villages/Overview/1');
             } else {
                 $reportsCount = Report::getReportsCount($_SESSION['user_id']);
                 $currentPage = $page;
@@ -161,7 +161,7 @@ class Village extends Controller
                 $stone = VillageFunctions::getStoneResources($_SESSION['village_id']);
                 $wood = VillageFunctions::getWoodResources($_SESSION['village_id']);
                 $storage = VillageFunctions::getStorrageLevel($_SESSION['village_id']);
-                $this->view('village/privireDeAnsamblu', ['village_name' => $village_name, 'iron' => $iron,
+                $this->view('village/Overview', ['village_name' => $village_name, 'iron' => $iron,
                     'stone' => $stone, 'wood' => $wood, 'storage' => $storage, 'reportsCount' => $reportsCount,
                     'resourcesList'=>$resourcesList,'pointsList'=>$pointsList,'coordsList'=>$coordsList,
                     'villageList'=>$villageList,'maxPagesNumber'=>$maxPagesNumber,'prevPage'=>$prevPage,
@@ -170,14 +170,14 @@ class Village extends Controller
         }
     }
 
-    public function sateJucator($id_user,$page='')
+    public function userVillages($id_user,$page='')
     {
         SessionValidate::validateSession();
         if ($page > VillageFunctions::getNumberOfPages($id_user)) {
-            header('Location: /Proiect-TW/mvc/public/village/sateJucator/' . $id_user . '/1');
+            header('Location: /Proiect-TW/mvc/public/village/userVillages/' . $id_user . '/1');
         } else {
             if ($page < 1) {
-                header('Location: /Proiect-TW/mvc/public/village/sateJucator/' . $id_user . '/1');
+                header('Location: /Proiect-TW/mvc/public/village/userVillages/' . $id_user . '/1');
             } else {
                 $username=VillageFunctions::getUsername($id_user);
                 $id=$id_user;
@@ -195,7 +195,7 @@ class Village extends Controller
                 $stone = VillageFunctions::getStoneResources($_SESSION['village_id']);
                 $wood = VillageFunctions::getWoodResources($_SESSION['village_id']);
                 $storage = VillageFunctions::getStorrageLevel($_SESSION['village_id']);
-                $this->view('village/sateJucator', ['village_name' => $village_name, 'iron' => $iron,
+                $this->view('village/userVillages', ['village_name' => $village_name, 'iron' => $iron,
                     'stone' => $stone, 'wood' => $wood, 'storage' => $storage, 'reportsCount' => $reportsCount,
                     'pointsList'=>$pointsList,'coordsList'=>$coordsList,'username'=>$username,
                     'villageList'=>$villageList,'maxPagesNumber'=>$maxPagesNumber,'prevPage'=>$prevPage,
