@@ -59,7 +59,7 @@ class Ranking extends Controller
                 $stone = VillageFunctions::getStoneResources($_SESSION['village_id']);
                 $wood = VillageFunctions::getWoodResources($_SESSION['village_id']);
                 $storage = VillageFunctions::getStorrageLevel($_SESSION['village_id']);
-                $this->view('ranking/rankingAttackers', ['village_name' => $village_name, 'iron' => $iron,
+                $this->view('ranking/rankingPopulation', ['village_name' => $village_name, 'iron' => $iron,
                     'stone' => $stone, 'wood' => $wood, 'storage' => $storage,'currentPage'=>$currentPage,
                     'nextPage'=>$nextPage,'prevPage'=>$prevPage,'maxPagesNumber'=>$maxPagesNumber,
                     'villageList'=>$villageList,'pointsList'=>$pointsList,'resultsList'=>$resultsList]);
