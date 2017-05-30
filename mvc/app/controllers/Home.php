@@ -29,7 +29,7 @@ class Home extends Controller
             if ($user != null) {
                 session_start();
                 $_SESSION['user_id'] = $user->user_id;
-                header('Location: /Proiect-TW/mvc/public/village/privireAsupraSatului/');
+                header('Location: /Proiect-TW/mvc/public/village/villageView/');
             } else {
 
 

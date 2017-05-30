@@ -46,6 +46,7 @@ class Commands extends Controller
         $stone = VillageFunctions::getStoneResources($_SESSION['village_id']);
         $wood = VillageFunctions::getWoodResources($_SESSION['village_id']);
         $storage = VillageFunctions::getStorrageLevel($_SESSION['village_id'])*1000;
+        $reportsCount=Report::getReportsCount($_SESSION['user_id']);
 
         $mainBuildingLevel = MainBuilding::getMainBuildingLevel($villageId);
         $wallLevel = MainBuilding::getWallLevel($villageId);
@@ -106,7 +107,7 @@ class Commands extends Controller
             'barracksEndTime'=>$barracksEndTime,'stoneEndTime'=>$stoneEndTime,'woodEndTime'=>$woodEndTime,'ironEndTime'=>$ironEndTime,
             'storageEndTime'=>$storageEndTime, 'status'=>$status, 'mainInConstruction'=>$mainBuildingInConstruction,'wallInConstruction'=>$wallInConstruction,
             'barracksInConstruction'=>$barracksInConstruction,'stoneInConstruction'=>$stoneInConstruction,'woodInConstruction'=>$woodInConstruction,
-            'ironInConstruction'=>$ironInConstruction,'storageInConstruction'=>$storageInConstruction]);
+            'ironInConstruction'=>$ironInConstruction,'storageInConstruction'=>$storageInConstruction,'reportsCount'=>$reportsCount]);
 
     }
 

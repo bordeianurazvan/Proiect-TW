@@ -20,6 +20,7 @@ class UserProfile extends Controller
         $signUpDate = Profile::getSignUpDate($_SESSION['user_id']);
         $numberOfVillages = Profile::getNumberOfVillages($_SESSION['user_id']);
         $varsta = Profile::getUserAge($_SESSION['user_id']);
+        $reportsCount=Report::getReportsCount($_SESSION['user_id']);
 
         if($username != null && $signUpDate != null && $numberOfVillages != null && $varsta != null )
         {
@@ -29,7 +30,7 @@ class UserProfile extends Controller
             $this->view('user/profile',['username'=>$username,'signUpDate'=>$signUpDate,
                 'numberOfVillages'=>$numberOfVillages,'varsta'=>$varsta,'village_name'=>$village_name,
                 'iron'=>$iron,'stone'=>$stone,'wood'=>$wood,'storage'=>$storage,
-                'generalPoints'=>$generalRank,'battlePoints'=>$battleRank]);
+                'generalPoints'=>$generalRank,'battlePoints'=>$battleRank,'reportsCount'=>$reportsCount]);
         }
 
 
@@ -38,6 +39,7 @@ class UserProfile extends Controller
     public function changePassword($status=' ',$retry=' ')
     {
         SessionValidate::validateSession();
+        $reportsCount=Report::getReportsCount($_SESSION['user_id']);
         if($status=='failed' && $retry ='yes' )
         {
             header('Location: /Proiect-TW/mvc/public/UserProfile/changePassword/failedpassword');
@@ -46,9 +48,9 @@ class UserProfile extends Controller
         if (!isset($_POST['username']) || !isset($_POST['oldPassword']) || !isset($_POST['newPassword']))
         {
             if($status=='failedpassword')
-                $this->view('user/changePassword', ['retry'=>'yes']);
+                $this->view('user/changePassword', ['retry'=>'yes','reportsCount'=>$reportsCount]);
             else
-                $this->view('user/changePassword', ['retry'=>'no']);
+                $this->view('user/changePassword', ['retry'=>'no','reportsCount'=>$reportsCount]);
             return;
         }
 
@@ -66,6 +68,7 @@ class UserProfile extends Controller
     {
         SessionValidate::validateSession();
         $username = Profile::getUsername($_SESSION['user_id']);
+        $reportsCount=Report::getReportsCount($_SESSION['user_id']);
 
 
         if($status=='failed' && $retry ='yes' )
@@ -77,9 +80,9 @@ class UserProfile extends Controller
         if (!isset($_POST['password']) || !isset($_POST['newUsername']))
         {
             if($status=='failedUsername')
-                $this->view('user/changeUsername', ['retry'=>'yes']);
+                $this->view('user/changeUsername', ['retry'=>'yes','reportsCount'=>$reportsCount]);
             else
-                $this->view('user/changeUsername', ['retry' => 'no']);
+                $this->view('user/changeUsername', ['retry' => 'no','reportsCount'=>$reportsCount]);
 
             return;
         }
@@ -100,6 +103,7 @@ class UserProfile extends Controller
     {
         SessionValidate::validateSession();
         $username = Profile::getUsername($_SESSION['user_id']);
+        $reportsCount=Report::getReportsCount($_SESSION['user_id']);
 
 
         if($status=='failed' && $retry ='yes' )
@@ -111,9 +115,9 @@ class UserProfile extends Controller
         if (!isset($_POST['password']))
         {
             if($status=='failedDelete')
-                $this->view('user/deleteAccount', ['retry'=>'yes']);
+                $this->view('user/deleteAccount', ['retry'=>'yes','reportsCount'=>$reportsCount]);
             else
-                $this->view('user/deleteAccount', ['retry' => 'no']);
+                $this->view('user/deleteAccount', ['retry' => 'no','reportsCount'=>$reportsCount]);
 
             return;
         }
@@ -131,9 +135,10 @@ class UserProfile extends Controller
     public function info()
     {
         SessionValidate::validateSession();
+        $reportsCount=Report::getReportsCount($_SESSION['user_id']);
         if (!isset($_POST['textarea']))
         {
-            $this->view('user/info',[]);
+            $this->view('user/info',['reportsCount'=>$reportsCount]);
             return;
         }
 
@@ -156,6 +161,7 @@ class UserProfile extends Controller
         $stone = VillageFunctions::getStoneResources($_SESSION['village_id']);
         $wood = VillageFunctions::getWoodResources($_SESSION['village_id']);
         $storage = VillageFunctions::getStorrageLevel($_SESSION['village_id'])*1000;
+        $reportsCount=Report::getReportsCount($_SESSION['user_id']);
 
         $otherUsername = $username;
         $ok = Profile::validateUser($otherUsername);
@@ -180,7 +186,7 @@ class UserProfile extends Controller
             $this->view('user/otherProfile',['otherUsername'=>$otherUsername,'signUpDate'=>$signUpDate,
                 'numberOfVillages'=>$numberOfVillages,'varsta'=>$varsta,'village_name'=>$village_name,
                 'iron'=>$iron,'stone'=>$stone,'wood'=>$wood,'storage'=>$storage,'otherUserID'=>$otherUserId,
-                'generalPoints'=>$generalRank,'battlePoints'=>$battleRank]);
+                'generalPoints'=>$generalRank,'battlePoints'=>$battleRank,'reportsCount'=>$reportsCount]);
         }
     }
 
@@ -192,6 +198,7 @@ class UserProfile extends Controller
         $stone = VillageFunctions::getStoneResources($_SESSION['village_id']);
         $wood = VillageFunctions::getWoodResources($_SESSION['village_id']);
         $storage = VillageFunctions::getStorrageLevel($_SESSION['village_id'])*1000;
+        $reportsCount=Report::getReportsCount($_SESSION['user_id']);
 
 
         $otherUsername = Profile::getUsernameByMap($coord_x,$coord_y);
@@ -215,7 +222,7 @@ class UserProfile extends Controller
                 $this->view('user/otherProfile',['otherUsername'=>$otherUsername,'signUpDate'=>$signUpDate,
                     'numberOfVillages'=>$numberOfVillages,'varsta'=>$varsta,'village_name'=>$village_name,
                     'iron'=>$iron,'stone'=>$stone,'wood'=>$wood,'storage'=>$storage,'otherUserID'=>$otherUserId,
-                    'generalPoints'=>$generalRank,'battlePoints'=>$battleRank]);
+                    'generalPoints'=>$generalRank,'battlePoints'=>$battleRank,'reportsCount'=>$reportsCount]);
             }
         }
 
