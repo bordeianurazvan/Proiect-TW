@@ -113,7 +113,7 @@
                                 </td>
                                 <td>
 
-                                    <a type="button" class="btn btn-primary btn-xs" id="startClock" href="/Proiect-Tw/mvc/public/commands/contructOrder/1">Level <?php echo $data['barracksLevel']+1; ?> </a>
+                                    <a type="button" class="btn btn-primary btn-xs" id="startClock" href="/Proiect-Tw/mvc/public/commands/contructOrder/3">Level <?php echo $data['barracksLevel']+1; ?> </a>
                                 </td>
                             </tr>
                             <tr >
@@ -133,7 +133,7 @@
                                 </td>
                                 <td>
 
-                                    <a type="button" class="btn btn-primary btn-xs" id="startClock" href="/Proiect-Tw/mvc/public/commands/contructOrder/1">Level <?php echo $data['storageLevel']+1; ?> </a>
+                                    <a type="button" class="btn btn-primary btn-xs" id="startClock" href="/Proiect-Tw/mvc/public/commands/contructOrder/7">Level <?php echo $data['storageLevel']+1; ?> </a>
                                 </td>
                             </tr>
                             <tr>
@@ -153,7 +153,7 @@
                                 </td>
                                 <td>
 
-                                    <a type="button" class="btn btn-primary btn-xs" id="startClock" href="/Proiect-Tw/mvc/public/commands/contructOrder/1">Level <?php echo $data['wallLevel']+1; ?> </a>
+                                    <a type="button" class="btn btn-primary btn-xs" id="startClock" href="/Proiect-Tw/mvc/public/commands/contructOrder/2">Level <?php echo $data['wallLevel']+1; ?> </a>
                                 </td>
                             </tr>
 
@@ -174,7 +174,7 @@
                                 </td>
                                 <td>
 
-                                    <a type="button" class="btn btn-primary btn-xs" id="startClock" href="/Proiect-Tw/mvc/public/commands/contructOrder/1">Level <?php echo $data['woodLevel']+1; ?> </a>
+                                    <a type="button" class="btn btn-primary btn-xs" id="startClock" href="/Proiect-Tw/mvc/public/commands/contructOrder/5">Level <?php echo $data['woodLevel']+1; ?> </a>
                                 </td>
                             </tr>
 
@@ -195,7 +195,7 @@
                                 </td>
                                 <td>
 
-                                    <a type="button" class="btn btn-primary btn-xs" id="startClock" href="/Proiect-Tw/mvc/public/commands/contructOrder/1">Level <?php echo $data['ironLevel']+1; ?> </a>
+                                    <a type="button" class="btn btn-primary btn-xs" id="startClock" href="/Proiect-Tw/mvc/public/commands/contructOrder/6">Level <?php echo $data['ironLevel']+1; ?> </a>
                                 </td>
                             </tr>
 
@@ -216,7 +216,7 @@
                                 </td>
                                 <td>
 
-                                    <a type="button" class="btn btn-primary btn-xs" id="startClock" href="/Proiect-Tw/mvc/public/commands/contructOrder/1">Level <?php echo $data['stoneLevel']+1; ?> </a>
+                                    <a type="button" class="btn btn-primary btn-xs" id="startClock" href="/Proiect-Tw/mvc/public/commands/contructOrder/4">Level <?php echo $data['stoneLevel']+1; ?> </a>
                                 </td>
                             </tr>
                             </tbody>
