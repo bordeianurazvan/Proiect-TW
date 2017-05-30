@@ -117,7 +117,7 @@
             <a href="/Proiect-TW/mvc/public/village/stone" class="btn btn-primary " role="button">Stone</a>
             <a href="/Proiect-TW/mvc/public/village/iron" class="btn btn-primary " role="button">Iron</a>
             <a href="/Proiect-TW/mvc/public/attack/movements" class="btn btn-primary " role="button">Movements</a>
-            <a href="/Proiect-TW/mvc/public/village/privireDeAnsamblu" class="btn btn-primary " role="button">Villages</a>
+            <a href="/Proiect-TW/mvc/public/village/privireDeAnsamblu/1" class="btn btn-primary " role="button">Villages</a>
         </div>
     </div>
 </div>

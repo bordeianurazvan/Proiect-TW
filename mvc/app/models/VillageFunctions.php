@@ -248,4 +248,90 @@ class VillageFunctions
         }
         return $villagesCoordsList;
     }
+    public static function getNumberOfPages($user_id){
+        $user = self::getNumberOfVillages($user_id);
+        if($user % 5 > 0)
+            return ((int)($user/5)+1);
+        else
+            return ($user/5);
+    }
+    public static function getVillagesPage($page,$user_id){
+        $from=($page-1)*5+1;
+        $to=$page*5;
+        $query1="select village_name, row_number 
+                from (select village_name, ROWNUM as row_number from
+                                        (Select village_name from villages where user_id = :user_id order by village_id))
+                where row_number>=:from_pos and row_number<=:to_pos";
+        $stmt=oci_parse(Db::getDbInstance(),$query1);
+        oci_bind_by_name($stmt,":user_id",$user_id);
+        oci_bind_by_name($stmt,":from_pos",$from);
+        oci_bind_by_name($stmt,":to_pos",$to);
+        oci_execute($stmt);
+        $resultList=array();
+        while(($row=oci_fetch_row($stmt))!=false){
+            array_push($resultList,$row[0]);
+        }
+        return $resultList;
+    }
+    public static function getVillagesIdPage($page,$user_id){
+        $from=($page-1)*5+1;
+        $to=$page*5;
+        $query1="select village_id, row_number 
+                from (select village_id, ROWNUM as row_number from
+                                        (Select village_id from villages where user_id = :user_id order by village_id))
+                where row_number>=:from_pos and row_number<=:to_pos";
+        $stmt=oci_parse(Db::getDbInstance(),$query1);
+        oci_bind_by_name($stmt,":user_id",$user_id);
+        oci_bind_by_name($stmt,":from_pos",$from);
+        oci_bind_by_name($stmt,":to_pos",$to);
+        oci_execute($stmt);
+        $resultList=array();
+        while(($row=oci_fetch_row($stmt))!=false){
+            array_push($resultList,$row[0]);
+        }
+        return $resultList;
+    }
+    public static function getVillagesCoordsPage($resultList){
+        $coordsList = array();
+        for($index = 0;$index<count($resultList);$index++)
+        {
+            $user = self::getVillageCoordX($resultList[$index]);
+            array_push($coordsList,$user);
+            $user = self::getVillageCoordY($resultList[$index]);
+            array_push($coordsList,$user);
+        }
+        return $coordsList;
+    }
+    public static function getPointsPage($resultList){
+        $pointsList = array();
+        for($index = 0;$index<count($resultList);$index++)
+        {
+            $user = self::getVillagePoints($resultList[$index]);
+            array_push($pointsList,$user);
+        }
+        return $pointsList;
+    }
+    public static function getResourcesPage($resultList){
+        $ResourcesList = array();
+        for($index = 0;$index<count($resultList);$index++)
+        {
+            $iron = self::getIronResources($resultList[$index]);
+            array_push($ResourcesList,$iron);
+            $wood = self::getWoodResources($resultList[$index]);
+            array_push($ResourcesList,$wood);
+            $stone = self::getStoneResources($resultList[$index]);
+            array_push($ResourcesList,$stone);
+            $storage = self::getStorrageLevel($resultList[$index])*1000;
+            array_push($ResourcesList,$storage);
+        }
+        return $ResourcesList;
+    }
+    public static function getUsername($user_id){
+        $query = "select username from users where user_id = :user_id";
+        $stmt=oci_parse(Db::getDbInstance(),$query);
+        oci_bind_by_name($stmt,"user_id",$user_id);
+        oci_execute($stmt);
+        $row=oci_fetch_row($stmt);
+        return $row[0];
+    }
 }

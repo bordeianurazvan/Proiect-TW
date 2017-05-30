@@ -47,7 +47,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12 col-xs-12 Overview ">Overview</div>
+        <div class="col-md-12 col-xs-12 Overview "><?php echo $data['username']; ?> 's villages</div>
     </div>
     <div class="row">
         <div class="container-fluid">
@@ -55,20 +55,18 @@
                 <table class="table no-border">
                     <thead>
                     <tr>
-                        <th>Village</th>
+                        <th>Village Name</th>
                         <th>Points</th>
-                        <th>Resources</th>
-                        <th>Storage</th>
+                        <th>Coordinates</th>
                     </tr>
                     </thead>
                     <tbody>
                     <?php
                     for($index=0;$index<count(($data['villageList']));$index++){
                         echo '<tr>';
-                        echo '<td><a class="c-link" href="/Proiect-TW/mvc/public/village/privireAsupraSatului/' . $data['coordsList'][$index*2] . '/' . $data['coordsList'][($index*2)+1] . '">' . $data['villageList'][$index] . ' (' . $data['coordsList'][$index*2] . '|' . $data['coordsList'][($index*2)+1] . ')</a></td>';
+                        echo '<td><a class="c-link" href="/Proiect-TW/mvc/public/attack/getAttack/enemy/village/' . $data['coordsList'][$index*2] . '/' . $data['coordsList'][($index*2)+1] . '">' . $data['villageList'][$index] . '</a></td>';
                         echo '<td>' . $data['pointsList'][$index] . '</td>';
-                        echo '<td>' . $data['resourcesList'][$index*4] . '<img alt="Iron" src="/Proiect-TW/mvc/public/images/iron.png"> ' . $data['resourcesList'][($index*4)+1] . '<img alt="Wood" src="/Proiect-TW/mvc/public/images/wood.png"> ' . $data['resourcesList'][($index*4)+2] . '<img alt="Stone" src="/Proiect-TW/mvc/public/images/stone.png"></td>';
-                        echo '<td>' . $data['resourcesList'][($index*4)+3] . '</td>';
+                        echo '<td>' .  $data['coordsList'][$index*2] . '|' . $data['coordsList'][($index*2)+1] . '</td>';
                         echo '</tr>';
                     }
                     ?>
@@ -81,17 +79,17 @@
         <ul class="pagination">
             <?php
             if($data['prevPage']<1){
-                echo '<li><a href="/Proiect-TW/mvc/public/village/privireDeAnsamblu/' . $data['prevPage'] . '" style="pointer-events: none; cursor: default;"> &lt; Prev</a></li> ';
+                echo '<li><a href="/Proiect-TW/mvc/public/village/sateJucator/' . $data['id'] . '/' . $data['prevPage'] . '" style="pointer-events: none; cursor: default;"> &lt; Prev</a></li> ';
             }else{
-                echo '<li><a href="/Proiect-TW/mvc/public/village/privireDeAnsamblu/' . $data['prevPage'] . '"> &lt; Prev</a></li> ';
+                echo '<li><a href="/Proiect-TW/mvc/public/village/sateJucator/' . $data['id'] . '/' . $data['prevPage'] . '"> &lt; Prev</a></li> ';
             }
             ?>
             <?php
             if($data['nextPage']>$data['maxPagesNumber']){
-                echo '<li><a href="/Proiect-TW/mvc/public/village/privireDeAnsamblu/' . $data['nextPage'] . '" style="pointer-events: none; cursor: default;"> Next &gt;</a></li> ';
+                echo '<li><a href="/Proiect-TW/mvc/public/village/sateJucator/' . $data['id'] . '/' . $data['nextPage'] . '" style="pointer-events: none; cursor: default;"> Next &gt;</a></li> ';
             }
             else{
-                echo '<li><a href="/Proiect-TW/mvc/public/village/privireDeAnsamblu/' . $data['nextPage'] . '"> Next &gt;</a></li> ';
+                echo '<li><a href="/Proiect-TW/mvc/public/village/sateJucator/' . $data['id'] . '/' . $data['nextPage'] . '"> Next &gt;</a></li> ';
             }
             ?>
         </ul>

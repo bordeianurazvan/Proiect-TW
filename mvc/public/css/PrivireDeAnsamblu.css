@@ -63,8 +63,41 @@ body{
     margin: auto;
     width : 90%;
 }
-.paginare{
-    margin:auto ;
+.pagination li:first-child a,
+.pagination li:last-child a{
+    background-color: burlywood;
+    border-color: #000000 ;
+    color: #000000;
+    font-size: small;
+    margin: auto;
+    padding: 5px;
+}
+.pagination li a:hover {
+    background-color: burlywood;
+    border-color: #000000 ;
+    color: white;
+    font-size: small;
+    margin: auto;
+    padding: 5px;
+}
+.pagination li a:active{
+    background-color: blanchedalmond;
+    border-color: #01549b ;
+    color: black;
+    font-size: small;
+    margin: auto;
+    padding: 5px;
+}
+.btn-primary,
+.btn-primary:active,
+.btn-primary:visited,
+.btn-primary:focus {
+    background-color: burlywood;
+    border-color: #000000 ;
+    color: #000000;
+    font-size: small;
+    margin: auto;
+    padding: 5px;
 }
 table.no-border tr td, .table.no-border tr th {
     border-width: 0;
