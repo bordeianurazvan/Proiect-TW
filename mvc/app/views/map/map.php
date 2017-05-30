@@ -25,7 +25,7 @@
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/Proiect-TW/mvc/public/village/privireAsupraSatului"><span class="glyphicon glyphicon-home"></span> Home </a></li>
-                <li><a href="/Proiect-TW/mvc/public/user/profile"><span class="glyphicon glyphicon-user"></span> Profile </a></li>
+                <li><a href="/Proiect-TW/mvc/public/userprofile/getprofile"><span class="glyphicon glyphicon-user"></span> Profile </a></li>
                 <li><a href="/Proiect-TW/mvc/public/map/getMap"><span class="glyphicon glyphicon-globe"></span> Map </a></li>
                 <li><a href="/Proiect-TW/mvc/public/reports/reportslist"><span class="glyphicon glyphicon-comment"></span> Reports <span class="badge"><?php echo $data['reportsCount']; ?></span> </a></li>
                 <li><a href="/Proiect-TW/mvc/ranking/ranking"><span class="glyphicon glyphicon-stats"></span> Ranking </a></li>
@@ -62,6 +62,28 @@
         window.location ='/Proiect-TW/mvc/public/map/getMap'+'/'+coord_x+'/'+coord_y+'/attack';
     }
     </script>
+    <script Language="javascript">
+        table.find('tr').each(function(idx, elem){
+            $(this).find('td:first').text(idx).end().find('td:last').text('This is the line '+(idx)+' of the table');
+        });
+
+        // code to scroll
+
+        $('#control button').click(function(){
+            var w = $(window);
+            var row = table.find('tr')
+                .removeClass('active')
+                .eq( +$('#line').val() )
+                .addClass('active');
+
+            if (row.length){
+                w.scrollTop( row.offset().top - (w.height()/2) );
+            }
+        });
+
+
+        }
+    </script>
 
     </div>
     <div class="modal fade" id="mini-menu" role="dialog">
@@ -81,22 +103,7 @@
       </div>
     </div>
   </div>
-      <div class="row coordonate">
-        <form class="form-inline">
-         
-            <div class="form-group">
-            <label for="x">X:</label>
-            <input type="number" class="allign"  value=""  id="x">
-        </div>
-            <div class="form-group">
-                <label for="y">Y:</label>
-                <input type="number"  class="allign"  value=""  id="y">
-            </div>
-            <div class="form-group">
-                  <button type="submit" class="btn btn-primary search">Search</button>
-            </div>
-        </form>
-    </div>
+
     </div>
 
 

@@ -6,11 +6,19 @@ archer int;
 timp_deplasare int;
 timp_total TIMESTAMP(6);
 units varchar(100);
+village_user_id int;
+current_user_id int;
 begin
+      select user_id into village_user_id from villages where village_id=id_aparator;
+       select user_id into current_user_id from villages where village_id=id_atacator;
+      if(village_user_id=current_user_id)
+      then
+    
       select troop_number into spear from villagetroops where village_id=id_atacator and troop_id=1;
       select troop_number into axe from villagetroops where village_id=id_atacator and troop_id=2;
       select troop_number into sword from villagetroops where village_id=id_atacator and troop_id=3;
       select troop_number into archer from villagetroops where village_id=id_atacator and troop_id=4;
+  
   if spear<p_spear or axe<p_axe or sword<p_sword or archer < p_archer or p_spear<0 or p_axe<0 or p_sword<0 or p_archer<0 or (p_spear+p_axe+p_sword+p_archer)=0
   then
   cod_stare :=-1;
@@ -28,6 +36,9 @@ begin
          
         insert into commands(from_village,to_village,units,command_type,start_time,arrive_time) values (id_atacator,id_aparator,units,'attack',current_timestamp,timp_total);
         cod_stare:=1;
+  end if;
+  else
+  cod_stare :=-1;
   end if;
 
 end;
