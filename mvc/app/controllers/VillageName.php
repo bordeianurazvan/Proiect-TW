@@ -21,6 +21,7 @@ public function changeVillageName()
             oci_bind_by_name($stid,"village_id",$_SESSION['village_id']);
             oci_bind_by_name($stid,"user_id",$_SESSION['user_id']);
             oci_execute($stid);
+            $_SESSION['village_name']=$_POST['name'];
         }
         header('Location: /Proiect-tw/mvc/public/village/villageView');
     }
