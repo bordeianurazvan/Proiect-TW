@@ -45,36 +45,3 @@ CREATE OR REPLACE PROCEDURE levelUp_building(p_village_id villages.village_id%ty
         end if;
                     
   END;
-  
-  set serveroutput on;
-  declare
-  ok int := 1;
-begin
-  levelUp_building(1,1,ok);
-  dbms_output.put_line(ok);
-end;
-
-
-select resource_number from villageresources where village_id=1;
-select * from build where village_id=1;
-update  villageresources set resource_number=1000 where village_id=1;
-
-SELECT cast(end_time as timestamp(0)) from build where village_id=1 and building_id=1 order by end_time;
-
-select cast(end_time - 0.5/(24*60*60) as timestamp(0)) from build where village_id=1;
-
-select substr(to_char('10/20/2014 10:34:06.356000 AM'),1,instr(to_char('10/20/2014 10:34:06.356000 AM'),'.')-4)||' '||
-substr(to_char('10/20/2014 10:34:06.356000 AM'),-2,instr(to_char('10/20/2014 10:34:06.356000 AM'),'.')-1) "Date"
-from dual;
-
-select substr(to_char(cast(end_time as timestamp(0))),1,16)||substr(cast(end_time as timestamp(0)),20,22) from build;
-
-begin
-update_buildings;
-end;
-
-select * from villagebuildings where village_id=1;
-update villagebuildings set building_level = 1 where village_id =1 and building_id = 1;
-delete from build where village_id = 1;
-
-select count(id) from build where village_id=1 and building_id=1;
