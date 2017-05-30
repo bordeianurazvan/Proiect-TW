@@ -58,7 +58,7 @@ class Village extends Controller
     {
         SessionValidate::validateSession();
         SessionValidate::validateSession();
-        $village_name = VillageFunctions::getVillageName($_SESSION['user_id']);
+        $village_name = VillageFunctions::getVillageNameById($_SESSION['village_id']);
         $iron = VillageFunctions::getIronResources($_SESSION['village_id']);
         $stone = VillageFunctions::getStoneResources($_SESSION['village_id']);
         $wood = VillageFunctions::getWoodResources($_SESSION['village_id']);
@@ -69,7 +69,7 @@ class Village extends Controller
     public function stone()
     {
         SessionValidate::validateSession();
-        $village_name = VillageFunctions::getVillageName($_SESSION['user_id']);
+        $village_name = VillageFunctions::getVillageNameById($_SESSION['village_id']);
         $iron = VillageFunctions::getIronResources($_SESSION['village_id']);
         $stone = VillageFunctions::getStoneResources($_SESSION['village_id']);
         $wood = VillageFunctions::getWoodResources($_SESSION['village_id']);
@@ -80,7 +80,7 @@ class Village extends Controller
     public function iron()
     {
         SessionValidate::validateSession();
-        $village_name = VillageFunctions::getVillageName($_SESSION['user_id']);
+        $village_name = VillageFunctions::getVillageNameById($_SESSION['village_id']);
         $iron = VillageFunctions::getIronResources($_SESSION['village_id']);
         $stone = VillageFunctions::getStoneResources($_SESSION['village_id']);
         $wood = VillageFunctions::getWoodResources($_SESSION['village_id']);
@@ -91,7 +91,7 @@ class Village extends Controller
     public function storage()
     {
         SessionValidate::validateSession();
-        $village_name = VillageFunctions::getVillageName($_SESSION['user_id']);
+        $village_name = VillageFunctions::getVillageNameById($_SESSION['village_id']);
         $iron = VillageFunctions::getIronResources($_SESSION['village_id']);
         $stone = VillageFunctions::getStoneResources($_SESSION['village_id']);
         $wood = VillageFunctions::getWoodResources($_SESSION['village_id']);
@@ -122,7 +122,7 @@ class Village extends Controller
     public function privireDeAnsamblu()
     {
         SessionValidate::validateSession();
-        $village_name = VillageFunctions::getVillageName($_SESSION['user_id']);
+        $village_name = VillageFunctions::getVillageNameById($_SESSION['village_id']);
         $iron = VillageFunctions::getIronResources($_SESSION['village_id']);
         $stone = VillageFunctions::getStoneResources($_SESSION['village_id']);
         $wood = VillageFunctions::getWoodResources($_SESSION['village_id']);
