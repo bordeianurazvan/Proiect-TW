@@ -71,5 +71,41 @@ class User
 
       }
   }
+    public static function registerFB ($username,$password,$c_password,$bday,$fb_id)
+    {
+        if($password!=$c_password) {
+
+            return null;
+        }
+        $conn =Db::getDbInstance();
+        $password = md5($password);
+        $bday = date('d-m-Y h:i:s', strtotime($bday));
+
+        $query = "begin functii.inregistrareFB(:username,:password,to_date(:bday,'dd-mm-yy hh24:mi:ss') ,:fb_id,:ok); end;";
+
+        $stid = oci_parse($conn, $query);
+        oci_bind_by_name($stid, ":username", $username);
+        oci_bind_by_name($stid, ":password", $password);
+        oci_bind_by_name($stid, ":bday", $bday);
+        oci_bind_by_name($stid, ":fb_id", $fb_id);
+        oci_bind_by_name($stid, ":ok", $ok);
+        $r = oci_execute($stid);
+
+        if($ok==-1) {
+
+            return null;
+        }
+        else
+        {
+
+            $user = new User();
+            $user->user_id = $ok;
+
+            return $user;
+
+
+
+        }
+    }
 
 }

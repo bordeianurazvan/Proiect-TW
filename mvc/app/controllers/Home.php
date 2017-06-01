@@ -19,9 +19,9 @@ class Home extends Controller
        }
             if (!isset($_POST['username']) || !isset($_POST['password'])) {
               if($status=='failedlogin')
-                  $this->view('home/login', ['retry'=>'yes']);
+                  $this->view('home/login', ['retry'=>'yes','popup' => 'no','invalid_username'=>'no']);
                   else
-                 $this->view('home/login', ['retry'=>'no']);
+                 $this->view('home/login', ['retry'=>'no','popup' => 'no','invalid_username'=>'no']);
                 return;
             }
 
@@ -36,10 +36,67 @@ class Home extends Controller
                 header('Location: /Proiect-TW/mvc/public/home/login/failed/yes');
             }
         }
+    public function loginFb($id='',$username='')
+    {   echo 'Am intrat in loginFB';
+
+        $_SESSION['fb_id'] = $id;
+        if(!isset($_POST['name'])) {
+
+            $stare_id = LoginFb::validateId($id);
+            $stare_username = LoginFb::validateName($username);
+            if ($stare_id == 0 && $stare_username == 0) {
+                $bday = date('d-m-Y h:i:s');
+                $new_user = User::registerFB($username, $id,$id, $bday,$id);
+                if ($new_user != null) {
+
+                    $_SESSION['user_id'] = LoginFb::getIdByFbId($id);
+                    header('Location: /Proiect-TW/mvc/public/village/villageView/');
+                //echo 'header(\'Location: /Proiect-TW/mvc/public/village/villageView/\');';
+                } else {
+                    header('Location: /Proiect-TW/mvc/public/home/register');
+                //echo 'header(\'Location: /Proiect-TW/mvc/public/village/villageView/\');';
+                }
+
+            } elseif ($stare_id != 0) {
+
+                $_SESSION['user_id'] = LoginFb::getIdByFbId($id);
+                header('Location: /Proiect-TW/mvc/public/village/villageView/');
+                //echo 'header(\'Location: /Proiect-TW/mvc/public/village/villageView/\'); ';
+            } elseif ($stare_id == 0 && $stare_username != 0) {
+                $this->view('home/login', ['retry' => 'no', 'popup' => 'yes','invalid_username'=>'no']);
+                //echo ' ma duc pe view cu popup yes';
+            }
+            return;
+        }
+        else
+        {
+            $stare_username = LoginFb::validateName($_POST['name']);
+            if($stare_username==0)
+            {
+                $bday = date('d-m-Y h:i:s');
+                $new_user = User::registerFB($_POST['name'], $_SESSION['fb_id'], $_SESSION['fb_id'], $bday,$_SESSION['fb_id']);
+                if ($new_user != null) {
+                    session_start();
+                    $_SESSION['user_id'] = LoginFb::getIdByFbId($id);
+                    header('Location: /Proiect-TW/mvc/public/village/villageView/');
+                } else {
+                    echo 'Eroare la register fb';
+                    //header('Location: /Proiect-TW/mvc/public/home/register');
+                }
+            }
+            else
+            {
+                $this->view('home/login', ['retry' => 'no', 'popup' => 'yes','invalid_username'=>'yes']);
+            }
+        }
+
+
+    }
 
 
 
-   public function register($status=' ',$retry=' ')
+
+    public function register($status=' ',$retry=' ')
    {
 
 

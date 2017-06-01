@@ -22,6 +22,11 @@ class Attack extends Controller
 
         }
 
+        $spear = VillageFunctions::getSpearNumber($_SESSION['village_id']);
+        $axe = VillageFunctions::getAxeNumber($_SESSION['village_id']);
+        $sword = VillageFunctions::getSwordNumber($_SESSION['village_id']);
+        $archer = VillageFunctions::getArcherNumber($_SESSION['village_id']);
+
         if (!isset($_POST['x']) || !isset($_POST['y']) || !isset($_POST['spear']) ||
             !isset($_POST['axe']) || !isset($_POST['sword']) || !isset($_POST['archer'])) {
             if ($status == 'failedattack') {
@@ -32,7 +37,7 @@ class Attack extends Controller
                 $wood = VillageFunctions::getWoodResources($_SESSION['village_id']);
                 $storage = VillageFunctions::getStorrageLevel($_SESSION['village_id']);
 
-            $this->view('attack/atac', ['retry' => 'yes', 'reportsCount' => $reportsCount, 'village_name' => $village_name, 'iron' => $iron, 'stone' => $stone, 'wood' => $wood, 'storage' => (1000 * $storage)]);
+            $this->view('attack/atac', ['spear'=>$spear,'axe'=>$axe,'sword'=>$sword,'archer'=>$archer,'retry' => 'yes', 'reportsCount' => $reportsCount, 'village_name' => $village_name, 'iron' => $iron, 'stone' => $stone, 'wood' => $wood, 'storage' => (1000 * $storage)]);
                  }
             else {
                 $reportsCount=Report::getReportsCount($_SESSION['user_id']);
@@ -41,7 +46,7 @@ class Attack extends Controller
                 $stone = VillageFunctions::getStoneResources($_SESSION['village_id']);
                 $wood = VillageFunctions::getWoodResources($_SESSION['village_id']);
                 $storage = VillageFunctions::getStorrageLevel($_SESSION['village_id']);
-                $this->view('attack/atac', ['retry' => 'no', 'reportsCount' => $reportsCount,   'village_name' => $village_name, 'iron' => $iron, 'stone' => $stone, 'wood' => $wood, 'storage' => (1000 * $storage)]);
+                $this->view('attack/atac', ['spear'=>$spear,'axe'=>$axe,'sword'=>$sword,'archer'=>$archer,'retry' => 'no', 'reportsCount' => $reportsCount,   'village_name' => $village_name, 'iron' => $iron, 'stone' => $stone, 'wood' => $wood, 'storage' => (1000 * $storage)]);
             }
                 return;
         }

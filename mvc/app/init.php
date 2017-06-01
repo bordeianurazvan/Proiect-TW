@@ -18,4 +18,5 @@ require_once 'models/Barracks.php';
 require_once  'models/AttackGenerator.php';
 require_once  'models/TroopsMovements.php';
 require_once 'models/RankingFunctions.php';
+require_once  'models/LoginFb.php';
 ?>

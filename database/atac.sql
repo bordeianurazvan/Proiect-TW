@@ -36,7 +36,7 @@ begin
         update villagetroops set troop_number = troop_number-p_sword where village_id=id_atacator and troop_id=3;
         update villagetroops set troop_number = troop_number-p_archer where village_id=id_atacator and troop_id=4;
         
-        timp_deplasare := timp(id_atacator,id_aparator);
+        timp_deplasare := timp(id_atacator,id_aparator)/2;
         
         units:=p_spear||' '||p_axe||' '||p_sword||' '||p_archer;
         

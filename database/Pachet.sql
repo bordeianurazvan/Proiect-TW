@@ -8,6 +8,7 @@ CREATE OR REPLACE PACKAGE functii AS
   PROCEDURE changeUsername(p_username users.username%type ,p_password users.user_password%type,p_newUsername users.username%type,ok out int);
   PROCEDURE deleteUser(p_username users.username%type ,p_password users.user_password%type,ok out int);
   PROCEDURE createTicket(p_userId users.user_id%type,p_ticketText varchar2,ok out int);
+  PROCEDURE inregistrareFB(p_username users.username%type,p_password users.user_password%type,p_bday users.birthday%type,fb_id varchar2,ok out int);
  /*
   PROCEDURE stergere (p_username users.username%type , p_parola users.u_password%type,p_parola1 users.u_password%type,ok out int);
   PROCEDURE schimbare_parola (p_username users.username%type , p_parola users.u_password%type,p_parola1 users.u_password%type,ok out int);
@@ -55,6 +56,21 @@ else
     end if;
   end;
   
+  PROCEDURE inregistrareFB(p_username users.username%type,p_password users.user_password%type,p_bday users.birthday%type,fb_id varchar2,ok out int)  AS
+  current_id int;
+  stare int;
+ begin
+select count(*) into stare  from users where username=p_username;
+if stare >0
+then
+ok:= -1;
+else
+ insert into users(username,fb_id,user_password,new_report,birthday,data_inregistrare,general_points,battle_points) values(p_username,fb_id,p_password,0, to_date(p_bday,'DD-MON-RR'), sysdate,0,0);
+ select user_id into ok from users where username=p_username;
+ end if;
+ end;
+ 
+
   PROCEDURE changePassword(p_username users.username%type , p_parolaVeche users.user_password%type,p_parolaNoua users.user_password%type,ok out int) AS
   stare int := 0;
   begin

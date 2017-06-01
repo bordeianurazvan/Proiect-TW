@@ -92,6 +92,8 @@ CREATE OR REPLACE procedure commands_update as
    def_name varchar(50);
    validate_village1 int;
    validate_village2 int;
+   x int;
+   y int;
    begin
    for i in(select * from commands) loop
    select count(village_id) into validate_village1 from villages where village_id=i.from_village;
@@ -141,7 +143,7 @@ CREATE OR REPLACE procedure commands_update as
       select troop_number into sword_def from villagetroops where village_id=i.to_village and troop_id=3;
       select troop_number into archer_def from villagetroops where village_id=i.to_village and troop_id=4;
       
-      suma_aparator :=zid * (10*spear_def + 5*axe_def + 50*sword_def + 45 *archer_def) + 200;
+      suma_aparator :=(10*spear_def + 5*axe_def + 50*sword_def + 45 *archer_def) + 10*zid;
       
       select user_id into user1 from villages where village_id = i.from_village;
       select user_id into user2 from villages where village_id = i.to_village;
@@ -167,12 +169,19 @@ CREATE OR REPLACE procedure commands_update as
           
           update users set battle_points = battle_points +( (spear_att-spear_al)+(axe_att-axe_al)+(sword_att-sword_al)+(archer_att-archer_al)) where user_id=user2;
           
-          timp_intoarcere := timp(i.from_village,i.to_village);
+          timp_intoarcere := timp(i.from_village,i.to_village)/2;
           select current_timestamp + numToDSInterval( timp_intoarcere, 'second' ) INTO timpp from dual;
           update villagetroops set troop_number=0 where village_id = i.to_village;
           insert into commands(from_village,to_village,units,command_type,start_time,arrive_time) 
           values (i.to_village,i.from_village,spear_al||' '||axe_al||' '||sword_al||' '||archer_al,'defense',current_timestamp,timpp);
+          
           update villages set user_id =user1 where village_id=i.to_village;
+          
+          select coord_x into x from villages where village_id=i.to_village;
+          select coord_y into y from villages where village_id=i.to_village;
+          
+          update map set tip=1 where coord_x=x and coord_y=y;
+          
           
           insert into reports(title,sent_units,village_units,message,from_user,to_user,from_village,to_village,user_id,generation_time) 
           values(nume1||' attacks '||nume2,i.units||'#'||spear_al||' '||axe_al||' '||sword_al||' '||archer_al,spear_def||' '||axe_def||' '||sword_def||' '||archer_def||'#'||'0 0 0 0',nume1||' conquered '||nume2,att_name,def_name,nume1,nume2,user1,current_timestamp);

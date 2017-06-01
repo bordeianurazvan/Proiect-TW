@@ -63,16 +63,16 @@
 
            <div class="form-group">
                <label for="archer"> <img alt="Archer" src="/Proiect-Tw/mvc/public/images/unit_archer.png" class="img-responsive"></label>
-                <input type="number" class="allign" name="archer" value="0"  id="archer" min="0">
+                <input type="number" class="allign" name="archer" value="0"  id="archer" min="0"><?php echo ' :'.$data['archer']; ?>
                <label for="sword"> <img alt="Sword" src="/Proiect-Tw/mvc/public/images/unit_sword.png" class="img-responsive"></label>
-               <input type="number"  class="allign" name="sword" value="0"  id="sword" min="0">
+               <input type="number"  class="allign" name="sword" value="0"  id="sword" min="0"><?php echo ' :'.$data['sword']; ?>
           </div>
 
         <div class="form-group">
             <label for="axe"> <img alt="Axe" src="/Proiect-Tw/mvc/public/images/unit_axe.png" class="img-responsive"></label>
-            <input type="number"  class="allign" name="axe" value="0"  id="axe" min="0">
+            <input type="number"  class="allign" name="axe" value="0"  id="axe" min="0"><?php echo ' :'.$data['axe']; ?>
             <label for="spear"> <img alt="spear" src="/Proiect-Tw/mvc/public/images/unit_spear.png" class="img-responsive"></label>
-            <input type="number"  class="allign" name="spear" value="0"  id="spear" min="0">
+            <input type="number"  class="allign" name="spear" value="0"  id="spear" min="0"><?php echo ' :'.$data['spear']; ?>
         </div>
 
         </form>

@@ -43,6 +43,7 @@ CREATE TABLE Users
 (
   user_id INT NOT NULL,
   username VARCHAR2(50) NOT NULL,
+  fb_id VARCHAR2(100),
   user_password VARCHAR2(64) NOT NULL,
   new_report INT NOT NULL,
   birthday DATE NOT NULL,
