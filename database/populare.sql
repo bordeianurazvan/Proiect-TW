@@ -34,13 +34,13 @@ end;
 --POPULARE TABELA BUILDINGS
 declare
 begin
-insert into Buildings values (1,'Main building',25,500,360);
-insert into Buildings values (2,'Wall',10,100,120);
-insert into Buildings values (3,'Barracks',50,180,250);
-insert into Buildings values (4,'Stone',10,70,120);
-insert into Buildings values (5,'Wood',10,70,120);
-insert into Buildings values (6,'Iron',10,70,120);
-insert into Buildings values (7,'Storage',50,150,360);
+insert into Buildings values (1,'Main building',25,400,380,275,60);
+insert into Buildings values (2,'Wall',10,100,290,75,30);
+insert into Buildings values (3,'Barracks',50,180,245,127,60);
+insert into Buildings values (4,'Stone',10,70,65,25,25);
+insert into Buildings values (5,'Wood',10,80,25,39,25);
+insert into Buildings values (6,'Iron',10,30,65,50,25);
+insert into Buildings values (7,'Storage',50,350,400,375,60);
 end;
 /
 --POPULARE TABELA RESOURCES

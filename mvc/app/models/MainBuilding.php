@@ -92,10 +92,10 @@ class MainBuilding
         return $row[0];
     }
 
-    public static function getMainBuildingNecessities($villageId)
+    public static function getNecessities_iron($villageId,$Building_id)
     {
-        $buildingId = 1;
-        $query="select building_cost from buildings b join villagebuildings vb on vb.building_id = b.building_id 
+        $buildingId = $Building_id;
+        $query="select building_cost_iron from buildings b join villagebuildings vb on vb.building_id = b.building_id 
                                                       where village_id=:villageId and b.building_id =:buildingId";
         $statement=oci_parse(Db::getDbInstance(),$query);
         oci_bind_by_name($statement,":buildingId",$buildingId);
@@ -106,10 +106,10 @@ class MainBuilding
 
     }
 
-    public static function getWallNecessities($villageId)
+    public static function getNecessities_wood($villageId,$Building_id)
     {
-        $buildingId = 2;
-        $query="select building_cost from buildings b join villagebuildings vb on vb.building_id = b.building_id 
+        $buildingId = $Building_id;
+        $query="select building_cost_wood from buildings b join villagebuildings vb on vb.building_id = b.building_id 
                                                       where village_id=:villageId and b.building_id =:buildingId";
         $statement=oci_parse(Db::getDbInstance(),$query);
         oci_bind_by_name($statement,":buildingId",$buildingId);
@@ -120,10 +120,10 @@ class MainBuilding
 
     }
 
-    public static function getBarracksNecessities($villageId)
+    public static function getNecessities_stone($villageId,$Building_id)
     {
-        $buildingId = 3;
-        $query="select building_cost from buildings b join villagebuildings vb on vb.building_id = b.building_id 
+        $buildingId = $Building_id;
+        $query="select building_cost_stone from buildings b join villagebuildings vb on vb.building_id = b.building_id 
                                                       where village_id=:villageId and b.building_id =:buildingId";
         $statement=oci_parse(Db::getDbInstance(),$query);
         oci_bind_by_name($statement,":buildingId",$buildingId);
@@ -131,64 +131,8 @@ class MainBuilding
         oci_execute($statement);
         $row=oci_fetch_row($statement);
         return $row[0];
-
     }
 
-    public static function getStoneNecessities($villageId)
-    {
-        $buildingId = 4;
-        $query="select building_cost from buildings b join villagebuildings vb on vb.building_id = b.building_id 
-                                                      where village_id=:villageId and b.building_id =:buildingId";
-        $statement=oci_parse(Db::getDbInstance(),$query);
-        oci_bind_by_name($statement,":buildingId",$buildingId);
-        oci_bind_by_name($statement,":villageId",$villageId);
-        oci_execute($statement);
-        $row=oci_fetch_row($statement);
-        return $row[0];
-
-    }
-
-    public static function getWoodNecessities($villageId)
-    {
-        $buildingId = 5;
-        $query="select building_cost from buildings b join villagebuildings vb on vb.building_id = b.building_id 
-                                                      where village_id=:villageId and b.building_id =:buildingId";
-        $statement=oci_parse(Db::getDbInstance(),$query);
-        oci_bind_by_name($statement,":buildingId",$buildingId);
-        oci_bind_by_name($statement,":villageId",$villageId);
-        oci_execute($statement);
-        $row=oci_fetch_row($statement);
-        return $row[0];
-
-    }
-
-    public static function getIronNecessities($villageId)
-    {
-        $buildingId = 6;
-        $query="select building_cost from buildings b join villagebuildings vb on vb.building_id = b.building_id 
-                                                      where village_id=:villageId and b.building_id =:buildingId";
-        $statement=oci_parse(Db::getDbInstance(),$query);
-        oci_bind_by_name($statement,":buildingId",$buildingId);
-        oci_bind_by_name($statement,":villageId",$villageId);
-        oci_execute($statement);
-        $row=oci_fetch_row($statement);
-        return $row[0];
-
-    }
-
-    public static function getStorageNecessities($villageId)
-    {
-        $buildingId = 7;
-        $query="select building_cost from buildings b join villagebuildings vb on vb.building_id = b.building_id 
-                                                      where village_id=:villageId and b.building_id =:buildingId";
-        $statement=oci_parse(Db::getDbInstance(),$query);
-        oci_bind_by_name($statement,":buildingId",$buildingId);
-        oci_bind_by_name($statement,":villageId",$villageId);
-        oci_execute($statement);
-        $row=oci_fetch_row($statement);
-        return $row[0];
-
-    }
 
     public static function getMainBuildingTime($villageId)
     {
@@ -291,7 +235,7 @@ class MainBuilding
     public static function getMainBuildingEndTime($villageId)
     {
         $buildingId = 1;
-        $query = "SELECT substr(to_char(cast(end_time as timestamp(0))),1,16)||substr(cast(end_time as timestamp(0)),20,22) from build where village_id=:villageId and building_id=:buildingId order by end_time";
+        $query = "SELECT cast(end_time as timestamp(0)) from build where village_id=:villageId and building_id=:buildingId order by end_time";
         $statement = oci_parse(Db::getDbInstance(),$query);
         oci_bind_by_name($statement,":buildingId",$buildingId);
         oci_bind_by_name($statement,":villageId",$villageId);
@@ -303,7 +247,7 @@ class MainBuilding
     public static function getWallEndTime($villageId)
     {
         $buildingId = 2;
-        $query = "SELECT substr(to_char(cast(end_time as timestamp(0))),1,16)||substr(cast(end_time as timestamp(0)),20,22) from build where village_id=:villageId and building_id=:buildingId order by end_time";
+        $query = "SELECT cast(end_time as timestamp(0)) from build where village_id=:villageId and building_id=:buildingId order by end_time";
         $statement = oci_parse(Db::getDbInstance(),$query);
         oci_bind_by_name($statement,":buildingId",$buildingId);
         oci_bind_by_name($statement,":villageId",$villageId);
@@ -315,7 +259,7 @@ class MainBuilding
     public static function getBarracksEndTime($villageId)
     {
         $buildingId = 3;
-        $query = "SELECT substr(to_char(cast(end_time as timestamp(0))),1,16)||substr(cast(end_time as timestamp(0)),20,22) from build where village_id=:villageId and building_id=:buildingId order by end_time";
+        $query = "SELECT cast(end_time as timestamp(0)) from build where village_id=:villageId and building_id=:buildingId order by end_time";
         $statement = oci_parse(Db::getDbInstance(),$query);
         oci_bind_by_name($statement,":buildingId",$buildingId);
         oci_bind_by_name($statement,":villageId",$villageId);
@@ -327,7 +271,7 @@ class MainBuilding
     public static function getStoneEndTime($villageId)
     {
         $buildingId = 4;
-        $query = "SELECT substr(to_char(cast(end_time as timestamp(0))),1,16)||substr(cast(end_time as timestamp(0)),20,22) from build where village_id=:villageId and building_id=:buildingId order by end_time";
+        $query = "SELECT cast(end_time as timestamp(0)) from build where village_id=:villageId and building_id=:buildingId order by end_time";
         $statement = oci_parse(Db::getDbInstance(),$query);
         oci_bind_by_name($statement,":buildingId",$buildingId);
         oci_bind_by_name($statement,":villageId",$villageId);
@@ -339,7 +283,7 @@ class MainBuilding
     public static function getWoodEndTime($villageId)
     {
         $buildingId = 5;
-        $query = "SELECT substr(to_char(cast(end_time as timestamp(0))),1,16)||substr(cast(end_time as timestamp(0)),20,22) from build where village_id=:villageId and building_id=:buildingId order by end_time";
+        $query = "SELECT cast(end_time as timestamp(0)) from build where village_id=:villageId and building_id=:buildingId order by end_time";
         $statement = oci_parse(Db::getDbInstance(),$query);
         oci_bind_by_name($statement,":buildingId",$buildingId);
         oci_bind_by_name($statement,":villageId",$villageId);
@@ -351,7 +295,7 @@ class MainBuilding
     public static function getIronEndTime($villageId)
     {
         $buildingId = 6;
-        $query = "SELECT substr(to_char(cast(end_time as timestamp(0))),1,16)||substr(cast(end_time as timestamp(0)),20,22) from build where village_id=:villageId and building_id=:buildingId order by end_time";
+        $query = "SELECT cast(end_time as timestamp(0)) from build where village_id=:villageId and building_id=:buildingId order by end_time";
         $statement = oci_parse(Db::getDbInstance(),$query);
         oci_bind_by_name($statement,":buildingId",$buildingId);
         oci_bind_by_name($statement,":villageId",$villageId);
@@ -363,7 +307,7 @@ class MainBuilding
     public static function getStorageEndTime($villageId)
     {
         $buildingId = 7;
-        $query = "SELECT substr(to_char(cast(end_time as timestamp(0))),1,16)||substr(cast(end_time as timestamp(0)),20,22) from build where village_id=:villageId and building_id=:buildingId order by end_time";
+        $query = "SELECT cast(end_time as timestamp(0)) from build where village_id=:villageId and building_id=:buildingId order by end_time";
         $statement = oci_parse(Db::getDbInstance(),$query);
         oci_bind_by_name($statement,":buildingId",$buildingId);
         oci_bind_by_name($statement,":villageId",$villageId);

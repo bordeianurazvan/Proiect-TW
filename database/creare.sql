@@ -102,7 +102,9 @@ CREATE TABLE Buildings
   building_id INT NOT NULL,
   building_name VARCHAR2(50) NOT NULL,
   building_points INT NOT NULL,
-  building_cost INT NOT NULL,
+  building_cost_iron INT NOT NULL,
+  building_cost_wood INT NOT NULL,
+  building_cost_stone INT NOT NULL,
   building_time INT NOT NULL,
   PRIMARY KEY (building_id)
 );

@@ -74,27 +74,57 @@ class Commands extends Controller
         $woodLevel = MainBuilding::getWoodLevel($villageId);
         $ironLevel = MainBuilding::getIronLevel($villageId);
         $storageLevel = MainBuilding::getStorageLevel($villageId);
-        $mainBuildingNecessities = MainBuilding::getMainBuildingNecessities($villageId)*$mainBuildingLevel;
-        $wallNecessities = MainBuilding::getWallNecessities($villageId)*$wallLevel;
-        $barracksNecessities = MainBuilding::getBarracksNecessities($villageId)*$barracksLevel;
-        $stoneNecessities = MainBuilding::getStoneNecessities($villageId)*$stoneLevel;
-        $woodNecessities = MainBuilding::getWoodNecessities($villageId)*$woodLevel;
-        $ironNecessities = MainBuilding::getIronNecessities($villageId)*$ironLevel;
-        $storageNecessities = MainBuilding::getStorageNecessities($villageId)*$storageLevel;
+
+        $mainBuildingNecessities_iron = MainBuilding::getNecessities_iron($villageId,1)*$mainBuildingLevel;
+        $mainBuildingNecessities_wood = MainBuilding::getNecessities_wood($villageId,1)*$mainBuildingLevel;
+        $mainBuildingNecessities_stone = MainBuilding::getNecessities_stone($villageId,1)*$mainBuildingLevel;
+
+        $wallNecessities_iron = MainBuilding::getNecessities_iron($villageId,2)*$wallLevel;
+        $wallNecessities_wood = MainBuilding::getNecessities_wood($villageId,2)*$wallLevel;
+        $wallNecessities_stone = MainBuilding::getNecessities_stone($villageId,2)*$wallLevel;
+
+        $barracksNecessities_iron = MainBuilding::getNecessities_iron($villageId,3)*$barracksLevel;
+        $barracksNecessities_wood = MainBuilding::getNecessities_wood($villageId,3)*$barracksLevel;
+        $barracksNecessities_stone = MainBuilding::getNecessities_stone($villageId,3)*$barracksLevel;
+
+        $stoneNecessities_iron = MainBuilding::getNecessities_iron($villageId,4)*$stoneLevel;
+        $stoneNecessities_wood = MainBuilding::getNecessities_wood($villageId,4)*$stoneLevel;
+        $stoneNecessities_stone = MainBuilding::getNecessities_stone($villageId,4)*$stoneLevel;
+
+        $woodNecessities_iron = MainBuilding::getNecessities_iron($villageId,5)*$woodLevel;
+        $woodNecessities_wood = MainBuilding::getNecessities_wood($villageId,5)*$woodLevel;
+        $woodNecessities_stone = MainBuilding::getNecessities_stone($villageId,5)*$woodLevel;
+
+        $ironNecessities_iron = MainBuilding::getNecessities_iron($villageId,6)*$ironLevel;
+        $ironNecessities_wood = MainBuilding::getNecessities_wood($villageId,6)*$ironLevel;
+        $ironNecessities_stone = MainBuilding::getNecessities_stone($villageId,6)*$ironLevel;
+
+        $storageNecessities_iron = MainBuilding::getNecessities_iron($villageId,7)*$storageLevel;
+        $storageNecessities_wood = MainBuilding::getNecessities_wood($villageId,7)*$storageLevel;
+        $storageNecessities_stone = MainBuilding::getNecessities_stone($villageId,7)*$storageLevel;
+
+
         $mainBuildingTime = MainBuilding::getMainBuildingTime($villageId);
         $mainBuldingTimeFinal = ($mainBuildingTime*$mainBuildingLevel);
+
         $wallTime = MainBuilding::getWallTime($villageId);
-        $wallTimeFinal = ($wallTime*$wallLevel);
+        $wallTimeFinal = max((($wallTime*$wallLevel)-($mainBuildingLevel*2)),10);
+
         $barracksTime = MainBuilding::getBarracksTime($villageId);
-        $barracksTimeFinal = ($barracksTime*$barracksLevel);
+        $barracksTimeFinal = max((($barracksTime*$barracksLevel)-($mainBuildingLevel*2)),10);
+
         $stoneTime = MainBuilding::getStoneTime($villageId);
-        $stoneTimeFinal = ($stoneTime*$stoneLevel);
+        $stoneTimeFinal = max((($stoneTime*$stoneLevel)-($mainBuildingLevel*2)),10);
+
         $woodTime = MainBuilding::getWoodTime($villageId);
-        $woodTimeFinal = ($woodTime*$woodLevel);
+        $woodTimeFinal = max((($woodTime*$woodLevel)-($mainBuildingLevel*2)),10);
+
         $ironTime = MainBuilding::getIronTime($villageId);
-        $ironTimeFinal = ($ironTime*$ironLevel);
+        $ironTimeFinal = max((($ironTime*$ironLevel)-($mainBuildingLevel*2)),10);
+
         $storageTime = MainBuilding::getStorageTime($villageId);
-        $storageTimeFinal = ($storageTime*$storageLevel);
+        $storageTimeFinal = max((($storageTime*$storageLevel)-($mainBuildingLevel*2)),10);
+
         $mainBuildingEndTime = MainBuilding::getMainBuildingEndTime($villageId);
         $wallEndTime = MainBuilding::getWallEndTime($villageId);
         $barracksEndTime = MainBuilding::getBarracksEndTime($villageId);
@@ -117,9 +147,16 @@ class Commands extends Controller
 
         $this->view('commands/construct',['mainBuildingLevel'=>$mainBuildingLevel,'wallLevel'=>$wallLevel,'barracksLevel'=>$barracksLevel,
             'stoneLevel'=>$stoneLevel,'woodLevel'=>$woodLevel,'ironLevel'=>$ironLevel,'storageLevel'=>$storageLevel,
-            'mainBuildingNecessities'=>$mainBuildingNecessities,'wallNecessities'=>$wallNecessities,'barracksNecessities'=>$barracksNecessities,
-            'stoneNecessities'=>$stoneNecessities,'woodNecessities'=>$woodNecessities,'ironNecessities'=>$ironNecessities,
-            'storageNecessities'=>$storageNecessities,'iron'=>$iron,'wood'=>$wood,'stone'=>$stone,'village_name'=>$village_name,
+            'mainBuildingNecessities_iron'=>$mainBuildingNecessities_iron,'mainBuildingNecessities_wood'=>$mainBuildingNecessities_wood,
+            'mainBuildingNecessities_stone'=>$mainBuildingNecessities_stone,'wallNecessities_iron'=>$wallNecessities_iron,
+            'wallNecessities_wood'=>$wallNecessities_wood,'wallNecessities_stone'=>$wallNecessities_stone,
+            'barracksNecessities_iron'=>$barracksNecessities_iron,'barracksNecessities_wood'=>$barracksNecessities_wood,
+            'barracksNecessities_stone'=>$barracksNecessities_stone,'stoneNecessities_iron'=>$stoneNecessities_iron,
+            'stoneNecessities_wood'=>$stoneNecessities_wood,'stoneNecessities_stone'=>$stoneNecessities_stone,
+            'woodNecessities_iron'=>$woodNecessities_iron,'woodNecessities_wood'=>$woodNecessities_wood,'woodNecessities_stone'=>$woodNecessities_stone,
+            'ironNecessities_iron'=>$ironNecessities_iron,'ironNecessities_wood'=>$ironNecessities_wood,'ironNecessities_stone'=>$ironNecessities_stone,
+            'storageNecessities_iron'=>$storageNecessities_iron,'storageNecessities_wood'=>$storageNecessities_wood,
+            'storageNecessities_stone'=>$storageNecessities_stone,'iron'=>$iron,'wood'=>$wood,'stone'=>$stone,'village_name'=>$village_name,
             'mainBuildingTimeFinal'=>$mainBuldingTimeFinal,'wallTimeFinal'=>$wallTimeFinal,'barracksTimeFinal'=>$barracksTimeFinal,
             'stoneTimeFinal'=>$stoneTimeFinal,'woodTimeFinal'=>$woodTimeFinal,'ironTimeFinal'=>$ironTimeFinal,
             'storageTimeFinal'=>$storageTimeFinal,'storage'=>$storage,'mainBuildingEndTime'=>$mainBuildingEndTime,'wallEndTime'=>$wallEndTime,
