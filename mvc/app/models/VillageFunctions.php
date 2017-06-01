@@ -344,4 +344,28 @@ class VillageFunctions
         $row=oci_fetch_row($stmt);
         return $row[0];
     }
+    public static function victory(){
+        $query = "select max(count(village_id)) from villages where user_id > 1 group by user_id";
+        $query1 = "select count(*) from villages";
+        $stmt=oci_parse(Db::getDbInstance(),$query);
+        $stmt1=oci_parse(Db::getDbInstance(),$query1);
+        oci_execute($stmt);
+        oci_execute($stmt1);
+        $row=oci_fetch_row($stmt);
+        $row1=oci_fetch_row($stmt1);
+        $procentaj = ($row[0] * 100) / $row1[0];
+        if($procentaj > 50){
+            $query2 = "select username from users where user_id = ( 
+                              select user_id from villages having count(user_id) = (
+                                       select max(count(village_id)) from villages where user_id > 1 group by user_id) 
+                              group by user_id)";
+            $stmt2=oci_parse(Db::getDbInstance(),$query2);
+            oci_execute($stmt2);
+            $row2=oci_fetch_row($stmt2);
+            $_SESSION['username'] = $row2[0];
+            return true;
+        }else {
+            return false;
+        }
+    }
 }
