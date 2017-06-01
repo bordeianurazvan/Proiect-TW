@@ -139,7 +139,7 @@
                                </tr>
                                <tr>
                                    <th><img alt="Sword" src="/Proiect-TW/mvc/public/images/unit_sword.png"></th>
-                                   <td>The SwordsMan is the best offensive troop !but instruct them wisely because they have a great resources cost and time cost aswell</td>
+                                   <td>The SwordsMan is the best defensive troop ! But instruct them wisely because they have a great resources cost and time cost aswell</td>
                                </tr>
                                <tr>
                                <th><img alt="Axe" src="/Proiect-TW/mvc/public/images/unit_axe.png"></th>
