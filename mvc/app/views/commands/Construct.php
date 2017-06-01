@@ -83,9 +83,11 @@
                                     <br>
                                     <span style="font-size: 0.9em">Level <?php echo $data['mainBuildingLevel']; ?></span>
                                 </td>
-                                <td class="cost_wood"><img alt="Wood" src="/Proiect-TW/mvc/public/images/wood.png"><?php echo $data['mainBuildingNecessities_wood']; ?></td>
-                                <td class="cost_stone"><img alt="Stone" src="/Proiect-TW/mvc/public/images/stone.png"><?php echo $data['mainBuildingNecessities_stone']; ?></td>
-                                <td class="cost_iron"><img alt="Iron" src="/Proiect-TW/mvc/public/images/iron.png"><?php echo $data['mainBuildingNecessities_iron']; ?></td>
+                                <td class="cost_iron"><?php echo $data['mainBuildingNecessities_iron']; ?><img alt="Iron" src="/Proiect-TW/mvc/public/images/iron.png"></td>
+                                <td class="cost_wood"><?php echo $data['mainBuildingNecessities_wood']; ?><img alt="Wood" src="/Proiect-TW/mvc/public/images/wood.png"></td>
+                                <td class="cost_stone"><?php echo $data['mainBuildingNecessities_stone']; ?><img alt="Stone" src="/Proiect-TW/mvc/public/images/stone.png"></td>
+
+
                                 <td><span class="glyphicon glyphicon-time "></span>
                                     <span><?php if ($data['mainInConstruction']==0) echo 'Construction time:'.$data['mainBuildingTimeFinal'].' seconds'; ?></span>
                                     <span><?php  if ($data['mainInConstruction']!=0) echo 'Construction finish on: '.$data['mainBuildingEndTime']; ?></span>
@@ -108,9 +110,11 @@
                                     <br>
                                     <span style="font-size: 0.9em">Level <?php echo $data['barracksLevel']; ?></span>
                                 </td>
-                                <td class="cost_wood"><img alt="Wood" src="/Proiect-TW/mvc/public/images/wood.png"><?php echo $data['barracksNecessities_wood']; ?></td>
-                                <td class="cost_stone"><img alt="Stone" src="/Proiect-TW/mvc/public/images/stone.png"><?php echo $data['barracksNecessities_stone']; ?></td>
-                                <td class="cost_iron"><img alt="Iron" src="/Proiect-TW/mvc/public/images/iron.png"><?php echo $data['barracksNecessities_iron']; ?></td>
+                                <td class="cost_iron"><?php echo $data['barracksNecessities_iron']; ?><img alt="Iron" src="/Proiect-TW/mvc/public/images/iron.png"></td>
+                                <td class="cost_wood"><?php echo $data['barracksNecessities_wood']; ?><img alt="Wood" src="/Proiect-TW/mvc/public/images/wood.png"></td>
+                                <td class="cost_stone"><?php echo $data['barracksNecessities_stone']; ?><img alt="Stone" src="/Proiect-TW/mvc/public/images/stone.png"></td>
+
+
                                 <td><span class="glyphicon glyphicon-time "></span>
                                     <span><?php if ($data['barracksInConstruction']==0) echo 'Construction time:'.$data['barracksTimeFinal'].' seconds'; ?></span>
                                     <span><?php  if ($data['barracksInConstruction']!=0) echo 'Construction finish on: '.$data['barracksEndTime']; ?></span>
@@ -133,9 +137,11 @@
                                     <br>
                                     <span style="font-size: 0.9em">Level <?php echo $data['storageLevel']; ?></span>
                                 </td>
-                                <td class="cost_wood"><img alt="Wood" src="/Proiect-TW/mvc/public/images/wood.png"><?php echo $data['storageNecessities_wood']; ?></td>
-                                <td class="cost_stone"><img alt="Stone" src="/Proiect-TW/mvc/public/images/stone.png"><?php echo $data['storageNecessities_stone']; ?></td>
-                                <td class="cost_iron"><img alt="Iron" src="/Proiect-TW/mvc/public/images/iron.png"> <?php echo $data['storageNecessities_iron']; ?></td>
+                                <td class="cost_iron"><?php echo $data['storageNecessities_iron']; ?><img alt="Iron" src="/Proiect-TW/mvc/public/images/iron.png"> </td>
+                                <td class="cost_wood"><?php echo $data['storageNecessities_wood']; ?><img alt="Wood" src="/Proiect-TW/mvc/public/images/wood.png"></td>
+                                <td class="cost_stone"><?php echo $data['storageNecessities_stone']; ?><img alt="Stone" src="/Proiect-TW/mvc/public/images/stone.png"></td>
+
+
                                 <td><span class="glyphicon glyphicon-time "></span>
                                     <span><?php if ($data['storageInConstruction']==0) echo 'Construction time:'.$data['storageTimeFinal'].' seconds'; ?></span>
                                     <span><?php  if ($data['storageInConstruction']!=0) echo 'Construction finish on: '.$data['storageEndTime']; ?></span>
@@ -158,9 +164,11 @@
                                     <br>
                                     <span style="font-size: 0.9em">Level <?php echo $data['wallLevel']; ?></span>
                                 </td>
-                                <td class="cost_wood"><img alt="Wood" src="/Proiect-TW/mvc/public/images/wood.png"><?php echo $data['wallNecessities_wood']; ?></td>
-                                <td class="cost_stone"><img alt="Stone" src="/Proiect-TW/mvc/public/images/stone.png"><?php echo $data['wallNecessities_stone']; ?></td>
-                                <td class="cost_iron"><img alt="Iron" src="/Proiect-TW/mvc/public/images/iron.png"> <?php echo $data['wallNecessities_iron']; ?></td>
+                                <td class="cost_iron"><?php echo $data['wallNecessities_iron']; ?><img alt="Iron" src="/Proiect-TW/mvc/public/images/iron.png"> </td>
+                                <td class="cost_wood"><?php echo $data['wallNecessities_wood']; ?><img alt="Wood" src="/Proiect-TW/mvc/public/images/wood.png"></td>
+                                <td class="cost_stone"><?php echo $data['wallNecessities_stone']; ?><img alt="Stone" src="/Proiect-TW/mvc/public/images/stone.png"></td>
+
+
                                 <td><span class="glyphicon glyphicon-time "></span>
                                     <span><?php if ($data['wallInConstruction']==0) echo 'Construction time:'.$data['wallTimeFinal'].' seconds'; ?></span>
                                     <span><?php  if ($data['wallInConstruction']!=0) echo 'Construction finish on: '.$data['wallEndTime']; ?></span>
@@ -184,9 +192,11 @@
                                     <br>
                                     <span style="font-size: 0.9em">Level <?php echo $data['woodLevel']; ?></span>
                                 </td>
-                                <td class="cost_wood"><img alt="Wood" src="/Proiect-TW/mvc/public/images/wood.png"><?php echo $data['woodNecessities_wood']; ?></td>
-                                <td class="cost_stone"><img alt="Stone" src="/Proiect-TW/mvc/public/images/stone.png"><?php echo $data['woodNecessities_stone']; ?></td>
-                                <td class="cost_iron"><img alt="Iron" src="/Proiect-TW/mvc/public/images/iron.png"> <?php echo $data['woodNecessities_iron']; ?></td>
+                                <td class="cost_iron"><?php echo $data['woodNecessities_iron']; ?><img alt="Iron" src="/Proiect-TW/mvc/public/images/iron.png"> </td>
+                                <td class="cost_wood"><?php echo $data['woodNecessities_wood']; ?><img alt="Wood" src="/Proiect-TW/mvc/public/images/wood.png"></td>
+                                <td class="cost_stone"><?php echo $data['woodNecessities_stone']; ?><img alt="Stone" src="/Proiect-TW/mvc/public/images/stone.png"></td>
+
+
                                 <td><span class="glyphicon glyphicon-time "></span>
                                     <span><?php if ($data['woodInConstruction']==0) echo 'Construction time:'.$data['woodTimeFinal'].' seconds'; ?></span>
                                     <span><?php  if ($data['woodInConstruction']!=0) echo 'Construction finish on: '.$data['woodEndTime']; ?></span>
@@ -210,9 +220,11 @@
                                     <br>
                                     <span style="font-size: 0.9em">Level <?php echo $data['ironLevel']; ?></span>
                                 </td>
-                                <td class="cost_wood"><img alt="Wood" src="/Proiect-TW/mvc/public/images/wood.png"><?php echo $data['ironNecessities_wood']; ?></td>
-                                <td class="cost_stone"><img alt="Stone" src="/Proiect-TW/mvc/public/images/stone.png"><?php echo $data['ironNecessities_stone']; ?></td>
-                                <td class="cost_iron"><img alt="Iron" src="/Proiect-TW/mvc/public/images/iron.png"> <?php echo $data['ironNecessities_iron']; ?></td>
+                                <td class="cost_iron"><?php echo $data['ironNecessities_iron']; ?><img alt="Iron" src="/Proiect-TW/mvc/public/images/iron.png"> </td>
+                                <td class="cost_wood"><?php echo $data['ironNecessities_wood']; ?><img alt="Wood" src="/Proiect-TW/mvc/public/images/wood.png"></td>
+                                <td class="cost_stone"><?php echo $data['ironNecessities_stone']; ?><img alt="Stone" src="/Proiect-TW/mvc/public/images/stone.png"></td>
+
+
                                 <td><span class="glyphicon glyphicon-time "></span>
                                     <span><?php if ($data['ironInConstruction']==0) echo 'Construction time:'.$data['ironTimeFinal'].' seconds'; ?></span>
                                     <span><?php  if ($data['ironInConstruction']!=0) echo 'Construction finish on: '.$data['ironEndTime']; ?></span>
@@ -236,9 +248,11 @@
                                     <br>
                                     <span style="font-size: 0.9em">Level <?php echo $data['stoneLevel']; ?></span>
                                 </td>
-                                <td class="cost_wood"><img alt="Wood" src="/Proiect-TW/mvc/public/images/wood.png"><?php echo $data['stoneNecessities_wood']; ?></td>
-                                <td class="cost_stone"><img alt="Stone" src="/Proiect-TW/mvc/public/images/stone.png"><?php echo $data['stoneNecessities_stone']; ?></td>
-                                <td class="cost_iron"><img alt="Iron" src="/Proiect-TW/mvc/public/images/iron.png"><?php echo $data['stoneNecessities_iron']; ?></td>
+                                <td class="cost_iron"><?php echo $data['stoneNecessities_iron']; ?><img alt="Iron" src="/Proiect-TW/mvc/public/images/iron.png"></td>
+                                <td class="cost_wood"><?php echo $data['stoneNecessities_wood']; ?><img alt="Wood" src="/Proiect-TW/mvc/public/images/wood.png"></td>
+                                <td class="cost_stone"><?php echo $data['stoneNecessities_stone']; ?><img alt="Stone" src="/Proiect-TW/mvc/public/images/stone.png"></td>
+
+
                                 <td><span class="glyphicon glyphicon-time "></span>
                                     <span><?php if ($data['stoneInConstruction']==0) echo 'Construction time:'.$data['stoneTimeFinal'].' seconds'; ?></span>
                                     <span><?php  if ($data['stoneInConstruction']!=0) echo 'Construction finish on: '.$data['stoneEndTime']; ?></span>
