@@ -22,13 +22,13 @@ end;
 declare
 begin
  Insert into Troops(troop_id,troop_name,troop_attackPower,troop_defensePower,troop_stone_cost,troop_wood_cost,troop_iron_cost,troop_time)
- values (1,'Spear',20,10,30,20,40,35);
+ values (1,'Spear',20,15,25,15,20,5);
   Insert into Troops(troop_id,troop_name,troop_attackPower,troop_defensePower,troop_stone_cost,troop_wood_cost,troop_iron_cost,troop_time)
- values (2,'Axe',30,5,50,25,30,60);
+ values (2,'Axe',40,5,35,15,30,5);
    Insert into Troops(troop_id,troop_name,troop_attackPower,troop_defensePower,troop_stone_cost,troop_wood_cost,troop_iron_cost,troop_time)
- values (3,'Sword',15,50,20,60,15,45);
+ values (3,'Sword',15,40,20,45,25,6);
    Insert into Troops(troop_id,troop_name,troop_attackPower,troop_defensePower,troop_stone_cost,troop_wood_cost,troop_iron_cost,troop_time)
- values (4,'Archer',10,45,15,40,30,35);
+ values (4,'Archer',15,20,20,25,15,4);
 end;
 /
 --POPULARE TABELA BUILDINGS

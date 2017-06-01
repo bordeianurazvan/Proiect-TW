@@ -52,11 +52,11 @@ CREATE OR REPLACE TRIGGER first_village_trg1
                
              else
                 update Map set tip=2 where coord_x=:new.coord_x and coord_y=:new.coord_y;
-                insert into villagetroops values(500,3,:new.village_id);
-                insert into villagetroops values(500,1,:new.village_id);
-                insert into villagetroops values(500,2,:new.village_id);
-                insert into villagetroops values(500,4,:new.village_id);
-                  insert into villagebuildings values(10,:new.village_id,2);
+                insert into villagetroops values(50,3,:new.village_id);
+                insert into villagetroops values(50,1,:new.village_id);
+                insert into villagetroops values(50,2,:new.village_id);
+                insert into villagetroops values(50,4,:new.village_id);
+                  insert into villagebuildings values(2,:new.village_id,2);
                 end if;
                 insert into villagebuildings values(1,:new.village_id,1);
                 insert into villagebuildings values(1,:new.village_id,3);
