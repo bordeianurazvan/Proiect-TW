@@ -22,24 +22,31 @@ begin
  if(b_id=1)
  then
   update users set general_points = general_points+(100*actual_level) where user_id=id_user;
+  update villages set points = points+(100*actual_level) where village_id=p_id;
   elsif b_id=2
   then
    update users set general_points = general_points+(50*actual_level) where user_id=id_user;
+   update villages set points = points+(50*actual_level) where village_id=p_id;
     elsif b_id=3
   then
    update users set general_points = general_points+(75*actual_level) where user_id=id_user;
+   update villages set points = points+(75*actual_level) where village_id=p_id;
     elsif b_id=4
   then
    update users set general_points = general_points+(25*actual_level) where user_id=id_user;
+   update villages set points = points+(25*actual_level) where village_id=p_id;
     elsif b_id=5
   then
    update users set general_points = general_points+(25*actual_level) where user_id=id_user;
+   update villages set points = points+(25*actual_level) where village_id=p_id;
     elsif b_id=6
   then
    update users set general_points = general_points+(25*actual_level) where user_id=id_user;
+   update villages set points = points+(25*actual_level) where village_id=p_id;
     elsif b_id=7
   then
    update users set general_points = general_points+(70*actual_level) where user_id=id_user;
+   update villages set points = points+(70*actual_level) where village_id=p_id;
    end if;
 end;
 
