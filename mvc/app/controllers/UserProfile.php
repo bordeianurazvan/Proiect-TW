@@ -22,6 +22,7 @@ class UserProfile extends Controller
         $numberOfVillages = Profile::getNumberOfVillages($_SESSION['user_id']);
         $varsta = Profile::getUserAge($_SESSION['user_id']);
         $reportsCount=Report::getReportsCount($_SESSION['user_id']);
+        $facebookUser = Profile::validateFacebookUser($username);
 
         if($username != null && $signUpDate != null && $numberOfVillages != null && $varsta != null )
         {
@@ -31,7 +32,7 @@ class UserProfile extends Controller
             $this->view('user/profile',['username'=>$username,'signUpDate'=>$signUpDate,
                 'numberOfVillages'=>$numberOfVillages,'varsta'=>$varsta,'village_name'=>$village_name,
                 'iron'=>$iron,'stone'=>$stone,'wood'=>$wood,'storage'=>$storage,
-                'generalPoints'=>$generalRank,'battlePoints'=>$battleRank,'reportsCount'=>$reportsCount]);
+                'generalPoints'=>$generalRank,'battlePoints'=>$battleRank,'reportsCount'=>$reportsCount,'fb'=>$facebookUser]);
         }
 
 

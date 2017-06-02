@@ -72,8 +72,10 @@
 
     </table>
 
+    <?php
+        if($data['fb']==0)
 
-<a class="btn btn-primary buton" href="/Proiect-TW/mvc/public/UserProfile/changePassword"><span class="glyphicon glyphicon-cog"></span>Settings</a>
+            echo'<a class="btn btn-primary buton" href="/Proiect-TW/mvc/public/UserProfile/changePassword"><span class="glyphicon glyphicon-cog"></span>Settings</a>';?>
 </div>
 <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2"></div>
 </body>

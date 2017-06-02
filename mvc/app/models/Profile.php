@@ -177,4 +177,15 @@ class Profile
         }
     }
 
+    public static function validateFacebookUser($username)
+    {
+        $query = "SELECT count(fb_id) from users where username = :username and fb_id is not null ";
+        $statement = oci_parse(Db::getDbInstance(),$query);
+        oci_bind_by_name($statement,':username',$username);
+        oci_execute($statement);
+        $row = oci_fetch_row($statement);
+        return $row[0];
+
+    }
+
 }
