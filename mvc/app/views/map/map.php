@@ -18,7 +18,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-logo" href="/Proiect-TW/mvc/public/user/info">
+            <a class="navbar-logo" href="/Proiect-TW/mvc/public/userProfile/info">
                 <img alt="Logo" src="/Proiect-TW/mvc/public/images/logocrop60%25.png">
             </a>
         </div>
