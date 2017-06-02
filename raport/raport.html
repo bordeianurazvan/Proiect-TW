@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Raport WeGaS - Scholarly HTML </title>
+    <link rel="stylesheet" href="raport.css">
+</head>
+<body prefix="schema: http://schema.org/ xsd: http://www.w3.org/2001/XMLSchema# sa: https://ns.science.ai/">
+
+<article typeof="schema:ScholarlyArticle" resource="#">
+    <h1>Proiect WeGaS</h1>
+    <section>
+        <ol>
+            <li property="schema:author" typeof="sa:ContributorRole">
+                <a property="schema:author" typeof="schema:Person">
+                    <span property="schema:givenName">George-Marian</span>
+                    <span property="schema:familyName">Tifrea</span>
+                </a>
+            </li>
+            <li property="schema:author" typeof="sa:ContributorRole">
+                <a property="schema:author" typeof="schema:Person">
+                    <span property="schema:givenName">Tudor-Octavian</span>
+                    <span property="schema:familyName">Vrabie</span>
+                </a>
+            </li>
+            <li property="schema:author" typeof="sa:ContributorRole">
+                <a property="schema:author" typeof="schema:Person">
+                    <span property="schema:givenName">Valentin</span>
+                    <span property="schema:familyName">Damoc</span>
+                </a>
+            </li>
+            <li property="schema:author" typeof="sa:ContributorRole">
+                <a property="schema:author" typeof="schema:Person">
+                    <span property="schema:givenName">Andrei-Razvan</span>
+                    <span property="schema:familyName">Bordeianu-Cocea</span>
+                </a>
+            </li>
+        </ol>
+    </section>
+
+    <section typeof="sa:Abstract">
+        <ul id="etape">
+            <li><b>Realizarea frontend-ului</b>
+                <ul>
+                    <li>Tifrea:
+                        <ul>
+                            <li>movements</li>
+                            <li>terms</li>
+                            <li>reports</li>
+                            <li>actual-report</li>
+                            <li>register</li>
+                        </ul>
+                    </li>
+                    <li>Vrabie:
+                        <ul>
+                            <li>atac</li>
+                            <li>cazarma</li>
+                            <li>map</li>
+                            <li>info</li>
+                            <li>change village name</li>
+                            <li>facebook username</li>
+                            <li>login</li>
+                        </ul>
+                    </li>
+                    <li>Damoc:
+                        <ul>
+                            <li>villageView</li>
+                            <li>overview</li>
+                            <li>stone</li>
+                            <li>wood</li>
+                            <li>iron</li>
+                            <li>storage</li>
+                            <li>login</li>
+                            <li>victory</li>
+                        </ul>
+                    </li>
+                    <li>Bordeianu-Cocea:
+                        <ul>
+                            <li>changePassword</li>
+                            <li>changeUsername</li>
+                            <li>deleteAccount</li>
+                            <li>construct</li>
+                            <li>profile</li>
+                            <li>ranking</li>
+                            <li>register</li>
+                        </ul>
+                    </li>
+
+
+                </ul>
+            </li>
+
+            <li><b>Baza de date</b>
+                <ul><li>Tifrea: creare, populare, triggere, proceduriUpdate, functii(login,register), commands_troops</li></ul>
+                <ul><li>Vrabie: creare, populare, triggere, procedurUpdate,  functii(login,register,registerFB), atac, update_buildings, scheduler</li></ul>
+                <ul><li>Damoc: creare, populare, triggere,  functii(login,register) </li></ul>
+                <ul><li>Bordeianu-Cocea: creare, populare, triggere,  functii(login,register,changePassword,changeUsername,deleteUser,createTicket),commands_buildings </li></ul>
+            </li>
+            <li><b>Back-End:</b>
+                <ul>
+                    <li>Tifrea: cazarma,report,reportslist,getReportsCount,register</li>
+                    <li>Vrabie: login,loginFB,attack,movements,map,change VillageName,sessionValidate</li>
+                    <li>Damoc: rankingPopulation,rankingAttackers,villageView,overview,storage,wood,stone,iron,winner,functions(for resources,username,village)</li>
+                    <li>Bordeianu-Cocea: userprofile,otherUserProfile,info-ticket,changePassword,changeUsername,DeleteAccount,main building(construct)</li>
+                </ul>
+            </li>
+            <li><b>Realizarea Documentatiei</b>
+                <ul>
+                    <li>Tifrea,Damoc</li>
+                </ul>
+
+            </li>
+            <li><b>Realizarea Filmului</b>
+                <ul>
+                    <li>Vrabie,Bordeianu-Cocea</li>
+                </ul>
+
+            </li>
+        </ul>
+    </section>
+
+</article>
+
+</body>
+</html>
