@@ -63,19 +63,19 @@
        <script>
            function completeSpear(iron,wood,stone){
                var cost=Math.min((iron/20),(wood/15),(stone/25));
-               document.getElementById("spear").value=cost;
+               document.getElementById("spear").value=Math.floor(cost);
            }
            function completeAxe(iron,wood,stone){
                var cost=Math.min((iron/30),(wood/15),(stone/35));
-               document.getElementById("axe").value=cost;
+               document.getElementById("axe").value=Math.floor(cost);
            }
            function completeSword(iron,wood,stone){
                var cost=Math.min((iron/25),(wood/45),(stone/20));
-               document.getElementById("sword").value=cost;
+               document.getElementById("sword").value=Math.floor(cost);
            }
            function completeArcher(iron,wood,stone){
                var cost=Math.min((iron/15),(wood/25),(stone/20));
-               document.getElementById("archer").value=cost;
+               document.getElementById("archer").value=Math.floor(cost);
            }
        </script>
        <div class="row trupe">

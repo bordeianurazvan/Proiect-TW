@@ -128,7 +128,7 @@ class Home extends Controller
 
     public function terms()
     {
-        SessionValidate::validateSession();
+       
             $this->view('home/terms',[]);
 
     }
