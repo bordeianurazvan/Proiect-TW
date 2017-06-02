@@ -11,7 +11,7 @@ class VillageName extends  Controller
 public function changeVillageName()
     {
     SessionValidate::validateSession();
-
+    VillageFunctions::validateVictory();
     if(isset($_POST['name']) && $_POST['name']!=null)
         {
             $conn=Db::getDbInstance();

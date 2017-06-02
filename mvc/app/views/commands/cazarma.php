@@ -60,16 +60,34 @@
        <div class="col-xs-3 col-md-3 col-lg-3 Archer">Archer
            </div>
    </div>
+       <script>
+           function completeSpear(iron,wood,stone){
+               var cost=Math.min((iron/20),(wood/15),(stone/25));
+               document.getElementById("spear").value=cost;
+           }
+           function completeAxe(iron,wood,stone){
+               var cost=Math.min((iron/30),(wood/15),(stone/35));
+               document.getElementById("axe").value=cost;
+           }
+           function completeSword(iron,wood,stone){
+               var cost=Math.min((iron/25),(wood/45),(stone/20));
+               document.getElementById("sword").value=cost;
+           }
+           function completeArcher(iron,wood,stone){
+               var cost=Math.min((iron/15),(wood/25),(stone/20));
+               document.getElementById("archer").value=cost;
+           }
+       </script>
        <div class="row trupe">
            <div class="col-xs-3 col-md-3 col-lg-3 Spear">
-               <img alt="spear" src="/Proiect-TW/mvc/public/images/spear.png" class="img-responsive poza_spear"></div>
+               <img alt="spear" src="/Proiect-TW/mvc/public/images/spear.png" class="img-responsive poza_spear" onclick="completeSpear(<?php echo $data['iron'].','.$data['wood'].','.$data['stone']; ?>)"></div>
            <div class="col-xs-3 col-md-3 col-lg-3 Axe">
-               <img alt="Axe" src="/Proiect-TW/mvc/public/images/axe.png" class="img-responsive poza_axe">
+               <img alt="Axe" src="/Proiect-TW/mvc/public/images/axe.png" class="img-responsive poza_axe" onclick="completeAxe(<?php echo $data['iron'].','.$data['wood'].','.$data['stone']; ?>)">
            </div>
            <div class="col-xs-3 col-md-3 col-lg-3 Sword">
-               <img alt="Swords" src="/Proiect-TW/mvc/public/images/sword.png" class="img-responsive poza_sword"></div>
+               <img alt="Swords" src="/Proiect-TW/mvc/public/images/sword.png" class="img-responsive poza_sword" onclick="completeSword(<?php echo $data['iron'].','.$data['wood'].','.$data['stone']; ?>)"></div>
            <div class="col-xs-3 col-md-3 col-lg-3 Archer">
-               <img alt="Archer" src="/Proiect-TW/mvc/public/images/archer.png" class="img-responsive poza_archer"></div>
+               <img alt="Archer" src="/Proiect-TW/mvc/public/images/archer.png" class="img-responsive poza_archer" onclick="completeArcher(<?php echo $data['iron'].','.$data['wood'].','.$data['stone']; ?>)"></div>
        </div>
 
        <div class="row cost">
@@ -89,28 +107,28 @@
            <div class="col-xs-3 col-md-3 col-lg-3 col-sm-3 Spear_command">
 
                    <div class="row">
-                       <input type="number" class="form-control spear_form" min="0"name="spear">
+                       <input id="spear" type="number" class="form-control spear_form" min="0"name="spear">
                    </div>
 
                </div>
            <div class="col-xs-3 col-md-3 col-lg-3 col-sm-3 Axe_command">
 
                    <div class="row">
-                       <input type="number" class="form-control axe_form"  min="0" name="axe">
+                       <input id="axe" type="number" class="form-control axe_form"  min="0" name="axe">
                    </div>
 
            </div>
            <div class="col-xs-3 col-md-3 col-lg-3 col-sm-3 Sword_command">
 
                    <div class="row">
-                       <input type="number" class="form-control sword_form"  min="0" name="sword">
+                       <input id="sword" type="number" class="form-control sword_form"  min="0" name="sword">
                    </div>
 
                </div>
            <div class="col-xs-3 col-md-3 col-lg-3 col-sm-3 Archer_command">
 
                    <div class="row">
-                       <input type="number" class="form-control archer_form"  min="0" name="archer">
+                       <input id="archer" type="number" class="form-control archer_form"  min="0" name="archer">
                    </div>
 
                </div>
@@ -135,20 +153,20 @@
                            <table class="table no-border tabel-modal">
                                <tr>
                                   <th><img alt="Archer" src="/Proiect-TW/mvc/public/images/unit_archer.png" class="img-responsive"></th>
-                                   <td>The archer has a very low Atack power but is a verry good offensive troop having a small resources cost and a small instruction time</td>
+                                   <td>The Archer has 15 attack power and 20 defense power</td>
                                </tr>
                                <tr>
                                    <th><img alt="Sword" src="/Proiect-TW/mvc/public/images/unit_sword.png"></th>
-                                   <td>The SwordsMan is the best defensive troop ! But instruct them wisely because they have a great resources cost and time cost aswell</td>
+                                   <td>The SwordsMan has 15 attack power and 40 defense power</td>
                                </tr>
                                <tr>
                                <th><img alt="Axe" src="/Proiect-TW/mvc/public/images/unit_axe.png"></th>
-                               <td>The AxeMan is the unit in offence but he has a very big instruction time and has a very big resources cost aswell</td>
+                               <td>The AxeMan has 40 attack power and 5 defense power</td>
                            </tr>
 
                                <tr>
                                    <th><img alt="spear" src="/Proiect-TW/mvc/public/images/unit_spear.png"></th>
-                                   <td>The SpearMan is the most common unit.The spear man is good in defence and offence and has medium costs</td>
+                                   <td>The SpearMan has 20 attack power and 15 defense power</td>
                                </tr>
 
 

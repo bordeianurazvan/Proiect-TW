@@ -11,6 +11,7 @@ class Reports extends Controller
     public function reportslist($page='')
     {
         SessionValidate::validateSession();
+        VillageFunctions::validateVictory();
         $reportsCount=Report::getReportsCount($_SESSION['user_id']);
         if($page>Report::getReportsPageCount($_SESSION['user_id'])) {
             header('Location: /Proiect-TW/mvc/public/reports/reportslist/1');
@@ -43,6 +44,7 @@ class Reports extends Controller
     }
     public function report($report_id=''){
         SessionValidate::validateSession();
+        VillageFunctions::validateVictory();
         if(Report::checkReport($report_id)) {
             $reportsCount=Report::getReportsCount($_SESSION['user_id']);
             $title=Report::getTitle($report_id);

@@ -11,6 +11,7 @@ class UserProfile extends Controller
     public function getProfile()
     {
         SessionValidate::validateSession();
+        VillageFunctions::validateVictory();
         $village_name = VillageFunctions::getVillageName($_SESSION['user_id']);
         $iron = VillageFunctions::getIronResources($_SESSION['village_id']);
         $stone = VillageFunctions::getStoneResources($_SESSION['village_id']);
@@ -39,6 +40,7 @@ class UserProfile extends Controller
     public function changePassword($status=' ',$retry=' ')
     {
         SessionValidate::validateSession();
+        VillageFunctions::validateVictory();
         $reportsCount=Report::getReportsCount($_SESSION['user_id']);
         if($status=='failed' && $retry ='yes' )
         {
@@ -67,6 +69,7 @@ class UserProfile extends Controller
     public function changeUsername($status=' ',$retry=' ')
     {
         SessionValidate::validateSession();
+        VillageFunctions::validateVictory();
         $username = Profile::getUsername($_SESSION['user_id']);
         $reportsCount=Report::getReportsCount($_SESSION['user_id']);
 
@@ -102,6 +105,7 @@ class UserProfile extends Controller
     public function delete($status=' ',$retry=' ')
     {
         SessionValidate::validateSession();
+        VillageFunctions::validateVictory();
         $username = Profile::getUsername($_SESSION['user_id']);
         $reportsCount=Report::getReportsCount($_SESSION['user_id']);
 
@@ -135,6 +139,7 @@ class UserProfile extends Controller
     public function info()
     {
         SessionValidate::validateSession();
+        VillageFunctions::validateVictory();
         $reportsCount=Report::getReportsCount($_SESSION['user_id']);
         if (!isset($_POST['textarea']))
         {
@@ -156,6 +161,7 @@ class UserProfile extends Controller
     public function getOtherProfile($username='')
     {
         SessionValidate::validateSession();
+        VillageFunctions::validateVictory();
         $village_name = VillageFunctions::getVillageName($_SESSION['user_id']);
         $iron = VillageFunctions::getIronResources($_SESSION['village_id']);
         $stone = VillageFunctions::getStoneResources($_SESSION['village_id']);
@@ -193,6 +199,7 @@ class UserProfile extends Controller
     public function getOtherProfileByMap($coord_x = '',$coord_y='')
     {
         SessionValidate::validateSession();
+        VillageFunctions::validateVictory();
         $village_name = VillageFunctions::getVillageName($_SESSION['user_id']);
         $iron = VillageFunctions::getIronResources($_SESSION['village_id']);
         $stone = VillageFunctions::getStoneResources($_SESSION['village_id']);

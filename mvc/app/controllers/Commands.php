@@ -11,6 +11,7 @@ class Commands extends Controller
     public function cazarma()
     {
         SessionValidate::validateSession();
+        VillageFunctions::validateVictory();
         if(isset($_POST['spear'])&&isset($_POST['axe'])&&isset($_POST['sword'])&&isset($_POST['archer'])){
             $ok=Barracks::addTroopsCommand($_SESSION['village_id'],$_POST['spear'],$_POST['axe'],$_POST['sword'],$_POST['archer']);
         }
@@ -58,7 +59,7 @@ class Commands extends Controller
     public function construct($status='')
     {
         SessionValidate::validateSession();
-
+        VillageFunctions::validateVictory();
         $villageId = $_SESSION['village_id'];
         $village_name = VillageFunctions::getVillageName($_SESSION['user_id']);
         $iron = VillageFunctions::getIronResources($_SESSION['village_id']);
@@ -169,6 +170,8 @@ class Commands extends Controller
 
     public function constructOrder($buildingId='')
     {
+        SessionValidate::validateSession();
+        VillageFunctions::validateVictory();
         $villageId = $_SESSION['village_id'];
         $ok = MainBuilding::levelUpBuilding($villageId,$buildingId);
 

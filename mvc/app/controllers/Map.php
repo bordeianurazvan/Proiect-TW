@@ -11,7 +11,7 @@ class Map extends Controller
     public function getMap($x ='',$y='',$type='')
     {
         SessionValidate::validateSession();
-
+        VillageFunctions::validateVictory();
         $harta =MapGenerator::getMap();
         if($type =='attack')
             header('Location: /Proiect-TW/mvc/public/attack/getAttack');

@@ -182,6 +182,10 @@ CREATE OR REPLACE procedure commands_update as
           
           update villages set user_id =user1 where village_id=i.to_village;
           
+          select points into x from villages where village_id = i.to_village;
+          update users set general_points = general_points - x where user_id=user2;
+          update users set general_points = general_points + x where user_id=user1;
+          
           select coord_x into x from villages where village_id=i.to_village;
           select coord_y into y from villages where village_id=i.to_village;
           

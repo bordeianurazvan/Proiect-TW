@@ -11,6 +11,7 @@ class Attack extends Controller
     public function getAttack($status = ' ', $retry = ' ',$x='',$y='')
     {
         SessionValidate::validateSession();
+        VillageFunctions::validateVictory();
         if($x!=null && $y!=null) {
             $_SESSION['x'] = $x;
             $_SESSION['y'] = $y;
@@ -66,6 +67,7 @@ class Attack extends Controller
     public function movements($page='')
     {
         SessionValidate::validateSession();
+        VillageFunctions::validateVictory();
         if ($page > TroopsMovements::getPages($_SESSION['village_id'])) {
             header('Location: /Proiect-TW/mvc/public/attack/movements/1');
         } else {
