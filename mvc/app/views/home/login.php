@@ -105,9 +105,6 @@
                     <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password"
                            required>
                 </div>
-                <div class="checkbox">
-                    <label><input type="checkbox"> Remember me</label>
-                </div>
                 <?php
                 if ($data['retry'] == 'yes') echo '<h4><font color="red">LOGIN FAILED</font></h4>'; ?>
                 <button type="submit" class="btn btn-default" value="Login">Login</button>
